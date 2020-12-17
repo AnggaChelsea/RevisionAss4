@@ -1,0 +1,32 @@
+
+footer {
+	position: relative;
+	bottom: 0;
+ 	height: 42px;
+ 	width: 100%;
+ 	font-size: 9.5pt;
+ }
+
+.footer-left {
+	float: left;
+	margin-left: 16px;
+}
+
+.footer-right {
+	float: right;
+	margin-right: 16px;
+}
+
+footer nav {
+	display: inline-block;
+	padding: 15px 0 0 0;
+}
+
+footer nav a {
+ 	padding: 3px 14px;
+ 	color: white;
+}
+
+footer nav a:hover {
+	color: #000000;
+}
