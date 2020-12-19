@@ -11,3 +11,7 @@ export enum subdistrict {
     "kemang",
     "klender"
 }
+
+export class update {
+    fullname:string|undefined
+}

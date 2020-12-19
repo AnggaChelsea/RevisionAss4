@@ -12,12 +12,12 @@
                     <i class="fa fa-long-arrow-left mr-1 mb-1"></i>
                     <a routerLink="/profile" class="text-dark"><h6>Back to Profile</h6></a>
                   </div>
-                  <h6 class="text-right">Edit Profile</h6>
+                  <h5 class="text-right" (click)="updateProfile()" >Edit Profile</h5>
                 </div>
                 <div class="text-center"> User</div>
-                <form [formGroup]="profileForm">
+                <form [formGroup]="profileForm" >
                   <div class="row mt-3 form-group">
-                    <div class="col-md-6 mb-2">
+                    <div class="col-md-6 mb-2"[formGroup]="updateForm">
                         Full Name
                       <input
                         type="text"
@@ -62,7 +62,10 @@
                   </div>
                 </form>
               <div class="mt-5 text-right">
-                <button class="btn btn-primary profile-button" type="submit" (click)="createProfile()" >
+                <button class="btn btn-primary profile-button2" type="submit" (click)="createProfile()" >
+                  Save Profile
+                </button>
+                <button class="btn btn-primary profile-button" type="submit" (click)="updateProfile()" >
                   Update Profile
                 </button>
               </div>

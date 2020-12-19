@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { Profile } from 'src/app/shared/model/Profile';
+import { Profile, update } from 'src/app/shared/model/Profile';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import Swal from 'sweetalert2'
 @Component({
@@ -10,6 +10,7 @@ import Swal from 'sweetalert2'
 })
 export class ProfileDetailsComponent implements OnInit {
   profile:any
+  createdata:any=FormGroup
   
   constructor(private authService: AuthService,public fb: FormBuilder) { }
   ngOnInit(): void {
@@ -20,6 +21,9 @@ export class ProfileDetailsComponent implements OnInit {
     phoneNumber: new FormControl(''),
     birthDate : new FormControl(''),
   })
+  updateForm:any = new FormGroup({
+    fullname: new FormControl('')
+  })
   createProfile(): void{
     const profile: Profile ={
       fullname : this.profileForm.get('fullname').value,
@@ -28,5 +32,14 @@ export class ProfileDetailsComponent implements OnInit {
       birthDate : this.profileForm.get('birthDate').value
     }
     this.authService.Createprofile(profile)
+  }
+
+  updateProfile():void {
+    const update: update ={
+      fullname : this.updateForm.get('fullname').value
+    }
+    this.authService.putProfile(update).subscribe(response => {
+      console.log(response)
+    })
   }
 }
