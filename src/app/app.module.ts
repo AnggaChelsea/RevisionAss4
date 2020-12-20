@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxSpinnerModule } from "ngx-spinner";
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -14,6 +14,8 @@ import { GamesComponent } from './components/games/games.component';
 import { DetailgamesComponent } from './components/games/detailgames/detailgames.component';
 import { SearchgameComponent } from './components/games/searchgame/searchgame.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ProfileModule } from './components/user-profile/profile.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,14 +27,16 @@ import { AdminComponent } from './components/admin/admin.component';
     GamesComponent,
     DetailgamesComponent,
     SearchgameComponent,
-    AdminComponent,
+    AdminComponent
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ProfileModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
