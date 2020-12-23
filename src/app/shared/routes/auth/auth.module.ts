@@ -8,8 +8,8 @@ import { ForgotComponent } from '../../../components/auth/forgot/forgot.componen
 import { ResetComponent } from '../../../components/auth/reset/reset.component';
 import { SignComponent } from '../../../components/auth/sign/sign.component';
 import { SignupComponent } from '../../../components/auth/signup/signup.component';
-
 import { AuthRoutingModule } from './auth-routing.module';
+
 
 
 @NgModule({

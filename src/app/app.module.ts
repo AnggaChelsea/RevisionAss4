@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { DataTablesModule } from 'angular-datatables';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { AuthService } from './shared/services/auth/auth.service';
@@ -20,8 +21,9 @@ import { GamesComponent } from './components/games/games.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { TournamentService } from './shared/services/tournament/tournament.service';
 import { PanitiaComponent } from './components/panitia/panitia.component';
-import { ParticipantService } from './shared/services/participant/participant.service';
 import { ParticipantComponent } from './components/panitia/participant/participant.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { PanitiaService } from './shared/services/panitia/panitia.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +40,8 @@ import { ParticipantComponent } from './components/panitia/participant/participa
 
   imports: [
     BrowserModule,
+    DataTablesModule,
+    MDBBootstrapModule,
     CommonModule,
     ReactiveFormsModule, FormsModule,
     AppRoutingModule,
@@ -48,7 +52,7 @@ import { ParticipantComponent } from './components/panitia/participant/participa
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
-  providers: [AuthService, AuthGuard, TournamentService, ParticipantService],
+  providers: [AuthService,PanitiaService , AuthGuard, TournamentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
