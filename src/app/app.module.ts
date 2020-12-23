@@ -20,8 +20,6 @@ import { BannerComponent } from './components/banner/banner.component';
 import { GamesComponent } from './components/games/games.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { TournamentService } from './shared/services/tournament/tournament.service';
-import { PanitiaComponent } from './components/panitia/panitia.component';
-import { ParticipantComponent } from './components/panitia/participant/participant.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PanitiaService } from './shared/services/panitia/panitia.service';
 @NgModule({
@@ -34,8 +32,7 @@ import { PanitiaService } from './shared/services/panitia/panitia.service';
     BannerComponent,
     GamesComponent,
     AdminComponent,
-    PanitiaComponent,
-    ParticipantComponent,
+    
   ],
 
   imports: [

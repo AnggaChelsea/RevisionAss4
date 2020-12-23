@@ -10,8 +10,8 @@ const routes: Routes = [
   {path:'', component:HomeComponent},
 
   {path:'search/:keyword', component:GamesComponent},
-  {path:'panitia', component:PanitiaComponent},
   {path:'sign', loadChildren: () => import('./shared/routes/auth/auth.module').then(m => m.AuthModule)},
+  {path:'panitia', loadChildren: () => import('./shared/routes/panitia/panitia.module').then(m => m.PanitiaModule)},
   {path:'detailgames/:_id', loadChildren: () => import('./shared/routes/games/games/games.module').then(m => m.GamesModule)},
 
 ];
