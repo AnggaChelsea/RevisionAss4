@@ -1,6 +1,9 @@
+import { AuthModule } from './shared/routes/auth/auth.module';
+import { SignComponent } from './components/auth/sign/sign.component';
+import { AuthInterceptorInterceptor } from './shared/services/auth/auth-interceptor.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgModule, Injectable } from '@angular/core';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +17,14 @@ import { GamesComponent } from './components/games/games.component';
 import { DetailgamesComponent } from './components/games/detailgames/detailgames.component';
 import { SearchgameComponent } from './components/games/searchgame/searchgame.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { InboxComponent } from './components/auth/inbox/inbox.component';
+import { ProfileComponent } from './components/auth/profile/profile.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+@Injectable({
+  providedIn: 'root',
+})
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,15 +37,28 @@ import { AdminComponent } from './components/admin/admin.component';
     DetailgamesComponent,
     SearchgameComponent,
     AdminComponent,
+    InboxComponent,
+    ProfileComponent,
+    SignComponent,
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AuthModule,
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
