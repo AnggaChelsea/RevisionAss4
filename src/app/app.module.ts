@@ -15,6 +15,9 @@ import { DetailgamesComponent } from './components/games/detailgames/detailgames
 import { SearchgameComponent } from './components/games/searchgame/searchgame.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ProfileModule } from './components/user-profile/profile.module';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { LurahModule } from './components/lurah/lurahmodule/lurahmodule.module';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,7 @@ import { ProfileModule } from './components/user-profile/profile.module';
     GamesComponent,
     DetailgamesComponent,
     SearchgameComponent,
-    AdminComponent
+    AdminComponent,
   ],
 
   imports: [
@@ -36,7 +39,10 @@ import { ProfileModule } from './components/user-profile/profile.module';
     NgxSpinnerModule,
     BrowserAnimationsModule,
     ProfileModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    LurahModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
