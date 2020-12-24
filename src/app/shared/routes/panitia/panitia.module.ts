@@ -18,6 +18,7 @@ import { PanitiaRoutingModule } from './panitia-routing.module';
   providers:[PanitiaService],
   imports: [
     CommonModule,
+    ReactiveFormsModule, FormsModule,
     DataTablesModule,
     PanitiaRoutingModule
   ]

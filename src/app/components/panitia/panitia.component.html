@@ -4,13 +4,13 @@
     background-position: center;
     background-size: cover;">
                     <div class="overlay"></div>
-
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
                                 <div class="page-title  home text-center">
                                   <span class="heading-page"> Panitia Page
                                   </span>
+                                  <div *ngIf="showLoadingIndicator">Loading....</div>
                                     <p class="mt20 text-danger">Panitia Can Add or controll all Tournament and Participant</p>
                                 </div>
 

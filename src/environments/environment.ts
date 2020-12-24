@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  urlAddress: 'http://localhost:5000/'
+  urlAddress: 'https://radiant-bayou-53976.herokuapp.com/'
+  // http://localhost:5000/
 };
 
 /*

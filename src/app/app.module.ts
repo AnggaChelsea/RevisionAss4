@@ -32,7 +32,7 @@ import { PanitiaService } from './shared/services/panitia/panitia.service';
     BannerComponent,
     GamesComponent,
     AdminComponent,
-    
+
   ],
 
   imports: [

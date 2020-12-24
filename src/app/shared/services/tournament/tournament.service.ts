@@ -32,7 +32,7 @@ export class TournamentService {
   }
 
   create(data:any): Observable<any> {
-    return this.httpClient.post(environment.urlAddress, data);
+    return this.httpClient.post(`${environment.urlAddress}product/create`, data);
   }
 
   update(id:number, data:any): Observable<any> {
