@@ -41,4 +41,15 @@ export class AuthService {
   setToken(token: string) {
     return localStorage.setItem(this.ACCESS_TOKEN, token);
   }
+
+  handleError(error: HttpErrorResponse) {
+    let pesan: string = '';
+
+    if (error.error instanceof ErrorEvent) {
+      pesan = error.error.message;
+    } else {
+      pesan = `Error code: ${error.status} \n Pesan Error: ${error.message}`;
+    }
+    return throwError(pesan);
+  }
 }

@@ -23,13 +23,19 @@
               </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="#">Services</a>
         </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" *ngIf="authService.login()" href="#">Profile</a>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" routerLink="signin">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  href="#">Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  routerLink='panitia'>Panitia</a>
         </li>
       </ul>
     </div>

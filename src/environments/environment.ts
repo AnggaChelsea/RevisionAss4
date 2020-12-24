@@ -15,6 +15,7 @@ export const environment = {
     storageBucket: 'auth-59b16.appspot.com',
     messagingSenderId: '322098566281',
     appId: '1:322098566281:web:b5f07e359e7448cf2ce258',
+    urlAddress: 'http://localhost:5000/',
   },
 };
 
