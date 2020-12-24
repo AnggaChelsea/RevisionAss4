@@ -6,13 +6,13 @@ import { ParticipantComponent } from '../../../../components/games/detailgames/p
 import { RegistertournamentComponent } from '../../../../components/games/detailgames/registertournament/registertournament.component';
 import { ParticipantService } from '../../../services/participant/participant.service';
 
-
 @NgModule({
-  declarations: [DetailgamesComponent,ParticipantComponent, RegistertournamentComponent],
-  imports: [
-    CommonModule,
-    GamesRoutingModule
+  declarations: [
+    DetailgamesComponent,
+    ParticipantComponent,
+    RegistertournamentComponent,
   ],
-  providers:[ParticipantService]
+  imports: [CommonModule, GamesRoutingModule],
+  providers: [ParticipantService],
 })
-export class GamesModule { }
+export class GamesModule {}

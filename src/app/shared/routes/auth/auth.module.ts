@@ -6,21 +6,23 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ConfirmComponent } from '../../../components/auth/confirm/confirm.component';
 import { ForgotComponent } from '../../../components/auth/forgot/forgot.component';
 import { ResetComponent } from '../../../components/auth/reset/reset.component';
-import { SignComponent } from '../../../components/auth/sign/sign.component';
+// import { SignComponent } from '../../../components/auth/sign/sign.component';
 import { SignupComponent } from '../../../components/auth/signup/signup.component';
 import { AuthRoutingModule } from './auth-routing.module';
-
-
+// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [SignComponent, SignupComponent, ForgotComponent, ResetComponent],
+  declarations: [SignupComponent, ForgotComponent, ResetComponent],
+
+  // imports: [CommonModule, AuthRoutingModule],
+  // declarations: [SignComponent, SignupComponent, ForgotComponent, ResetComponent],
   imports: [
     CommonModule,
-    MaterialModule ,
+    MaterialModule,
     HttpClientModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    FormsModule
-  ]
+    FormsModule,
+  ],
 })
-export class AuthModule { }
+export class AuthModule {}

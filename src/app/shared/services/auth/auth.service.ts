@@ -1,88 +1,55 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError} from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { User } from '../../models/user';
-
+import { Role } from '../../models/role';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  headers = new HttpHeaders()
-  .set(
-    'Content-Types',
-    'application/json',
-  );
-  datauser = {}
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  datauser = {};
+  ACCESS_TOKEN = 'access_token';
 
-  constructor(private http:HttpClient, private router:Router ) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
-  private getUserdata(response:any){
-    return response.data
+  signIn(user: any) {
+    return this.http.post<any>(`${environment.urlAddress}user/signin`, user);
   }
 
-
-  signupUser(user:any){
-    return this.http.post<any>(`${environment.urlAddress}users/register`, user)
+  confirmUser(user: any) {
+    return this.http.post<any>(`${environment.urlAddress}user/confirm`, user);
   }
 
-  signinUser(user:any){
-    return this.http.post<any>(`${environment.urlAddress}users/login`, user)
+  signupUser(user: any) {
+    return this.http.post<any>(`${environment.urlAddress}user/signup`, user);
   }
 
-  login(){
-    return !!localStorage.getItem('access_token')
+  getToken() {
+    return localStorage.getItem(this.ACCESS_TOKEN);
   }
 
-  getUsername(){
-    return this.http.get<User[]>(environment.urlAddress + 'users').pipe(map(this.getUserdata))
+  setToken(token: string) {
+    return localStorage.setItem(this.ACCESS_TOKEN, token);
   }
 
+  handleError(error: HttpErrorResponse) {
+    let pesan: string = '';
 
-  logoutUser(){
-    let removeToken = localStorage.removeItem('access_token');
-    if(removeToken == null){
-      this.router.navigate([''])
+    if (error.error instanceof ErrorEvent) {
+      pesan = error.error.message;
+    } else {
+      pesan = `Error code: ${error.status} \n Pesan Error: ${error.message}`;
     }
+    return throwError(pesan);
   }
-
-  get isLogin(): boolean{
-      let token = localStorage.getItem('access_token');
-      return (token !==null) ? true : false
-  }
-
-  getToken(){
-      return localStorage.getItem('token');
-  }
-
-  // getUserProfile(_id:number): Observable<any>{
-  //     let api = `${this.endpoint}user/${_id}`;
-  //     return this.http.get(api,{
-  //         headers: this.headers
-  //     }).pipe(
-  //         map((res: Response)=>{
-  //             return res || {}
-  //         }),
-  //         catchError(this.handleError)
-  //     )
-  // }
-
-  handleError(error:HttpErrorResponse){
-        let pesan:string = '';
-
-        if(error.error instanceof ErrorEvent){
-            pesan = error.error.message
-
-        }else{
-            pesan = `Error code: ${error.status} \n Pesan Error: ${error.message}`;
-        }
-        return throwError(pesan);
-
-  }
-
-
 }
