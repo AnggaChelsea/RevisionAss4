@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { TournamentService } from '../../shared/services/tournament/tournament.service';
-import { Tournament } from '../../shared/models/tournament';
 
 
 @Component({
