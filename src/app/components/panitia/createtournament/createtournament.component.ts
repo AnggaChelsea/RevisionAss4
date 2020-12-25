@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CdkTableExporterModule } from 'cdk-table-exporter';
 import { TournamentService } from '../../../shared/services/tournament/tournament.service';
-import Swal from 'sweetalert2';
+import { CsvService } from '../../../shared/services/csv.service';
 
 import 'jquery';
 declare var $: JQuery;
@@ -34,7 +35,7 @@ export class CreatetournamentComponent implements OnInit {
 
   submmited = false;
 
-  constructor(private tournamentService:TournamentService) { }
+  constructor(private tournamentService:TournamentService, private csvService:CsvService) { }
 
   ngOnInit(){
 
@@ -103,6 +104,10 @@ $("#tab3").removeClass("bg-light");
 
       }
     )
+  }
+
+  downloadCsv(){
+    this.csvService.downloadFile(this.getData, 'jsontocsv');
   }
 
 

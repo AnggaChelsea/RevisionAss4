@@ -26,6 +26,7 @@
     "angular-datatables": "^10.0.0",
     "angular2-jwt": "^0.2.3",
     "bootstrap": "^4.5.3",
+    "cdk-table-exporter": "^9.0.2",
     "datatables.net": "^1.10.23",
     "datatables.net-dt": "^1.10.23",
     "datatables.net-fixedcolumns-dt": "^3.3.2",

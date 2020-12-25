@@ -9,6 +9,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { DataTablesModule } from 'angular-datatables';
 import { MaterialModule } from './material/material.module';
 import { AuthService } from './shared/services/auth/auth.service';
+import { MatTableExporterModule } from 'mat-table-exporter';
 // import { AuthGuard } from './shared/services/auth/auth.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,6 +49,7 @@ import { PanitiaService } from './shared/services/panitia/panitia.service';
 
   imports: [
     BrowserModule,
+    MatTableExporterModule,
     DataTablesModule,
     MDBBootstrapModule,
     CommonModule,

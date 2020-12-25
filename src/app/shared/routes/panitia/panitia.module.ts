@@ -8,6 +8,7 @@ import { ParticipantService } from '../../services/participant/participant.servi
 import { PanitiaComponent } from '../../../components/panitia/panitia.component';
 import { ParticipantComponent } from '../../../components/panitia/participant/participant.component';
 import { CreatetournamentComponent } from '../../../components/panitia/createtournament/createtournament.component';
+import { CsvService } from '../../services/csv.service';
 
 
 import { PanitiaRoutingModule } from './panitia-routing.module';
@@ -15,7 +16,7 @@ import { PanitiaRoutingModule } from './panitia-routing.module';
 
 @NgModule({
   declarations: [CreatetournamentComponent,ParticipantComponent,PanitiaComponent],
-  providers:[PanitiaService],
+  providers:[PanitiaService,CsvService],
   imports: [
     CommonModule,
     ReactiveFormsModule, FormsModule,
