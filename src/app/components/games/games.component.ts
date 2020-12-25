@@ -6,6 +6,15 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { TournamentService } from '../../shared/services/tournament/tournament.service';
 
+import 'jquery';
+declare var $: JQuery;
+
+declare global {
+  interface JQuery {
+    (Jquery:any): JQuery;
+    bracket(options: any): JQuery;
+  }
+}
 
 @Component({
   selector: 'app-games',
@@ -22,7 +31,13 @@ export class GamesComponent implements OnInit {
   constructor(private tournamentService:TournamentService) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    $(function() {
+      $(document).ready(function() {
+        $('#example').DataTable();
+      });
+    });
+
      this.readTournament();
   }
   readTournament(): void {

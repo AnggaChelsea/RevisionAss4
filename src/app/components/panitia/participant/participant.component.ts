@@ -1,4 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { PanitiaService } from '../../../shared/services/panitia/panitia.service';
+
+import 'jquery';
+declare var $: JQuery;
+
+declare global {
+  interface JQuery {
+    (Jquery:any): JQuery;
+    bracket(options: any): JQuery;
+  }
+}
 
 @Component({
   selector: 'app-participant',
@@ -7,9 +18,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParticipantComponent implements OnInit {
 
-  constructor() { }
+  constructor(private panitiaService:PanitiaService) { }
+  dataParticipant:any;
 
-  ngOnInit(): void {
+  ngOnInit(){
+    $(function() {
+      $(document).ready(function() {
+        $('#example').DataTable();
+      });
+    });
+
+    this.getParticipant()
+  }
+
+  getParticipant(){
+    this.panitiaService.getData()
+    .subscribe(data=>{
+      this.dataParticipant = data;
+      console.log(this.dataParticipant);
+    },error => {
+      console.log(error)
+    })
+
   }
 
 }

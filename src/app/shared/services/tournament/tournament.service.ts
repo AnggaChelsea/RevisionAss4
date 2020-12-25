@@ -16,23 +16,23 @@ export class TournamentService {
     return response.data
   }
 
-
-
   private getDataTournamentId(response:any) {
     return response.data
   }
 
+//4b795c000aa4ef0d9a0d5cf8998da1d7153fa538
+  //22 october video
 
   readAll(): Observable<any> {
     return this.httpClient.get(environment.urlAddress + 'product').pipe(map(this.getDataTournament))
   }
 
-  read(id:number): Observable<any> {
-    return this.httpClient.get(`${environment.urlAddress}/tournament${id}`);
+  read(_id:string): Observable<any> {
+    return this.httpClient.get(`${environment.urlAddress}product/${_id}`).pipe(map(this.getDataTournament));
   }
 
   create(data:any): Observable<any> {
-    return this.httpClient.post(environment.urlAddress, data);
+    return this.httpClient.post(`${environment.urlAddress}product/create`, data);
   }
 
   update(id:number, data:any): Observable<any> {

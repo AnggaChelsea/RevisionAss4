@@ -1,41 +1,55 @@
 import { Injectable } from '@angular/core';
-import {HttpClient,HttpErrorResponse,HttpHeaders} from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import swal from 'sweetalert2'
-import { Profile, update } from 'src/app/shared/model/Profile';
-import { environment } from 'src/environments/environment';
-import Swal from 'sweetalert2';
-import { Observable,throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { environment } from '../../../../environments/environment';
+import { User } from '../../models/user';
+import { Role } from '../../models/role';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
+  datauser = {};
+  ACCESS_TOKEN = 'access_token';
+
   constructor(private http: HttpClient, private router: Router) {}
 
-  Createprofile(profile: Profile){
-    return this.http.post<any>(`${environment.urlAddress}user/profile`, profile).subscribe((res:any)=>{
-      Swal.fire('Good','Update Success','success').then(res =>{location.reload()})
-    })
+  signIn(user: any) {
+    return this.http.post<any>(`${environment.urlAddress}user/signin`, user);
   }
-  getProfile(): Observable<any> {
-    return this.http.get<any>(`${environment.urlAddress}user/profile`, {
-        headers: this.headers,}).pipe(map((res: Response) => {
-          return res || {};
-        }),
-        catchError(this.handleError)
-      );
-  }
-  putProfile(update:update): Observable<any>{
-  return this.http.put<any>(`${environment.urlAddress}user/profile`,update,{headers:this.headers})
-  .pipe(map(response => console.log("response")))}  
 
-handleError(error: HttpErrorResponse) {
-    let message = '';
-    if (error.error instanceof ErrorEvent) message = error.error.message; 
-    else message = `Error code : ${error.status} \n Message Error : ${error.message}`
-    return throwError(message);
+  confirmUser(user: any) {
+    return this.http.post<any>(`${environment.urlAddress}user/confirm`, user);
+  }
+
+  signupUser(user: any) {
+    return this.http.post<any>(`${environment.urlAddress}user/signup`, user);
+  }
+
+  getToken() {
+    return localStorage.getItem(this.ACCESS_TOKEN);
+  }
+
+  setToken(token: string) {
+    return localStorage.setItem(this.ACCESS_TOKEN, token);
+  }
+
+  handleError(error: HttpErrorResponse) {
+    let pesan: string = '';
+
+    if (error.error instanceof ErrorEvent) {
+      pesan = error.error.message;
+    } else {
+      pesan = `Error code: ${error.status} \n Pesan Error: ${error.message}`;
+    }
+    return throwError(pesan);
   }
 }

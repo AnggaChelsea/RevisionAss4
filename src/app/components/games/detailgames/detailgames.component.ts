@@ -18,16 +18,22 @@ export class DetailgamesComponent implements OnInit {
 
   ngOnInit(): void {
     this.message = '';
-    this.getTournament(this.route.snapshot.paramMap.get('id'));
+    this.dataId = this.route.snapshot.paramMap.get('_id');
+    this.route.queryParams.subscribe(params=>{
+      this.tournamentService.read(this.dataId)
+      .subscribe(data=>{
+        console.log(data)
+      })
+    })
   }
 
-  getTournament(id:any):void {
-    this.tournamentService.read(id).subscribe(
-      data=>{
-        this.dataId = data,
-        console.log(data)
-      }
-      )
-  }
+  // getTournament(id:any):void {
+  //   this.tournamentService.read(id).subscribe(
+  //     data=>{
+  //       this.dataId = data,
+  //       console.log(data)
+  //     }
+  //     )
+  // }
 
 }
