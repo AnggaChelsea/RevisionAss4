@@ -8,12 +8,15 @@ import { RegistertournamentComponent } from '../../../../components/games/detail
 import { ParticipantService } from '../../../services/participant/participant.service';
 import { TournamentService } from '../../../services/tournament/tournament.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BracketComponent } from '../../../../components/games/detailgames/bracket/bracket.component';
+
 
 @NgModule({
   declarations: [
     DetailgamesComponent,
     ParticipantComponent,
     RegistertournamentComponent,
+    BracketComponent,
   ],
   imports: [CommonModule, GamesRoutingModule, ReactiveFormsModule, FormsModule, NgxPaginationModule ],
   providers: [ParticipantService,TournamentService],

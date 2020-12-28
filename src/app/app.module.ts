@@ -30,6 +30,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PanitiaService } from './shared/services/panitia/panitia.service';
 import { ListtournamentComponent } from './components/panitia/listtournament/listtournament.component';
 
+
+
 @Injectable({
   providedIn: 'root',
 })
