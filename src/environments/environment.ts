@@ -4,19 +4,9 @@
 
 export const environment = {
   production: false,
-  // urlAddress:'https://radiant-bayou-53976.herokuapp.com/',
-  urlAddress: 'http://localhost:5000/',
-
-  firebase: {
-    apiKey: 'AIzaSyDm9Kmf-F2-hQL5QrwtwI--9LKHz4U64Mo',
-    authDomain: 'auth-59b16.firebaseapp.com',
-    databaseURL: 'https://auth-59b16.firebaseio.com',
-    projectId: 'auth-59b16',
-    storageBucket: 'auth-59b16.appspot.com',
-    messagingSenderId: '322098566281',
-    appId: '1:322098566281:web:b5f07e359e7448cf2ce258',
-    urlAddress: 'http://localhost:5000/',
-  },
+  urlAddress: 'https://radiant-bayou-53976.herokuapp.com/'
+  // http://localhost:5000/
+  //5d3d31db25a6b9131552e6c68aa4c6871552e21f
 };
 
 /*

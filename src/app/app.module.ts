@@ -9,7 +9,12 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { DataTablesModule } from 'angular-datatables';
 import { MaterialModule } from './material/material.module';
 import { AuthService } from './shared/services/auth/auth.service';
+<<<<<<< HEAD
 import { AuthGuard } from './shared/services/auth/auth.guard';
+=======
+import { MatTableExporterModule } from 'mat-table-exporter';
+// import { AuthGuard } from './shared/services/auth/auth.guard';
+>>>>>>> 5a5917775cf7cabc87cdd1ac0177463982682e20
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -50,6 +55,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 
   imports: [
     BrowserModule,
+    MatTableExporterModule,
     DataTablesModule,
     MDBBootstrapModule,
     CommonModule,

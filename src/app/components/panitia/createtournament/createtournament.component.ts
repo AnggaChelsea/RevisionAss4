@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CdkTableExporterModule } from 'cdk-table-exporter';
+import { TournamentService } from '../../../shared/services/tournament/tournament.service';
+import { CsvService } from '../../../shared/services/csv.service';
 
 import 'jquery';
 declare var $: JQuery;
@@ -17,17 +21,38 @@ declare global {
 })
 export class CreatetournamentComponent implements OnInit {
 
-  constructor() { }
+  alert:boolean = false
+  getData:any;
+
+  tournament = {
+    name:'',
+    gambar:'',
+    deskripsi:'',
+    price:null,
+    jumlah:null,
+    deskripsisingkat:'',
+  }
+
+  submmited = false;
+
+  constructor(private tournamentService:TournamentService, private csvService:CsvService) { }
 
   ngOnInit(){
+
+    this.getTournament()
+
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        "order": [[ 3, "desc" ]]
+    } );
+} );
+
+
     $(document).ready(function(){
-//Menu Toggle Script
 $("#menu-toggle").click(function(e) {
 e.preventDefault();
 $("#wrapper").toggleClass("toggled");
 });
-
-// For highlighting activated tabs
 $("#tab1").click(function () {
 $(".tabs").removeClass("active1");
 $(".tabs").addClass("bg-light");
@@ -48,5 +73,42 @@ $("#tab3").removeClass("bg-light");
 });
 })
   }
+
+  createtournament():void {
+    const data = {
+      name:this.tournament.name,
+      gambar:this.tournament.gambar,
+      deskripsi:this.tournament.deskripsi,
+      price:this.tournament.price,
+      jumlah:this.tournament.jumlah,
+      deskripsisingkat:this.tournament.deskripsisingkat,
+    }
+    this.tournamentService.create(data)
+    .subscribe(
+      response=>{
+        console.log(response);
+        this.submmited = true;
+      })
+      this.alert = true
+  }
+  closeAlert(){
+    this.alert = false
+  }
+
+  getTournament(){
+    this.tournamentService.readAll()
+    .subscribe(
+      data=>{
+      this.getData = data;
+      console.log(this.getData);
+
+      }
+    )
+  }
+
+  downloadCsv(){
+    this.csvService.downloadFile(this.getData, 'jsontocsv');
+  }
+
 
 }
