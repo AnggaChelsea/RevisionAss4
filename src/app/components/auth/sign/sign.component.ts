@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { User } from './../../../shared/services/auth/user';
 import { Router } from '@angular/router';
 import { AuthService } from './../../../shared/services/auth/auth.service';
@@ -44,15 +45,24 @@ export class SignComponent implements OnInit {
 
     this.authService.signIn(this.user).subscribe(
       (success) => {
-        this.authService.setToken(success.access_token);
         if (success.role === 'unregistered') {
-          this.router.navigate(['/confirm']);
+          this.router.navigate(['sign/confirm']);
         } else {
-          console.log('verification');
+          this.authService.setToken(success.access_token);
+          Swal.fire({
+            icon: 'success',
+            title: 'Log in success',
+            text: `Welcome and happy trophy hunting`,
+          });
+          this.router.navigate(['']);
         }
       },
       (error) => {
-        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.error.message}`,
+        });
       }
     );
   }

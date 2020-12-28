@@ -1,3 +1,4 @@
+import { SignComponent } from './../../../components/auth/sign/sign.component';
 import { Injectable } from '@angular/core';
 import {
   HttpInterceptor,
@@ -14,19 +15,20 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
   intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler // : Observable<HttpEvent<any>>
+    request: HttpRequest<any>,
+    next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const token = this.authService.getToken();
-    let authReq = req;
-    if (token != null)
-      // {
-      authReq = req.clone({
-        setHeaders: {
-          access_token: token,
-        },
+    const { url, method, headers, body } = request;
+    const access_token: any = this.authService.getToken();
+    // const id:any=this.signComponent.
+
+    if (access_token != null) {
+      const authReq = request.clone({
+        setHeaders: { access_token },
       });
-    return next.handle(authReq);
-    // }
+    } else {
+      console.log('no access');
+    }
+    return next.handle(request);
   }
 }

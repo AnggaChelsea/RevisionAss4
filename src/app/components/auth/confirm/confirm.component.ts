@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { SignComponent } from './../sign/sign.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -25,18 +26,25 @@ export class ConfirmComponent implements OnInit {
   ngOnInit(): void {}
 
   confirmUser() {
-    var value = this.confirmForm.value;
-    console.log('broken');
+    var value = this.confirmForm.value.token;
 
-    console.log(this.tokens);
+    this.tokens = { verifyingToken: value };
 
     this.authService.confirmUser(this.tokens).subscribe(
       (success) => {
-        console.log('masuk success');
-        console.log(success);
+        Swal.fire({
+          icon: 'success',
+          title: 'Verification code accepted',
+          text: `Please re login`,
+        });
+        return this.router.navigate(['sign/signin']);
       },
       (error) => {
-        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.error.message}`,
+        });
       }
     );
   }

@@ -9,7 +9,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { DataTablesModule } from 'angular-datatables';
 import { MaterialModule } from './material/material.module';
 import { AuthService } from './shared/services/auth/auth.service';
-// import { AuthGuard } from './shared/services/auth/auth.guard';
+import { AuthGuard } from './shared/services/auth/auth.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -21,12 +21,13 @@ import { BannerComponent } from './components/banner/banner.component';
 import { GamesComponent } from './components/games/games.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { InboxComponent } from './components/auth/inbox/inbox.component';
-import { ProfileComponent } from './components/auth/profile/profile.component';
+import { ProfileComponent } from './components/user-profile/profile/profile.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TournamentService } from './shared/services/tournament/tournament.service';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PanitiaService } from './shared/services/panitia/panitia.service';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @Injectable({
   providedIn: 'root',
@@ -44,6 +45,7 @@ import { PanitiaService } from './shared/services/panitia/panitia.service';
     InboxComponent,
     ProfileComponent,
     SignComponent,
+    PageNotFoundComponent,
   ],
 
   imports: [
@@ -72,7 +74,7 @@ import { PanitiaService } from './shared/services/panitia/panitia.service';
     AuthService,
     PanitiaService,
     TournamentService,
-    // AuthGuard,
+    AuthGuard,
   ],
   bootstrap: [
     AppComponent,
