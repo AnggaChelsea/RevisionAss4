@@ -28,6 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TournamentService } from './shared/services/tournament/tournament.service';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PanitiaService } from './shared/services/panitia/panitia.service';
+import { ListtournamentComponent } from './components/panitia/listtournament/listtournament.component';
 
 @Injectable({
   providedIn: 'root',
@@ -45,6 +46,7 @@ import { PanitiaService } from './shared/services/panitia/panitia.service';
     InboxComponent,
     ProfileComponent,
     SignComponent,
+    ListtournamentComponent,
   ],
 
   imports: [
