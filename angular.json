@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+        "lodash"
+     ],
             "outputPath": "dist/revisiass4",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -32,7 +35,7 @@
               "src/styles.css"
             ],
             "scripts": [
-
+              "./node_modules/sweetalert2/dist/sweetalert2.all.min.js"
             ]
           },
           "configurations": {

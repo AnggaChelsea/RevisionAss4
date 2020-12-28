@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { PanitiaService } from '../../services/panitia/panitia.service';
 import { ParticipantService } from '../../services/participant/participant.service';
 import { PanitiaComponent } from '../../../components/panitia/panitia.component';
@@ -11,19 +11,22 @@ import { CreatetournamentComponent } from '../../../components/panitia/createtou
 import { CsvService } from '../../services/csv.service';
 import { MaterialModule } from '../../../material/material.module';
 
-
 import { PanitiaRoutingModule } from './panitia-routing.module';
 
-
 @NgModule({
-  declarations: [CreatetournamentComponent,ParticipantComponent,PanitiaComponent],
-  providers:[PanitiaService,CsvService],
+  declarations: [
+    CreatetournamentComponent,
+    ParticipantComponent,
+    PanitiaComponent,
+  ],
+  providers: [PanitiaService, CsvService],
   imports: [
     CommonModule,
-    ReactiveFormsModule, FormsModule,
+    ReactiveFormsModule,
+    FormsModule,
     DataTablesModule,
     MaterialModule,
-    PanitiaRoutingModule
-  ]
+    PanitiaRoutingModule,
+  ],
 })
-export class PanitiaModule { }
+export class PanitiaModule {}

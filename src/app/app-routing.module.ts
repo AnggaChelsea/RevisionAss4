@@ -1,4 +1,5 @@
-import { ProfileComponent } from './components/auth/profile/profile.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ProfileComponent } from './components/user-profile/profile/profile.component';
 import { InboxComponent } from './components/auth/inbox/inbox.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,7 +10,6 @@ import { GamesComponent } from './components/games/games.component';
 import { PanitiaComponent } from './components/panitia/panitia.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
   {
     path: 'sign',
     loadChildren: () =>
@@ -18,10 +18,12 @@ const routes: Routes = [
   {
     path: 'inbox',
     component: InboxComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [AuthGuard],
   },
   { path: 'search/:keyword', component: GamesComponent },
   // {path:'sign', loadChildren: () => import('./shared/routes/auth/auth.module').then(m => m.AuthModule)},
@@ -39,6 +41,9 @@ const routes: Routes = [
         (m) => m.GamesModule
       ),
   },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

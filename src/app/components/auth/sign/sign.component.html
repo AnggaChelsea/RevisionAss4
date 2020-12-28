@@ -12,7 +12,6 @@
 
 				<div class="d-flex justify-content-center form_container">
 					<form [formGroup]="signInForm" (ngSubmit)="loginUser()">
-					<!-- <form [formGroup]="signInForm" > -->
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -36,10 +35,10 @@
 
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
-						Don't have an account? <a routerLink="signup" class="ml-2">Sign Up</a>
+						Don't have an account? <a href="sign/signup" class="ml-2">Sign Up</a>
 					</div>
 					<div class="d-flex justify-content-center links">
-						<a routerLink="forget">Forgot your password?</a>
+						<a href="sign/forgot">Forgot your password?</a>
 					</div>
 				</div>
 

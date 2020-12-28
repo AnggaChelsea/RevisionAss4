@@ -1,5 +1,5 @@
 
-<div class="wrapper fadeInDown"> 
+<div class="wrapper fadeInDown" style="margin-top: 6em;"> 
 	
 	<div class="container h-100">
 	 <div class="d-flex justify-content-center h-100">
@@ -11,44 +11,47 @@
 			 </div>
 
 			 <div class="d-flex justify-content-center form_container">
-				 <form>
+				 <form [formGroup]="signUpForm" (ngSubmit)="register()">
 					 <div class="input-group mb-3">
-						 <div class="input-group-append">
+						 <div class="input-group-append" style="margin-bottom: -.5em;">
 							 <span class="input-group-text"><i class="fas fa-user"></i></span>
+							<input  type="text" name="username" formControlName="username"
+								class="form-control input_user" value="" placeholder="username">
 						 </div>
-						 <input type="text" name="" class="form-control input_user" value="" placeholder="username">
+						 
 					 </div>
 					 <div class="input-group mb-2">
 						 <div class="input-group-append">
 							 <span class="input-group-text"><i class="fas fa-key"></i></span>
 						 </div>
-						 <input type="email" name="email" class="form-control input_pass" value="" placeholder="example@example.com">
+						 <input type="text" name="email" formControlName="email" class="form-control input_pass" value="" placeholder="example@example.com">
 					 </div>
 					 <div class="input-group mb-2">
 						 <div class="input-group-append">
 							 <span class="input-group-text"><i class="fas fa-key"></i></span>
 						 </div>
-						 <input type="password" name="" class="form-control input_pass" value="" placeholder="password">
+						 <input type="password" name="password" formControlName="password" class="form-control input_pass" value="" placeholder="password">
 					 </div>
 
-					 <div class="form-group">
+					 <!-- <div class="form-group">
 						 <div class="custom-control custom-checkbox">
 							 <input type="checkbox" class="custom-control-input" id="customControlInline">
 							 <label class="custom-control-label" for="customControlInline">Remember me</label>
 						 </div>
-					 </div>
-						 <div class="d-flex justify-content-center mt-3 login_container">
-				 <button type="button" name="button" class="btn login_btn">Signup</button>
+					 </div> -->
+
+					<div class="d-flex justify-content-center mt-3 login_container">
+				 		<button type="submit" value="Submit" name="button" class="btn login_btn">Signup</button>
 					</div>
 				 </form>
 			 </div>
 
 			 <div class="mt-4">
 				 <div class="d-flex justify-content-center links">
-					 have an account? <a routerLink="/sign" class="ml-2">Signin</a>
+					 have an account? <a href="sign/signin" class="ml-2">Signin</a>
 				 </div>
 				 <div class="d-flex justify-content-center links">
-					 <a href="#">can't signup?</a>
+					 <a href="help">can't signup?</a>
 				 </div>
 			 </div>
 		 </div>

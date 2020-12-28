@@ -1,3 +1,4 @@
+import { User } from './user';
 import { Injectable } from '@angular/core';
 import {
   HttpClient,
@@ -9,8 +10,6 @@ import { catchError } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
-import { User } from '../../models/user';
-import { Role } from '../../models/role';
 
 @Injectable({
   providedIn: 'root',
@@ -39,7 +38,31 @@ export class AuthService {
   }
 
   setToken(token: string) {
-    return localStorage.setItem(this.ACCESS_TOKEN, token);
+    localStorage.setItem(this.ACCESS_TOKEN, token);
+    return this.router.navigate(['profile']);
+  }
+
+  loggedIn() {
+    return !!localStorage.getItem(this.ACCESS_TOKEN);
+  }
+
+  // currentUser() {
+  //   if (!this.loggedIn) return;
+  //   const id = parseInt(headers.get(ACCESS_TOKEN).split('.')[1]);
+  //   return users.find((x) => x.id === id);
+  // }
+
+  forgotPass(email: any) {
+    return this.http.post<any>(`${environment.urlAddress}user/forget`, email);
+  }
+
+  resetPass(data: any) {
+    return this.http.post<any>(`${environment.urlAddress}user/reset`, data);
+  }
+
+  logout() {
+    localStorage.removeItem(this.ACCESS_TOKEN);
+    return this.router.navigate(['']);
   }
 
   handleError(error: HttpErrorResponse) {

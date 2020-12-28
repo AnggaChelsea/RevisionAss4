@@ -1,1 +1,27 @@
-<p>reset works!</p>
+<div class="wrapper fadeInDown" style="margin: 5em;">
+    <div id="formContent">
+        <div class="fadeIn first">
+            <img src="https://www.jagoanhosting.com/wp-content/uploads/2020/09/icon-indonesia.png" id="icon"
+                alt="User Icon" />
+            <h1>NNA Sport</h1>
+        </div>
+
+        <form [formGroup]="resetForm" (ngSubmit)="reset()">
+            
+            <input type="email" name="email" formControlName="email" class="form-control input_pass"
+                placeholder="email@example.com"><br>
+
+            <input type="email" name="token" formControlName="resetLink" class="form-control input_pass"
+                placeholder="put token here"><br>
+
+            <input type="password" name="password" formControlName="newPassword" class="form-control input_pass"
+                placeholder="new password"><br>
+            
+            <div class="d-flex justify-content-center mt-3 login_container">
+                <button type="submit" value="Submit" name="button" class="btn login_btn"
+                    style="background-color: rgb(241, 41, 41); color: wheat;">Confirm new Password</button>
+            </div>
+        </form>
+
+    </div>
+</div>

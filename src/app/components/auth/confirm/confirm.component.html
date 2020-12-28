@@ -3,15 +3,13 @@
     <div class="wrapper-2">
        <img src="https://i.ibb.co/Lkn7rkG/thank-you-envelope.png" alt="thank-you-envelope" border="0">
      <h1 style="color: rgb(44, 44, 44);" >Thank you!</h1>
-      <p style="color: rgb(44, 44, 44);">For register</p>
-      <p style="color: rgb(44, 44, 44);"><strong>Chek Your email please</strong></p>
-      <p style="color: rgb(44, 44, 44);">verification code</p>
+      <p style="color: rgb(44, 44, 44);">For joining</p>
+      <p style="color: rgb(44, 44, 44);"><strong>put verification code below</strong></p>
+      <!-- <p style="color: rgb(44, 44, 44);">verification code</p> -->
       <form [formGroup]="confirmForm" (ngSubmit)="confirmUser()" >
         <input style="background-color: rgb(190, 190, 190); color: black;" type="text" name="token" formControlName="token" ><br />
         <button class="go-home" type="submit" value="Submit">
-          <!-- <a routerLink="login"> -->
-          Check
-        <!-- </a> -->
+          Proceed
         </button>
       </form>
     </div>
