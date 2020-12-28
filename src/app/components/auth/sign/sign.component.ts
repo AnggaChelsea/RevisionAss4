@@ -48,6 +48,8 @@ export class SignComponent implements OnInit {
         if (success.role === 'unregistered') {
           this.router.navigate(['sign/confirm']);
         } else {
+          console.log(success);
+
           this.authService.setToken(success.access_token);
           Swal.fire({
             icon: 'success',
