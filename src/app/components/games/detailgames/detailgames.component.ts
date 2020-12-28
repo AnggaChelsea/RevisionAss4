@@ -5,35 +5,37 @@ import { TournamentService } from '../../../shared/services/tournament/tournamen
 @Component({
   selector: 'app-detailgames',
   templateUrl: './detailgames.component.html',
-  styleUrls: ['./detailgames.component.css']
+  styleUrls: ['./detailgames.component.css'],
 })
 export class DetailgamesComponent implements OnInit {
-  dataId:any;
-  currentTournament=null;
+  dataId: any;
+  currentTournament = null;
   message = '';
 
-  constructor(private tournamentService:TournamentService,
+  constructor(
+    private tournamentService: TournamentService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.message = '';
-    this.dataId = this.route.snapshot.paramMap.get('_id');
-    this.route.queryParams.subscribe(params=>{
-      this.tournamentService.read(this.dataId)
-      .subscribe(data=>{
-        console.log(data)
-      })
-    })
+    this.dataId = this.route.snapshot.params['_id'];
+    this.getTournament();
+
+    // this.message = '';
+    // this.dataId = this.route.snapshot.paramMap.get('id');
+    // this.route.queryParams.subscribe(params=>{
+    //   this.tournamentService.read(this.dataId)
+    //   .subscribe(data=>{
+    //     console.log(data)
+    //   })
+    // })
   }
 
-  // getTournament(id:any):void {
-  //   this.tournamentService.read(id).subscribe(
-  //     data=>{
-  //       this.dataId = data,
-  //       console.log(data)
-  //     }
-  //     )
-  // }
-
+  getTournament(): void {
+    this.tournamentService.read(this.dataId).subscribe((data) => {
+      // this.dataId = data,
+      console.log(this.dataId);
+    });
+  }
 }

@@ -9,6 +9,7 @@ import { PanitiaComponent } from '../../../components/panitia/panitia.component'
 import { ParticipantComponent } from '../../../components/panitia/participant/participant.component';
 import { CreatetournamentComponent } from '../../../components/panitia/createtournament/createtournament.component';
 import { CsvService } from '../../services/csv.service';
+import { MaterialModule } from '../../../material/material.module';
 
 import { PanitiaRoutingModule } from './panitia-routing.module';
 
@@ -24,6 +25,7 @@ import { PanitiaRoutingModule } from './panitia-routing.module';
     ReactiveFormsModule,
     FormsModule,
     DataTablesModule,
+    MaterialModule,
     PanitiaRoutingModule,
   ],
 })

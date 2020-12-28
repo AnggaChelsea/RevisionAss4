@@ -21,14 +21,16 @@ export class TournamentService {
   }
 
 //4b795c000aa4ef0d9a0d5cf8998da1d7153fa538
-  //22 october video
+  //22 october video Expected 2 arguments, but got 0.
+
 
   readAll(): Observable<any> {
-    return this.httpClient.get(environment.urlAddress + 'product').pipe(map(this.getDataTournament))
+    // let params = new HttpParams().set('page', '1')
+    return this.httpClient.get(environment.urlAddress + 'product').pipe(map(this.getDataTournament));
   }
 
-  read(_id:string): Observable<any> {
-    return this.httpClient.get(`${environment.urlAddress}product/${_id}`).pipe(map(this.getDataTournament));
+  read(_id:any): Observable<any> {
+    return this.httpClient.get(`${environment.urlAddress}user/tournaments/${_id}`).pipe(map(this.getDataTournament));
   }
 
   create(data:any): Observable<any> {
@@ -50,4 +52,17 @@ export class TournamentService {
   searchByName(name:any): Observable<any> {
     return this.httpClient.get(`${environment.urlAddress}?name=${name}`);
   }
+
+
+
+  getAll(page:any){
+
+    return this.httpClient.get(`${environment.urlAddress}user/tournaments?page=${page}`)
+  }
+
+ //  getPage(page:any, title:any): Observable<any> {
+ //   return this.httpClient.get(`${environment.urlAddress}user/tournaments?page=${page}&i=${title}`);
+ // }
+
+
 }

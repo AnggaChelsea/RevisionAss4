@@ -9,7 +9,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { DataTablesModule } from 'angular-datatables';
 import { MaterialModule } from './material/material.module';
 import { AuthService } from './shared/services/auth/auth.service';
-// import { MatTableExporterModule } from 'mat-table-exporter';
 import { AuthGuard } from './shared/services/auth/auth.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +29,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PanitiaService } from './shared/services/panitia/panitia.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CdkTableExporterModule } from 'cdk-table-exporter';
+import { ListtournamentComponent } from './components/panitia/listtournament/listtournament.component';
 
 @Injectable({
   providedIn: 'root',
@@ -48,6 +48,7 @@ import { CdkTableExporterModule } from 'cdk-table-exporter';
     ProfileComponent,
     SignComponent,
     PageNotFoundComponent,
+    ListtournamentComponent,
   ],
 
   imports: [

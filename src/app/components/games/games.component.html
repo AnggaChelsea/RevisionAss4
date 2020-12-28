@@ -1,47 +1,37 @@
-<div class="mb-3 container">
+<div class="mb-3 ml-10 container">
   <label for="exampleFormControlInput1" class="form-label">Search Tournament</label>
   <input type="text" class="form-control" id="exampleFormControlInput1"
         placeholder="Search by name"
         [(ngModel)]="name">
   <button type="button" class="btn btn-outline-secondary"
           type="button"
-          (click)="searchByName()">Search</button>
+          >Search</button>
+
+          <div class="section">
+                  <div class="row flex-row-stretch">
+
+                      <div class="col-sm-6 col-md-4 col-lg-3 flex-col" *ngFor="let game of tournaments ">
+                          <div class="card">
+                              <div class="card-label">{{game.name}}</div>
+                              <div class="card-photo" style="background-image: url(https://itagroup.hs.llnwd.net/o40/csg/btr2018/news-banner-vto.jpg);"></div>
+                              <div class="card-body">
+                                  <h4>This is one flexy little card ready for action</h4>
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                  <a class="btn btn-primary" routerLink="detailgames/{{game._id}}">View</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+            <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" routerLink="">Next</a>
+              </li>
+            </ul>
+          </nav>
+          </div>
 </div>
-<table id="example">
-<div class="section">
-    <div class="container">
-      
-
-        <div class="row flex-row-stretch">
-
-            <div class="col-sm-6 col-md-4 col-lg-3 flex-col" *ngFor="let game of tournaments">
-                <div class="card">
-                    <div class="card-label">{{game.name}}</div>
-                    <div class="card-photo" style="background-image: url(https://itagroup.hs.llnwd.net/o40/csg/btr2018/news-banner-vto.jpg);"></div>
-                    <div class="card-body">
-                        <h4>This is one flexy little card ready for action</h4>
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <a class="btn btn-primary" routerLink="detailgames/{{game._id}}">View</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-  <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
-</div>
-
-</table>
