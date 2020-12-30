@@ -1,5 +1,8 @@
+import { AuthService } from '../../../shared/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { InboxService } from './inbox.service';
+import { catchError } from 'rxjs/internal/operators/catchError';
+import { map } from 'rxjs/internal/operators/map';
+import { InboxService } from '../../../shared/services/inbox.service';
 
 @Component({
   selector: 'app-inbox',
@@ -7,13 +10,27 @@ import { InboxService } from './inbox.service';
   styleUrls: ['./inbox.component.css'],
 })
 export class InboxComponent implements OnInit {
-  constructor(private inboxService: InboxService) {}
+  newMessage: boolean[] = [];
+  inboxes: string[] = [];
+  constructor(
+    private inboxService: InboxService,
+    private authService: AuthService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.seeInbox();
+  }
 
-  getJESTED() {
-    this.inboxService.getData().subscribe((data) => {
-      console.log(data);
-    });
+  seeInbox() {
+    this.inboxService
+      .getInbox()
+      .toPromise()
+      .then((data) => {
+        for (let key in data.message) {
+          this.newMessage = data.message[key].read;
+          this.inboxes.push(data.message[key]);
+        }
+        // console.log(this.inboxes);
+      });
   }
 }

@@ -1,80 +1,24 @@
-<p>inbox works!</p>
-<div class="container  align-content-between" style="min-height: 60em; padding-bottom: 2em; background-color: rgb(230, 230, 230); margin-top: 5em; margin-bottom: 5em; border-radius: 2em;">
-    <ul style="padding: 2em;  list-style-type: none; ">
-        
 
-        <div class="noMessage">
-            <img src="" alt="">
-        </div>
-
-
-
-        <li style="background-color: rgb(190, 189, 189); border-radius: 1em; margin-top: 1em;" routerLink='profile'>
-            <div class="message d-flex justify-content-between" style="color: rgb(24, 24, 24); padding-top: 1em; padding-right: 2em; padding-left: 2em; ">
-                <h4><b>sender name</b> </h4>
-                <h4 >subject</h4>
-            </div>
-        </li>
-
-        <li style="background-color: rgb(75, 192, 196); border-radius: 1em; margin-top: 1em;" routerLink='profile'>
-            <div class="message d-flex justify-content-between" style="color: rgb(24, 24, 24); padding-top: 1em; padding-right: 2em; padding-left: 2em; ">
-                <h4><b>sender name</b> </h4>
-                <h4 >subject</h4>
-            </div>
-        </li>
-
-        <li style="background-color: rgb(75, 192, 196); border-radius: 1em; margin-top: 1em;" routerLink='profile'>
-            <div class="message d-flex justify-content-between" style="color: rgb(24, 24, 24); padding-top: 1em; padding-right: 2em; padding-left: 2em; ">
-                <h4><b>sender name</b> </h4>
-                <h4 >subject</h4>
-            </div>
-        </li>
-
-        <li style="background-color: rgb(75, 192, 196); border-radius: 1em; margin-top: 1em;" routerLink='profile'>
-            <div class="message d-flex justify-content-between" style="color: rgb(24, 24, 24); padding-top: 1em; padding-right: 2em; padding-left: 2em; ">
-                <h4><b>sender name</b> </h4>
-                <h4 >subject</h4>
-            </div>
-        </li>
-
-        <li style="background-color: rgb(75, 192, 196); border-radius: 1em; margin-top: 1em;" routerLink='profile'>
-            <div class="message d-flex justify-content-between" style="color: rgb(24, 24, 24); padding-top: 1em; padding-right: 2em; padding-left: 2em; ">
-                <h4><b>sender name</b> </h4>
-                <h4 >subject</h4>
-            </div>
-        </li>
-
-        <!-- <li style="background-color: rgb(75, 192, 196); border-radius: 1em; margin-top: 1em;" routerLink='profile'>
-            <div class="message d-flex justify-content-between" style="color: rgb(24, 24, 24); padding-top: 1em; padding-right: 2em; padding-left: 2em; ">
-                <h4><b>sender name</b> </h4>
-                <h4 >subject</h4>
-            </div>
-        </li>
-
-        <li style="background-color: rgb(75, 192, 196); border-radius: 1em; margin-top: 1em;" routerLink='profile'>
-            <div class="message d-flex justify-content-between" style="color: rgb(24, 24, 24); padding-top: 1em; padding-right: 2em; padding-left: 2em; ">
-                <h4><b>sender name</b> </h4>
-                <h4 >subject</h4>
-            </div>
-        </li>
-
-        <li style="background-color: rgb(75, 192, 196); border-radius: 1em; margin-top: 1em;" routerLink='profile'>
-            <div class="message d-flex justify-content-between" style="color: rgb(24, 24, 24); padding-top: 1em; padding-right: 2em; padding-left: 2em; ">
-                <h4><b>sender name</b> </h4>
-                <h4 >subject</h4>
-            </div>
-        </li>
-
-        <li style="background-color: rgb(75, 192, 196); border-radius: 1em; margin-top: 1em;" routerLink='profile'>
-            <div class="message d-flex justify-content-between" style="color: rgb(24, 24, 24); padding-top: 1em; padding-right: 2em; padding-left: 2em; ">
-                <h4><b>sender name</b> </h4>
-                <h4 >subject</h4>
-            </div>
-        </li> -->
-
+<div class="container  align-content-between" style="min-height: 60em; padding-bottom: 2em; background-color: rgb(230, 230, 230); margin-top: 8em; margin-bottom: 5em; border-radius: 2em;">
+    
+    <ul style="padding: 2em;  list-style-type: none;" *ngFor="let inbox of inboxes | keyvalue" [ngSwitch]="newMessage">    
+        <!-- {{inbox.value.read |json}} -->
+            <li  *ngSwitchCase="true" style="background-color: rgb(190, 189, 189); border-radius: 1em; margin-top: 1em; margin-bottom: -5em;" routerLink='profile'>
+                <div class="message d-flex justify-content-between" style="color: rgb(24, 24, 24); padding-top: 1em; padding-right: 2em; padding-left: 2em;" >
+                    <h4><b>{{inbox.value._senderId | json}}</b> </h4>
+                    <h4 >{{inbox.value.message |json}}</h4>
+                </div>
+            </li>
+      
+            <li  *ngSwitchCase="false" style="background-color: rgb(75, 192, 196); border-radius: 1em; margin-top: 1em; margin-bottom: -5em;" routerLink='profile'>
+                <div class="message d-flex justify-content-between" style="color: rgb(24, 24, 24); padding-top: 1em; padding-right: 2em; padding-left: 2em;" >
+                    <h4><b>{{inbox.value._senderId | json}}</b> </h4>
+                    <h4 >{{inbox.value.message |json}}</h4>
+                </div>
+            </li>
+        <!-- <button (click)="seeNotification()">coba </button> -->
     </ul>
-
-    <nav aria-label="Page navigation example" class="justify-content-center" >
+    <!-- <nav aria-label="Page navigation example" class="justify-content-center" >
         <ul class="pagination justify-content-center" style="margin-top: 2em;">
             <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous" style="color: black;">
@@ -90,6 +34,6 @@
                 </a>
             </li>
         </ul>
-    </nav>
+    </nav> -->
     
 </div>
