@@ -31,10 +31,12 @@ export class ForgotComponent implements OnInit {
 
     this.authService.forgotPass(this.email).subscribe(
       (success) => {
+        console.log(success);
         Swal.fire({
           icon: 'success',
           title: 'please check your email',
-          text: `${success.message}`,
+          html: `an email has been sent to <a href="https://mail.google.com/" target="_blank">${success.email}</a>`,
+          // text: `${success.message}`,
         });
         this.router.navigate(['sign/reset']);
       },

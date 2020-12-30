@@ -33,7 +33,7 @@ export class AuthService {
     return this.http.post<any>(`${environment.urlAddress}user/signup`, user);
   }
 
-  getToken() {
+  getToken(): any {
     return localStorage.getItem(this.ACCESS_TOKEN);
   }
 

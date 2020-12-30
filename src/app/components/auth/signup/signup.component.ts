@@ -37,10 +37,12 @@ export class SignupComponent implements OnInit {
 
     this.authService.signupUser(this.registerUser).subscribe(
       (success) => {
+        console.log(success.data.email);
         Swal.fire({
           icon: 'success',
-          title: 'Welcome to ANN',
-          text: `${success.message}`,
+          title: 'Check your inbox for verification code',
+          html: `an email has been sent to <a href="https://mail.google.com/" target="_blank">${success.data.email}</a>`,
+          // text: `${success.message}`,
         });
         this.router.navigate(['sign/signin']);
       },
