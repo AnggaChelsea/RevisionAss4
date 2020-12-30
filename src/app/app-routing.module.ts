@@ -25,7 +25,7 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'search/:keyword', component: GamesComponent },
+  { path: 'search/:i', component: GamesComponent },
   // {path:'sign', loadChildren: () => import('./shared/routes/auth/auth.module').then(m => m.AuthModule)},
   {
     path: 'panitia',
