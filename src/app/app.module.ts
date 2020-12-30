@@ -4,8 +4,10 @@ import { AuthInterceptorInterceptor } from './shared/services/auth/auth.intercep
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injectable } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DataTablesModule } from 'angular-datatables';
 import { MaterialModule } from './material/material.module';
 import { AuthService } from './shared/services/auth/auth.service';
@@ -25,11 +27,12 @@ import { ProfileComponent } from './components/user-profile/profile/profile.comp
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TournamentService } from './shared/services/tournament/tournament.service';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PanitiaService } from './shared/services/panitia/panitia.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CdkTableExporterModule } from 'cdk-table-exporter';
 import { ListtournamentComponent } from './components/panitia/listtournament/listtournament.component';
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -53,9 +56,9 @@ import { ListtournamentComponent } from './components/panitia/listtournament/lis
 
   imports: [
     BrowserModule,
-    // MatTableExporterModule,
+    NgbModule,
+    Ng2SearchPipeModule,
     DataTablesModule,
-    MDBBootstrapModule,
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
@@ -82,10 +85,6 @@ import { ListtournamentComponent } from './components/panitia/listtournament/lis
   ],
   bootstrap: [
     AppComponent,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
   ],
 })
 export class AppModule {}
