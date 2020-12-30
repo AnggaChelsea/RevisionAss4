@@ -25,13 +25,13 @@ export class GamesComponent implements OnInit {
 
   tournaments:any
   page = 1;
-  count = 0;
-  tableSize = 7;
+  count:number;
+  tableSize = 8;
   tableSizes = [3, 6, 9, 12];
 
-  constructor(private tournamentService: TournamentService, private router:Router) {
+  filter:string;
 
-  }
+  constructor(private tournamentService: TournamentService, private router:Router) {}
 
   ngOnInit() {
     this.readTournament();
@@ -39,7 +39,8 @@ export class GamesComponent implements OnInit {
 
   readTournament(): void {
     this.tournamentService.readAll().subscribe((data) => {
-      this.tournaments = data.tournament
+      this.tournaments = data.tournament;
+      this.count = data.tournament.length;
       console.log(this.tournaments);
     });
   }

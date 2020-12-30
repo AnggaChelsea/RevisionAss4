@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DataTablesModule } from 'angular-datatables';
 import { MaterialModule } from './material/material.module';
 import { AuthService } from './shared/services/auth/auth.service';
@@ -56,7 +57,7 @@ import { ListtournamentComponent } from './components/panitia/listtournament/lis
   imports: [
     BrowserModule,
     NgbModule,
-    // MatTableExporterModule,
+    Ng2SearchPipeModule,
     DataTablesModule,
     CommonModule,
     ReactiveFormsModule,
