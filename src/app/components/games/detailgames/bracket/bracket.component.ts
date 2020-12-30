@@ -26,11 +26,6 @@ export class BracketComponent implements OnInit {
     ]
   };
 
-
-  bracketSize:any;
-  teamMap:any;
-  edit:boolean = false;
-
   constructor() { }
 
   ngOnInit(){

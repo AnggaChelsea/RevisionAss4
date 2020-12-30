@@ -22,18 +22,16 @@ declare global {
   styleUrls: ['./games.component.css'],
 })
 export class GamesComponent implements OnInit {
-  tournaments: any;
-  currentTutorial = null;
-  currentIndex = -1;
-  title = '';
-  name = '';
 
-  currenPage?: number;
-  pageSize?: number;
-  count?: 50;
-  edited = 'false';
+  tournaments:any
+  page = 1;
+  count = 0;
+  tableSize = 7;
+  tableSizes = [3, 6, 9, 12];
 
-  constructor(private tournamentService: TournamentService) {}
+  constructor(private tournamentService: TournamentService, private router:Router) {
+
+  }
 
   ngOnInit() {
     this.readTournament();
@@ -41,13 +39,28 @@ export class GamesComponent implements OnInit {
 
   readTournament(): void {
     this.tournamentService.readAll().subscribe((data) => {
-      this.tournaments = data;
+      this.tournaments = data.tournament
       console.log(this.tournaments);
     });
   }
 
+  onTableDataChange(event:any){
+    this.page = event;
+    this.readTournament();
+  }
+  onTableSizeChange(event:any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.readTournament();
+  }
+
+  // doSearch(value:string){
+  //   console.log(`value=${value}`);
+  //   this.router.navigateByUrl(`/search/${value}`);
+  // }
+
   // searchByName(): void {
-  //    this.tournamentService.searchByName(this.name)
+  //    this.tournamentService.searchByName(this.i)
   //      .subscribe(
   //        data => {
   //          this.tournaments = data;
@@ -58,10 +71,4 @@ export class GamesComponent implements OnInit {
   //        });
   //  }
 
-  freeforall() {
-    console.log('ini ffa');
-  }
-  individu() {
-    console.log('ini individu');
-  }
 }

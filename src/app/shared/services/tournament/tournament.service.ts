@@ -25,12 +25,12 @@ export class TournamentService {
 
 
   readAll(): Observable<any> {
-    // let params = new HttpParams().set('page', '1')
-    return this.httpClient.get(environment.urlAddress + 'product').pipe(map(this.getDataTournament));
+    return this.httpClient.get<any>(`${environment.urlAddress}user/tournaments?page=1`)
   }
 
+
   read(_id:any): Observable<any> {
-    return this.httpClient.get(`${environment.urlAddress}user/tournaments/${_id}`).pipe(map(this.getDataTournament));
+    return this.httpClient.get(`${environment.urlAddress}user/tournamentdetail/${_id}`)
   }
 
   create(data:any): Observable<any> {
@@ -49,14 +49,13 @@ export class TournamentService {
     return this.httpClient.delete(environment.urlAddress);
   }
 
-  searchByName(name:any): Observable<any> {
-    return this.httpClient.get(`${environment.urlAddress}?name=${name}`);
+  searchByName(i:any): Observable<any> {
+    return this.httpClient.get(`${environment.urlAddress}user/tournaments?i=${i}`);
   }
 
 
 
   getAll(page:any){
-
     return this.httpClient.get(`${environment.urlAddress}user/tournaments?page=${page}`)
   }
 

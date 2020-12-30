@@ -8,7 +8,7 @@ import { TournamentService } from '../../../shared/services/tournament/tournamen
   styleUrls: ['./detailgames.component.css'],
 })
 export class DetailgamesComponent implements OnInit {
-  dataId: any;
+  dataId: any = {}
   currentTournament = null;
   message = '';
 
@@ -21,20 +21,19 @@ export class DetailgamesComponent implements OnInit {
   ngOnInit(): void {
     this.dataId = this.route.snapshot.params['_id'];
     this.getTournament();
-
-    // this.message = '';
-    // this.dataId = this.route.snapshot.paramMap.get('id');
-    // this.route.queryParams.subscribe(params=>{
-    //   this.tournamentService.read(this.dataId)
-    //   .subscribe(data=>{
-    //     console.log(data)
-    //   })
-    // })
+    this.message = '';
+    this.dataId = this.route.snapshot.paramMap.get('_id');
+    this.route.queryParams.subscribe(params=>{
+      this.tournamentService.read(this.dataId)
+      .subscribe(data=>{
+        console.log(data)
+      })
+    })
   }
 
   getTournament(): void {
     this.tournamentService.read(this.dataId).subscribe((data) => {
-      // this.dataId = data,
+      this.dataId = data,
       console.log(this.dataId);
     });
   }
