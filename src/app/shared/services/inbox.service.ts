@@ -36,12 +36,5 @@ export class InboxService {
         this.authService.getToken()
       ),
     });
-    //   .pipe(
-    //     map((res: Response | any) => {
-    //       console.log(res);
-    //       console.log(res.data[0]);
-    //     }),
-    //     catchError(this.authService.handleError)
-    //   );
   }
 }

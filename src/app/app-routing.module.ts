@@ -1,3 +1,4 @@
+import { GroupComponent } from './components/group/group.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProfileComponent } from './components/user-profile/profile/profile.component';
 import { InboxComponent } from './components/auth/inbox/inbox.component';
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path: 'inbox',
     component: InboxComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'group',
+    component: GroupComponent,
     canActivate: [AuthGuard],
   },
   {

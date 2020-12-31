@@ -46,11 +46,11 @@ export class AuthService {
     return !!localStorage.getItem(this.ACCESS_TOKEN);
   }
 
-  // currentUser() {
-  //   if (!this.loggedIn) return;
-  //   const id = parseInt(headers.get(ACCESS_TOKEN).split('.')[1]);
-  //   return users.find((x) => x.id === id);
-  // }
+  getUser() {
+    return this.http.get<any>(`${environment.urlAddress}user/profile`, {
+      headers: new HttpHeaders().set(this.ACCESS_TOKEN, this.getToken()),
+    });
+  }
 
   forgotPass(email: any) {
     return this.http.post<any>(`${environment.urlAddress}user/forget`, email);

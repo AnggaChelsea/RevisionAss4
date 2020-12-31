@@ -10,8 +10,9 @@ import { InboxService } from '../../../shared/services/inbox.service';
   styleUrls: ['./inbox.component.css'],
 })
 export class InboxComponent implements OnInit {
-  newMessage: boolean[] = [];
+  // newMessage: boolean[] = [];
   inboxes: string[] = [];
+  length: number = 0;
   constructor(
     private inboxService: InboxService,
     private authService: AuthService
@@ -27,10 +28,10 @@ export class InboxComponent implements OnInit {
       .toPromise()
       .then((data) => {
         for (let key in data.message) {
-          this.newMessage = data.message[key].read;
+          // this.newMessage = data.message[key].read;
           this.inboxes.push(data.message[key]);
         }
-        // console.log(this.inboxes);
+        this.length = data.length;
       });
   }
 }

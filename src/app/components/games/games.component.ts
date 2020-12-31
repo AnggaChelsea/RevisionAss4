@@ -22,16 +22,18 @@ declare global {
   styleUrls: ['./games.component.css'],
 })
 export class GamesComponent implements OnInit {
-
-  tournaments:any
+  tournaments: any;
   page = 1;
-  count:number;
+  count!: number;
   tableSize = 8;
   tableSizes = [3, 6, 9, 12];
 
-  filter:string;
+  filter!: string;
 
-  constructor(private tournamentService: TournamentService, private router:Router) {}
+  constructor(
+    private tournamentService: TournamentService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.readTournament();
@@ -45,11 +47,12 @@ export class GamesComponent implements OnInit {
     });
   }
 
-  onTableDataChange(event:any){
+  onTableDataChange(event: any) {
     this.page = event;
     this.readTournament();
   }
-  onTableSizeChange(event:any): void {
+
+  onTableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
     this.readTournament();
@@ -71,5 +74,4 @@ export class GamesComponent implements OnInit {
   //          console.log(error);
   //        });
   //  }
-
 }
