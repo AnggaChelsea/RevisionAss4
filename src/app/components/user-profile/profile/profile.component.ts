@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Profile } from 'src/app/shared/model/Profile';
-import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { ProfileService } from 'src/app/shared/services/profile/profile.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -13,10 +13,10 @@ export class ProfileComponent implements OnInit {
   fullname:string | undefined
   _groupId:string | undefined
   _tournamentId:string | undefined
-  constructor(private authService: AuthService) { }
+  constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
-    this.authService.getProfile().subscribe((res) => {
+    this.profileService.getProfile().subscribe((res) => {
       this.subDistrict = res.data.subDistrict
       this.birthDate = res.data.birthDate
       this.phoneNumber = res.data.phoneNumber

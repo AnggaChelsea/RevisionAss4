@@ -2,7 +2,8 @@ export class Profile{
     subDistrict:any|subdistrict;
     birthDate:Date|undefined;
     phoneNumber:number|undefined;
-    fullname:string|undefined
+    fullname:string|undefined;
+    picture:string|undefined;
 }
 
 export enum subdistrict {
