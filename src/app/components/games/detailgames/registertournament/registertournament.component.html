@@ -26,32 +26,108 @@
             </div>
 
         </div>
+
+
         <div class="col-md-4">
-            <div class="payment-info">
-                <div class="d-flex justify-content-between align-items-center"><span>Register Your Team</span>
-                  <img class="rounded" src="https://i.imgur.com/WU501C8.jpg" width="30"></div>
-                  <span class="type d-block mt-3 mb-1">Logo</span>
-                  <label class="radio"><input type="file" name="card" checked>
-                  <span><img class="bg-light" width="30" src="https://cdn.onlinewebfonts.com/svg/img_234957.png" /></span> </label>
-                <label class="radio">
-                  <input type="radio" name="card" value="payment">
-                  </label>
-                <div><label class="credit-card-label" >Name </label><input type="text" class="form-control credit-inputs" [(ngModel)]="tournament.name" name="name" placeholder="Name"></div>
-                <div><label class="credit-card-label">Card number</label><input type="text" class="form-control credit-inputs" [(ngModel)]="tournament.gambar" name="gambar"></div>
-                <div class="row">
-                    <div class="col-md-6"><label class="credit-card-label">Date</label><input type="text" class="form-control credit-inputs" [(ngModel)]="tournament.deskripsi" name="deskripsi"  required></div>
-                    <div class="col-md-6"><label class="credit-card-label">CVV</label><input type="text" class="form-control credit-inputs" [(ngModel)]="tournament.price" name="price" placeholder="no"></div>
+
+            <div *ngIf="this.profileExist===true; else profileDontExist">
+            
+                <div class="payment-info" *ngIf="this.groupReq===false; else GroupReg">
+                    <div class="d-flex justify-content-between align-items-center"><span>Tournament Register </span></div>
+                    
+                    <div style="margin-top: 1em; display: flex; flex-direction: row;" >
+                        <img class="bg-light" width="60" height="60" style="border-radius: 50%; object-fit: cover;" src="{{this.profilesPic}}" />
+                        <div style="margin-left: 1em;">
+                            <h2 style="margin-bottom: -.1em;">{{this.profiles.fullname}}</h2>
+                            <h4>{{this.profiles.email}}</h4>
+                        </div>
+                    </div>
+                    
+                
+                    <hr class="line">
+                    <div class="d-flex justify-content-between information"><span>Tournament name</span><span>{{this.tournamentDatas.tournament.tournamentName}}</span></div>
+                    <div class="d-flex justify-content-between information"><span>Tournament subdistrict</span><span>{{this.tournamentDatas.by}}</span></div>
+                    <div class="d-flex justify-content-between information"><span>Open</span><span>{{this.tournamentDate[1]}}</span></div>
+                    <div class="d-flex justify-content-between information"><span>Start</span><span>{{this.tournamentDate[2]}}</span></div>
+                    <div class="d-flex justify-content-between information"><span>Close</span><span>{{this.tournamentDate[0]}}</span>
+                    </div><button class="btn btn-primary btn-block d-flex justify-content-between mt-3" type="submit" (click)="participantSubmit()"><span>Register</span><span>{{this.tournamentDatas.tournament.tournamentName}}<i class="fa fa-long-arrow-right ml-1"></i></span></button>
+            
                 </div>
-                <div class="row">
-                    <div class="col-md-6"><label class="credit-card-label">Date</label><input type="text" class="form-control credit-inputs" [(ngModel)]="tournament.jumlah"  name="jumlah" placeholder="No"></div>
-                    <div class="col-md-6"><label class="credit-card-label">CVV</label><input type="text" class="form-control credit-inputs" [(ngModel)]="tournament.deskripsisingkat" name="deskripsisingkat"></div>
-                </div>
-                <hr class="line">
-                <div class="d-flex justify-content-between information"><span>Tournament name</span><span>Balap Karung</span></div>
-                <div class="d-flex justify-content-between information"><span>Start</span><span>22-02-2021</span></div>
-                <div class="d-flex justify-content-between information"><span>Close</span><span>21-02-2021</span>
-                </div><button class="btn btn-primary btn-block d-flex justify-content-between mt-3" type="submit" (click)="createtournament()"><span>Register</span><span>Balap Katung<i class="fa fa-long-arrow-right ml-1"></i></span></button>
+
+                <!-- as group below -->
+
+                <ng-template #GroupReg>
+                    <div *ngIf="this.profiles.groupName===undefined||null; else PartofGroup">
+                        <div class="payment-info">
+                            <hr class="line">
+                            <div class="d-flex justify-content-between information"><span>Tournament
+                                    name</span><span>{{this.tournamentDatas.tournament.tournamentName}}</span></div>
+                            <div class="d-flex justify-content-between information"><span>Tournament
+                                    subdistrict</span><span>{{this.tournamentDatas.by}}</span></div>
+                            <div class="d-flex justify-content-between information"><span>Open</span><span>{{this.tournamentDate[1]}}</span></div>
+                            <div class="d-flex justify-content-between information"><span>Start</span><span>{{this.tournamentDate[2]}}</span></div>
+                            <div class="d-flex justify-content-between information"><span>Close</span><span>{{this.tournamentDate[0]}}</span></div>
+                            <button class="btn btn-danger btn-block d-flex justify-content-between mt-3" [disabled] type="submit"
+                                (click)="groupSubmit()"><span>Join a Group to register</span><span>{{this.tournamentDatas.tournament.tournamentName}}<i
+                                        class="fa fa-long-arrow-right ml-1"></i></span></button>
+                        </div>
+                    </div>
+
+                    <ng-template #PartofGroup>
+                        <div class="payment-info">
+                            <div class="d-flex justify-content-between align-items-center"><span>Group Tournament Register </span></div>
+                            
+                            <div style="margin-top: 1em; display: flex; flex-direction: row;" >
+                                <img class="bg-light" width="60" height="60" style="border-radius: 50%; object-fit: cover;" src="{{this.groupPic}}" />
+                                <div style="margin-left: 1em;">
+                                    <h2 style="margin-bottom: -.1em;">{{this.groupInfo.groupName}}</h2>
+                                    <h4>{{this.groupInfo.subDistrict}}</h4>
+                                </div>
+                            </div>
+                        
+                        
+                            <div style="margin-top: .5em; margin-left: .3em; display: flex; flex-direction: row;" *ngFor="let group of groups; index as i ">
+                                <img class="bg-light" width="30" height="30" style="border-radius: 50%; object-fit: cover;" src="http://localhost:5000/{{group.picture|lowercase}}" />
+                                <div style="margin-left: 1em; margin-top: -.3em;">
+                                    <h4 style="margin-bottom: -.1em;">{{group.fullname|lowercase}}</h4> 
+                                    <h5>{{group.phoneNumber|lowercase}}</h5>
+                                </div>
+                            </div>
+                        
+                        
+                            <hr class="line">
+                            <div class="d-flex justify-content-between information"><span>Tournament name</span><span>{{this.tournamentDatas.tournament.tournamentName}}</span></div>
+                            <div class="d-flex justify-content-between information"><span>Tournament subdistrict</span><span>{{this.tournamentDatas.by}}</span></div>
+                            <div class="d-flex justify-content-between information"><span>Open</span><span>{{this.tournamentDate[1]}}</span></div>
+                            <div class="d-flex justify-content-between information"><span>Start</span><span>{{this.tournamentDate[2]}}</span></div>
+                            <div class="d-flex justify-content-between information"><span>Close</span><span>{{this.tournamentDate[0]}}</span>
+                            </div><button class="btn btn-primary btn-block d-flex justify-content-between mt-3" type="submit" (click)="groupSubmit()"><span>Group Register</span><span>{{this.tournamentDatas.tournament.tournamentName}}<i class="fa fa-long-arrow-right ml-1"></i></span></button>
+                        </div>
+                    </ng-template>
+                </ng-template>
+
             </div>
-        </div>
+            <ng-template #profileDontExist>
+                <div class="payment-info">
+                    <hr class="line">
+                    <div class="d-flex justify-content-between information"><span>Tournament
+                            name</span><span>{{this.tournamentDatas.tournament.tournamentName}}</span></div>
+                    <div class="d-flex justify-content-between information"><span>Tournament
+                            subdistrict</span><span>{{this.tournamentDatas.by}}</span></div>
+                    <div class="d-flex justify-content-between information"><span>Open</span><span>{{this.tournamentDate[1]}}</span>
+                    </div>
+                    <div class="d-flex justify-content-between information"><span>Start</span><span>{{this.tournamentDate[2]}}</span>
+                    </div>
+                    <div class="d-flex justify-content-between information"><span>Close</span><span>{{this.tournamentDate[0]}}</span>
+                    </div>
+                    <button class="btn btn-danger btn-block d-flex justify-content-between mt-3" [disabled] type="submit"
+                        (click)="groupSubmit()"><span>Create profile first to
+                            register</span><span>{{this.tournamentDatas.tournament.tournamentName}}<i
+                                class="fa fa-long-arrow-right ml-1"></i></span></button>
+                </div>
+            </ng-template>
+            
+
+
     </div>
 </div>

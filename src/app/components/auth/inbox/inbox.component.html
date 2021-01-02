@@ -1,46 +1,21 @@
 
 <div  class="container  align-content-between" style="min-height: 60em; padding-bottom: 2em; background-color: rgb(230, 230, 230); margin-top: 8em; margin-bottom: 5em; border-radius: 2em;">
-    
-
+   
     <div *ngIf="length===0" style=" padding-top: 5em; display: block; text-align: center; margin-left: auto; margin-right: auto;">
         <img  src="https://freepngimg.com/thumb/emoji/7-2-sad-crying-emoji-png.png" alt="" >
         <h1 style="font-family: 'Helvetica Neue' ;"> <b>No Message yet</b> </h1>
     </div>
 
-    <!-- <ul style="padding: 2em;  list-style-type: none;"    *ngFor="let inbox of inboxes | keyvalue" [ngSwitch]="newMessage">     -->
-    <ul style="padding: 2em;  list-style-type: none;"    *ngFor="let inbox of inboxes | keyvalue" >    
-        <!-- {{inbox.value.read |json}} -->
+    <div *ngIf="length>0">
+        <ul style="padding: 2em;  list-style-type: none;" *ngFor="let inbox of inboxes | keyvalue" >      
             <li   style="background-color: rgb(190, 189, 189); border-radius: 1em; margin-top: 1em; margin-bottom: -5em;" routerLink='profile'>
                 <div class="message d-flex justify-content-between" style="color: rgb(24, 24, 24); padding-top: 1em; padding-right: 2em; padding-left: 2em;" >
                     <h4><b>{{inbox.value._senderId | json}}</b> </h4>
                     <h4 >{{inbox.value.message |json}}</h4>
                 </div>
-            </li>
-      
-            <!-- <li  *ngSwitchCase="false" style="background-color: rgb(75, 192, 196); border-radius: 1em; margin-top: 1em; margin-bottom: -5em;" routerLink='profile'>
-                <div class="message d-flex justify-content-between" style="color: rgb(24, 24, 24); padding-top: 1em; padding-right: 2em; padding-left: 2em;" >
-                    <h4><b>{{inbox.value._senderId | json}}</b> </h4>
-                    <h4 >{{inbox.value.message |json}}</h4>
-                </div>
-            </li> -->
-        <!-- <button (click)="seeNotification()">coba </button> -->
-    </ul>
-    <!-- <nav aria-label="Page navigation example" class="justify-content-center" >
-        <ul class="pagination justify-content-center" style="margin-top: 2em;">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous" style="color: black;">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#" style="color: black;">1</a></li>
-            <li class="page-item"><a class="page-link" href="#" style="color: black;">2</a></li>
-            <li class="page-item"><a class="page-link" href="#" style="color: black;">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next" style="color: black;">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
+            </li>  
         </ul>
-    </nav> -->
+    </div>
+   
     
 </div>
