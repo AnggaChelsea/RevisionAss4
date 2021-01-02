@@ -32,6 +32,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { CdkTableExporterModule } from 'cdk-table-exporter';
 import { ListtournamentComponent } from './components/panitia/listtournament/listtournament.component';
 import { GroupComponent } from './components/group/group.component';
+import { AllbracketComponent } from './components/games/allbracket/allbracket.component';
 
 @Injectable({
   providedIn: 'root',
@@ -52,6 +53,7 @@ import { GroupComponent } from './components/group/group.component';
     PageNotFoundComponent,
     ListtournamentComponent,
     GroupComponent,
+    AllbracketComponent,
   ],
 
   imports: [

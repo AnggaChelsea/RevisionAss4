@@ -41,8 +41,8 @@ export class GamesComponent implements OnInit {
 
   readTournament(): void {
     this.tournamentService.readAll().subscribe((data) => {
-      this.tournaments = data.tournament;
-      this.count = data.tournament.length;
+      this.tournaments = data;
+
       console.log(this.tournaments);
     });
   }

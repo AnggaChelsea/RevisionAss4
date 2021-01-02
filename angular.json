@@ -33,10 +33,13 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/jquery-bracket/dist/jquery.bracket.min.css",
               "src/styles.css"
             ],
             "scripts": [
-              "./node_modules/sweetalert2/dist/sweetalert2.all.min.js"
+              "./node_modules/sweetalert2/dist/sweetalert2.all.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/jquery-bracket/dist/jquery.bracket.min.js"
             ]
           },
           "configurations": {
@@ -99,17 +102,13 @@
             ],
             "styles": [
                 "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-                "node_modules/jquery-bracket/dist/jquery.bracket.min.css",
                 "node_modules/datatables.net-fixedcolumns-dt/css/fixedColumns.dataTables.min.css",
                 "node_modules/bootstrap/dist/css/bootstrap.min.css",
                 "node_modules/datatables.net-dt/css/jquery.dataTables.css",
                 "src/styles.css"
             ],
             "scripts": [
-
-              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/datatables.net/js/jquery.dataTables.js",
-              "node_modules/jquery-bracket/dist/jquery.bracket.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           }
