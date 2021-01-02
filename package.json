@@ -37,6 +37,7 @@
     "jest": "^26.6.3",
     "jquery": "^3.5.1",
     "jquery-bracket": "^0.11.1",
+    "jqwidgets-ng": "^11.0.1",
     "mat-table-exporter": "^1.2.5",
     "ng2-search-filter": "^0.5.1",
     "ngx-pagination": "^5.0.0",
