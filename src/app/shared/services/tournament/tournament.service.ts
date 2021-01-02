@@ -29,9 +29,9 @@ export class TournamentService {
   //22 october video Expected 2 arguments, but got 0.
 
   readAll(): Observable<any> {
-    return this.httpClient.get<any>(
-      `${environment.urlAddress}product`
-    ).pipe(map(this.getDataTournament))
+    return this.httpClient
+      .get<any>(`${environment.urlAddress}product`)
+      .pipe(map(this.getDataTournament));
   }
 
   read(_id: any): Observable<any> {

@@ -57,12 +57,14 @@ export class RegistertournamentComponent implements OnInit {
       this.getData = data;
     });
   }
+
   closeAlert() {
     this.alert = false;
 
     this.curPage = 1;
     this.pageSize = 5;
   }
+
   numberOfPages() {
     return Math.ceil(this.getData.length / this.pageSize);
   }
@@ -88,15 +90,10 @@ export class RegistertournamentComponent implements OnInit {
       (success: any) => {
         const image: any = success.picture;
 
-        // const groupImage: any = success.group.groupPict;
-
         const pic: any = `${environment.urlAddress}` + image;
-        // console.log(`${environment.urlAddress}` + image);
         this.profiles = success;
         this.profilesPic = `${environment.urlAddress}` + image;
 
-        // this.groupPic = `${environment.urlAddress}` + groupImage;
-        // this.groupInfo = success.group;
         this.profileExist = true;
 
         // console.log(this.profilesPic);
