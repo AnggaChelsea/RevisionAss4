@@ -30,7 +30,7 @@ export class TournamentService {
 
   readAll(): Observable<any> {
     return this.httpClient
-      .get<any>(`${environment.urlAddress}product`)
+      .get<any>(`${environment.urlAddress}user`)
       .pipe(map(this.getDataTournament));
   }
 
