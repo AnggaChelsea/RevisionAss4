@@ -1,5 +1,6 @@
+import { AuthService } from '../auth/auth.service';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
@@ -8,7 +9,13 @@ import { environment } from '../../../../environments/environment';
   providedIn: 'root',
 })
 export class TournamentService {
-  constructor(private httpClient: HttpClient) {}
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  data = {};
+  ACCESS_TOKEN = 'access_token';
+  constructor(
+    private httpClient: HttpClient,
+    private authService: AuthService
+  ) {}
 
   private getDataTournament(response: any) {
     return response.data;
@@ -22,9 +29,9 @@ export class TournamentService {
   //22 october video Expected 2 arguments, but got 0.
 
   readAll(): Observable<any> {
-    return this.httpClient.get<any>(
-      `${environment.urlAddress}user/tournaments?page=1`
-    );
+    return this.httpClient
+      .get<any>(`${environment.urlAddress}product`)
+      .pipe(map(this.getDataTournament));
   }
 
   read(_id: any): Observable<any> {
@@ -61,6 +68,50 @@ export class TournamentService {
   getAll(page: any) {
     return this.httpClient.get(
       `${environment.urlAddress}user/tournaments?page=${page}`
+    );
+  }
+
+  getProfile() {
+    return this.httpClient.get(`${environment.urlAddress}user/profile`, {
+      headers: new HttpHeaders().set(
+        this.ACCESS_TOKEN,
+        this.authService.getToken()
+      ),
+    });
+  }
+
+  getGroup() {
+    return this.httpClient.get(`${environment.urlAddress}user/group`, {
+      headers: new HttpHeaders().set(
+        this.ACCESS_TOKEN,
+        this.authService.getToken()
+      ),
+    });
+  }
+
+  registerTournamentPerson(tournamentName: any) {
+    return this.httpClient.post<any>(
+      `${environment.urlAddress}user/submit`,
+      tournamentName,
+      {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      }
+    );
+  }
+
+  registerTournamentGroup(tournamentName: any) {
+    return this.httpClient.post<any>(
+      `${environment.urlAddress}user/submitGroup`,
+      tournamentName,
+      {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      }
     );
   }
 
