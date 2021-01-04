@@ -32,6 +32,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { CdkTableExporterModule } from 'cdk-table-exporter';
 import { ListtournamentComponent } from './components/panitia/listtournament/listtournament.component';
 import { GroupComponent } from './components/group/group.component';
+import { ProfileModule } from './shared/routes/profile/profile.module';
 
 @Injectable({
   providedIn: 'root',
@@ -47,7 +48,6 @@ import { GroupComponent } from './components/group/group.component';
     GamesComponent,
     AdminComponent,
     InboxComponent,
-    ProfileComponent,
     SignComponent,
     PageNotFoundComponent,
     ListtournamentComponent,
@@ -71,6 +71,7 @@ import { GroupComponent } from './components/group/group.component';
     HttpClientModule,
     NgxPaginationModule,
     MaterialModule,
+    ProfileModule
   ],
   providers: [
     {
