@@ -3,14 +3,12 @@ import { PanitiaService } from '../../../shared/services/panitia/panitia.service
 
 import 'jquery';
 declare var $: JQuery;
-
 declare global {
   interface JQuery {
     (Jquery:any): JQuery;
     bracket(options: any): JQuery;
   }
 }
-
 @Component({
   selector: 'app-participant',
   templateUrl: './participant.component.html',

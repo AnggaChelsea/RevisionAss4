@@ -20,7 +20,19 @@ export class PanitiaService {
   }
 
   getData():Observable<any>{
-    return this.httpClinet.get(environment.urlAddress + 'product').pipe(map(this.getDataParticipant))
+    return this.httpClinet.get(environment.urlAddress + 'chief/participantlist/').pipe(map(this.getDataParticipant))
+  }
+
+  createRule(data:any) :Observable<any>{
+   return this.httpClinet.post(`${environment.urlAddress}comittee/createGame`,
+   data)
+  }
+
+  createTournament(data:any): Observable<any>{
+    return this.httpClinet.post(
+      `${environment.urlAddress}comittee/createGame`,
+      data
+    );
   }
 
 }

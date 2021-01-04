@@ -163,7 +163,7 @@ export class RegistertournamentComponent implements OnInit {
           console.log(success);
           Swal.fire({
             icon: 'success',
-            title: 'Log in success',
+            title: 'Submission success',
             text: `${success.message}`,
           });
           // this.router.navigate(['']);
@@ -191,7 +191,7 @@ export class RegistertournamentComponent implements OnInit {
           console.log(success);
           Swal.fire({
             icon: 'success',
-            title: 'Log in success',
+            title: 'Submission success',
             text: `${success.message}`,
           });
         },
@@ -205,4 +205,8 @@ export class RegistertournamentComponent implements OnInit {
         }
       );
   }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
