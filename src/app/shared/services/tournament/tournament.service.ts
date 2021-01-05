@@ -24,14 +24,10 @@ export class TournamentService {
   private getDataTournamentId(response: any) {
     return response.data;
   }
-
-  //4b795c000aa4ef0d9a0d5cf8998da1d7153fa538
-  //22 october video Expected 2 arguments, but got 0.
-
   readAll(): Observable<any> {
     return this.httpClient
-      .get<any>(`${environment.urlAddress}product`)
-      .pipe(map(this.getDataTournament));
+      .get<any>(`${environment.urlAddress}user/tournaments`)
+      
   }
 
   read(_id: any): Observable<any> {

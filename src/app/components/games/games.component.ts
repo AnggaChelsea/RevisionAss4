@@ -24,7 +24,7 @@ declare global {
 export class GamesComponent implements OnInit {
   tournaments: any;
   page = 1;
-  count!: number;
+  count:any;
   tableSize = 8;
   tableSizes = [3, 6, 9, 12];
 

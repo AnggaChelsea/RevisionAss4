@@ -28,8 +28,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'profile',
-    component: ProfileComponent,
+    path: 'profiles',
+    loadChildren: () =>
+    import('./shared/routes/profile/profile.module').then(
+      (m) => m.ProfileModule
+    ),
     canActivate: [AuthGuard],
   },
   { path: 'search/:i', component: GamesComponent },
@@ -50,7 +53,7 @@ const routes: Routes = [
   },
   { path: '', component: HomeComponent, pathMatch: 'full' },
 
-  { path: '**', component: PageNotFoundComponent },
+  // { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

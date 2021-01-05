@@ -10,18 +10,21 @@ import { ParticipantComponent } from '../../../components/panitia/participant/pa
 import { CreatetournamentComponent } from '../../../components/panitia/createtournament/createtournament.component';
 import { CsvService } from '../../services/csv.service';
 import { MaterialModule } from '../../../material/material.module';
-
+import { ImageUploadModule } from "angular2-image-upload";
 import { PanitiaRoutingModule } from './panitia-routing.module';
+import { RoletournamentComponent } from '../../../components/panitia/roletournament/roletournament.component'
 
 @NgModule({
   declarations: [
     CreatetournamentComponent,
     ParticipantComponent,
     PanitiaComponent,
+    RoletournamentComponent
   ],
   providers: [PanitiaService, CsvService],
   imports: [
     CommonModule,
+    ImageUploadModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
     DataTablesModule,

@@ -205,4 +205,8 @@ export class RegistertournamentComponent implements OnInit {
         }
       );
   }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

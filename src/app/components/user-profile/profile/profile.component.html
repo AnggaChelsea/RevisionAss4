@@ -23,25 +23,28 @@
       </div>
       <div class="profile col-md-9">
               <div class="dataProfile bg-white p-5 mb-3">
-                  <h1>Profile</h1>
-                  <div class="row">
+                  <h1>Profile</h1><span>
+                  <div class="avatar" style="position: relative; top:-45px;margin-bottom:-50px;margin-top:50px">
+                    <img src="{{path+this.picture}}" style="width:100px; height: 100px; max-width: 100px; max-height: 100px; border-radius: 50%; border: 5px solid rgba(240, 178,122,0.5)">
+                  </div></span>
+                  <div class="row mt-6" style="margin-top:25px">
                       <div class="dataList">
-                          <p><span>Full Name </span>:{{this.fullname}}</p>
+                          <p><span>Full Name </span>: {{this.fullname}}</p>
                       </div>
                       <div class="dataList">
-                          <p><span>Sub District </span>:{{this.subDistrict}}</p>
+                          <p><span>Sub District </span>: {{this.subDistrict}}</p>
                       </div>
                       <div class="dataList">
-                          <p><span>Birth Date </span>:{{this.birthDate}} </p>
+                          <p><span>Birth Date </span>: {{this.birthDate}} </p>
                       </div>
                       <div class="dataList">
-                          <p><span>Phone Number </span>:{{this.phoneNumber}}</p> 
+                          <p><span>Phone Number </span>: {{this.phoneNumber}}</p> 
                       </div>
                       <div class="dataList">
-                          <p><span>TournamentID</span>:{{this._tournamentId}} </p>
+                          <p><span>TournamentID</span>: {{this._tournamentId}} </p>
                       </div>
                       <div class="dataList">
-                        <p><span>GroupID</span>:{{this._groupId}} </p>
+                        <p><span>GroupID</span>: {{this._groupId}} </p>
                     </div>
                 </div>
               </div>
