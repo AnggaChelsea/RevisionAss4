@@ -115,6 +115,21 @@ export class TournamentService {
     );
   }
 
+  getBranches() {
+    return this.httpClient.get(
+      `${environment.urlAddress}comittee/startBranches`,
+      {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      }
+    );
+  }
+
+  getFFA(id: any): Observable<any> {
+    return this.httpClient.get(`${environment.urlAddress}user/FFA/${id}`);
+  }
   //  getPage(page:any, title:any): Observable<any> {
   //   return this.httpClient.get(`${environment.urlAddress}user/tournaments?page=${page}&i=${title}`);
   // }

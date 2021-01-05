@@ -33,6 +33,7 @@ import { CdkTableExporterModule } from 'cdk-table-exporter';
 import { ListtournamentComponent } from './components/panitia/listtournament/listtournament.component';
 import { GroupComponent } from './components/group/group.component';
 import { AllbracketComponent } from './components/games/allbracket/allbracket.component';
+import { FreeforallComponent } from './components/games/detailgames/freeforall/freeforall.component';
 
 @Injectable({
   providedIn: 'root',
@@ -54,6 +55,7 @@ import { AllbracketComponent } from './components/games/allbracket/allbracket.co
     ListtournamentComponent,
     GroupComponent,
     AllbracketComponent,
+    FreeforallComponent,
   ],
 
   imports: [

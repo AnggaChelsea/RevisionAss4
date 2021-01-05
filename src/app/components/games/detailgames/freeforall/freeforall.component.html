@@ -1,0 +1,98 @@
+
+<div class="container " style="padding: 10em;" *ngIf="this.Role==='comitteez'; else onlyGet">
+    <table class="table table-dark table-striped table-hover" >
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">score</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr >
+                <th scope="row" style="padding-top: 1.4em;">1</th>
+                <td>
+                    <div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Trotting_impala_ram%2C_crop.jpg"
+                            style="width: 3em; height: 3em; border-radius: 50%; margin-left: -1em; margin-right: 1em;" alt="">
+                        Mark
+                    </div>
+                </td>
+                <td>
+                <form>
+                    <input type="text" name="score" formControlName="score" class="form-control input_user" value=""
+                        placeholder="input score" style="width: 9em;">
+                    
+                </form>
+                </td>
+                
+            </tr>
+            
+            <!-- <tr>
+                <th scope="row">1</th>
+                <td>
+                    <div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Trotting_impala_ram%2C_crop.jpg"
+                            style="width: 3em; height: 3em; border-radius: 50%; margin-left: -3em; margin-right: 1em;" alt="">
+                        Mark
+                    </div>
+                </td>
+                
+                <td>90</td>
+            </tr>
+
+            <tr>
+                <th scope="row">1</th>
+                <td>
+                    <div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Trotting_impala_ram%2C_crop.jpg"
+                            style="width: 3em; height: 3em; border-radius: 50%; margin-left: -3em; margin-right: 1em;" alt="">
+                        Mark
+                    </div>
+                </td>
+                
+                <td>90</td>
+            </tr> -->
+            
+        </tbody>
+    </table>
+    <div class="d-grid gap-2" >
+        <button class="btn btn-primary" type="button">start</button>
+    </div>
+</div>
+
+<ng-template #onlyGet  >
+    <div *ngFor="let participant of Participants; index as i">
+        <h1 style="margin-top: 2em;">{{participant |json}}</h1>
+    </div>
+    
+    
+    <table class="table table-dark table-striped table-hover" style="margin-top: 8em;" >
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">score</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let participant of Participants">
+                    <th scope="row">1</th>
+                    <td>
+                        <div *ngFor="let pic of Pic">
+                            <img src="{{pic|json}}"
+                                style="width: 3em; height: 3em; border-radius: 50%; margin-left: -3em; margin-right: 1em;" alt="">
+                            {{participant.fullname|json}}
+                            
+                        </div>
+                    </td>
+                    
+                    <td>90</td>
+                </tr> 
+
+        </tbody>
+    </table>
+    
+
+</ng-template>

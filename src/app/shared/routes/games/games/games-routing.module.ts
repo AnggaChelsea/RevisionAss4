@@ -1,3 +1,4 @@
+import { FreeforallComponent } from './../../../../components/games/detailgames/freeforall/freeforall.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DetailgamesComponent } from '../../../../components/games/detailgames/detailgames.component';
@@ -6,14 +7,15 @@ import { RegistertournamentComponent } from '../../../../components/games/detail
 import { BracketComponent } from '../../../../components/games/detailgames/bracket/bracket.component';
 
 const routes: Routes = [
-  {path:'', component:DetailgamesComponent},
-  {path:'participant', component:ParticipantComponent},
-  {path:'register', component:RegistertournamentComponent},
-  {path:'bracket', component:BracketComponent}
+  { path: '', component: DetailgamesComponent },
+  { path: 'participant', component: ParticipantComponent },
+  { path: 'register', component: RegistertournamentComponent },
+  { path: 'bracket', component: BracketComponent },
+  { path: 'freeforall', component: FreeforallComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class GamesRoutingModule { }
+export class GamesRoutingModule {}
