@@ -47,6 +47,7 @@ export class FreeforallComponent implements OnInit {
   auth() {
     return this.authService.getUser().subscribe((data) => {
       this.Role = data.role;
+      console.log(this.Role)
     });
   }
 
@@ -63,7 +64,6 @@ export class FreeforallComponent implements OnInit {
 
       if (this.Stage == 1) {
         const Arr = data.reportADV.participant;
-
         for (let i = 0; i < Arr.length; i++) {
           let url: any = `${environment.urlAddress}`;
           this.Participants.push(data.reportADV.participant[i]);

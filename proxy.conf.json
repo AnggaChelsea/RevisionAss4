@@ -1,0 +1,9 @@
+{
+    "/proxy": {
+    "target": "https://radiant-reef-49263.herokuapp.com/",
+    "secure": false,
+    "pathRewrite": {
+    "^/proxy": ""
+   }
+  }
+}

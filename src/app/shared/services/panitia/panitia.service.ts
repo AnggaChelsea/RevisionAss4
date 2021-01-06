@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 import { map } from 'rxjs//operators';
 import { environment } from '../../../../environments/environment';
 
@@ -9,7 +10,11 @@ import { environment } from '../../../../environments/environment';
 })
 export class PanitiaService {
 
-  constructor(private httpClinet:HttpClient) { }
+  header = new HttpHeaders().set('Content-Type', 'application/json');
+  dataPanita = {};
+  ACCESS__TOKEN = 'access_token';
+
+  constructor(private httpClinet:HttpClient, private authService:AuthService) { }
 
   private getDataParticipant(response:any){
     return response.data
@@ -19,20 +24,22 @@ export class PanitiaService {
     return response.data
   }
 
-  getData():Observable<any>{
-    return this.httpClinet.get(environment.urlAddress + 'chief/participantlist/').pipe(map(this.getDataParticipant))
+  createTournament(data:any): Observable<any>{
+    return this.httpClinet.post(
+      `${environment.urlAddress}comittee/createGame`,
+      data,{}
+    );
   }
+
+  // getData():Observable<any>{
+  //   return this.httpClinet.get(environment.urlAddress + 'chief/participantlist').pipe(map(this.getDataParticipant))
+  // }
 
   createRule(data:any) :Observable<any>{
    return this.httpClinet.post(`${environment.urlAddress}comittee/createGame`,
    data)
   }
 
-  createTournament(data:any): Observable<any>{
-    return this.httpClinet.post(
-      `${environment.urlAddress}comittee/createGame`,
-      data
-    );
-  }
+
 
 }

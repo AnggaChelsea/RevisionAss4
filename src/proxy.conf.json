@@ -1,0 +1,7 @@
+{
+    "/app/*": {
+        "target": "https://radiant-reef-49263.herokuapp.com/",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

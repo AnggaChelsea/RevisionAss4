@@ -8,7 +8,9 @@ import { RegistertournamentComponent } from '../../../../components/games/detail
 import { ParticipantService } from '../../../services/participant/participant.service';
 import { TournamentService } from '../../../services/tournament/tournament.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FreeforallComponent } from '../../../../components/games/detailgames/freeforall/freeforall.component';
 import { BracketComponent } from '../../../../components/games/detailgames/bracket/bracket.component';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { BracketComponent } from '../../../../components/games/detailgames/brack
     ParticipantComponent,
     RegistertournamentComponent,
     BracketComponent,
+    FreeforallComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +27,6 @@ import { BracketComponent } from '../../../../components/games/detailgames/brack
     FormsModule,
     NgxPaginationModule,
   ],
-  providers: [ParticipantService, TournamentService],
+  providers: [ParticipantService, TournamentService, AuthService,],
 })
 export class GamesModule {}
