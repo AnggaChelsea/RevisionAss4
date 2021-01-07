@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { environment } from './../../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -5,6 +6,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { TournamentService } from './../../../../shared/services/tournament/tournament.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-freeforall',
@@ -17,9 +19,12 @@ export class FreeforallComponent implements OnInit {
   Role: any;
   Stage: any;
   Participants: any[] = [];
-  Pic: any[] = [];
-  Name: any[] = [];
-  Score: any[] = [];
+  // scores$:Observable<any[]>=[];
+  scoreForm: any = FormGroup;
+  tournament: any;
+  // Pic: any[] = [];
+  // Name: any[] = [];
+  // Score: any[] = [];
 
   constructor(
     private tournamentService: TournamentService,
@@ -28,7 +33,13 @@ export class FreeforallComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private http: HttpClient
-  ) {}
+  ) {
+    this.scoreForm = this.fb.group({
+      _id: [''],
+      _userId: [''],
+      Score: [''],
+    });
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('_id');
@@ -41,7 +52,32 @@ export class FreeforallComponent implements OnInit {
     this.auth();
     this.readTournament();
     this.FFA();
-    console.log(this.Pic);
+    console.log(this.tournament);
+  }
+
+  submitScore() {
+    this.scoreForm = {
+      _id: this.id,
+      _userId: this.scoreForm.value._userId,
+      Score: this.scoreForm.value.Score,
+    };
+
+    return this.tournamentService.putScore(this.scoreForm).subscribe(
+      (data: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Submission success',
+          text: `${data.message}`,
+        });
+      },
+      (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${err.error.message}`,
+        });
+      }
+    );
   }
 
   auth() {
@@ -58,8 +94,7 @@ export class FreeforallComponent implements OnInit {
 
   FFA() {
     return this.tournamentService.getFFA(this.id).subscribe((data: any) => {
-      // this.id = data;
-      console.log(this.Stage);
+      this.tournament = data.table;
 
       if (this.Stage == 1) {
         const Arr = data.reportADV.participant;
@@ -67,22 +102,21 @@ export class FreeforallComponent implements OnInit {
         for (let i = 0; i < Arr.length; i++) {
           let url: any = `${environment.urlAddress}`;
           this.Participants.push(data.reportADV.participant[i]);
-          this.Pic.push(url + data.reportADV.participant[i].picture);
-          this.Name.push(data.reportADV.participant[i].fullname);
-          this.Score.push(data.reportADV.participant[i].score);
-          this.Numbers = this.Name.length;
+          // this.Pic.push(url + data.reportADV.participant[i].picture);
+          // this.Name.push(data.reportADV.participant[i].fullname);
+          // this.Score.push(data.reportADV.participant[i].score);
+          // this.Numbers = this.Name.length;
         }
-        console.log(this.Pic);
       } else {
         const Arr = data.report.participant;
 
         for (let i = 0; i < Arr.length; i++) {
           let url: any = `${environment.urlAddress}`;
           this.Participants.push(data.reportADV.participant[i]);
-          this.Pic.push(url + data.report.participant[i].picture);
-          this.Name.push(data.report.participant[i].fullname);
-          this.Score.push(data.report.participant[i].score);
-          this.Numbers = this.Name.length;
+          // this.Pic.push(url + data.report.participant[i].picture);
+          // this.Name.push(data.report.participant[i].fullname);
+          // this.Score.push(data.report.participant[i].score);
+          // this.Numbers = this.Name.length;
         }
       }
       // this.Pic = `${environment.urlAddress}+data.`

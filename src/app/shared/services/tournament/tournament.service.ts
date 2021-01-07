@@ -25,9 +25,9 @@ export class TournamentService {
     return response.data;
   }
   readAll(): Observable<any> {
-    return this.httpClient
-      .get<any>(`${environment.urlAddress}user/tournaments`)
-      
+    return this.httpClient.get<any>(
+      `${environment.urlAddress}user/tournaments`
+    );
   }
 
   read(_id: any): Observable<any> {
@@ -125,6 +125,19 @@ export class TournamentService {
 
   getFFA(id: any): Observable<any> {
     return this.httpClient.get(`${environment.urlAddress}user/FFA/${id}`);
+  }
+
+  putScore(datas: any) {
+    return this.httpClient.put(
+      `${environment.urlAddress}comittee/putScore`,
+      datas,
+      {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      }
+    );
   }
   //  getPage(page:any, title:any): Observable<any> {
   //   return this.httpClient.get(`${environment.urlAddress}user/tournaments?page=${page}&i=${title}`);

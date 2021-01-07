@@ -4,7 +4,7 @@ import { AuthInterceptorInterceptor } from './shared/services/auth/auth.intercep
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injectable } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ImageUploadModule } from 'angular2-image-upload/angular2-image-upload';
+import { ImageUploadModule } from 'angular2-image-upload';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxSpinnerModule } from 'ngx-spinner';
