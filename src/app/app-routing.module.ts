@@ -53,8 +53,9 @@ const routes: Routes = [
         (m) => m.GamesModule
       ),
   },
-  { path: '', component: LandingpageComponent, pathMatch: 'full' },
-  {path:'home', component:HomeComponent },
+  { path: 'home', redirectTo: 'home', pathMatch: 'full' },
+  // { path: '', component: LandingpageComponent, pathMatch: 'full' },
+  {path:'', component:HomeComponent },
 
   // { path: '**', component: PageNotFoundComponent },
 ];

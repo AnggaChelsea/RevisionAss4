@@ -39,6 +39,7 @@ import { ProfileModule } from './shared/routes/profile/profile.module';
 import { AllbracketComponent } from './components/games/allbracket/allbracket.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -80,6 +81,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
     NgxPaginationModule,
     MaterialModule,
     ProfileModule,
+    
   ],
   providers: [
     {
