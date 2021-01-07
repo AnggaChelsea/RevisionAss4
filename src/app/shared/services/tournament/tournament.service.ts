@@ -123,6 +123,32 @@ export class TournamentService {
     );
   }
 
+  startFFA(datas: any) {
+    return this.httpClient.put(
+      `${environment.urlAddress}comittee/startFreeForAll`,
+      datas,
+      {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      }
+    );
+  }
+
+  endFFA(_id: any) {
+    return this.httpClient.put(
+      `${environment.urlAddress}comittee/endFreeForAll`,
+      _id,
+      {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      }
+    );
+  }
+
   getFFA(id: any): Observable<any> {
     return this.httpClient.get(`${environment.urlAddress}user/FFA/${id}`);
   }

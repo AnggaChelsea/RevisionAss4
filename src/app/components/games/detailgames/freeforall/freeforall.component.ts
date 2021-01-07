@@ -19,12 +19,9 @@ export class FreeforallComponent implements OnInit {
   Role: any;
   Stage: any;
   Participants: any[] = [];
-  // scores$:Observable<any[]>=[];
+  //
   scoreForm: any = FormGroup;
   tournament: any;
-  // Pic: any[] = [];
-  // Name: any[] = [];
-  // Score: any[] = [];
 
   constructor(
     private tournamentService: TournamentService,
@@ -52,7 +49,6 @@ export class FreeforallComponent implements OnInit {
     this.auth();
     this.readTournament();
     this.FFA();
-    console.log(this.tournament);
   }
 
   submitScore() {
@@ -92,34 +88,71 @@ export class FreeforallComponent implements OnInit {
     });
   }
 
+  proceed() {
+    this.scoreForm = {
+      _id: this.id,
+    };
+    return this.tournamentService.startFFA(this.scoreForm).subscribe(
+      (data: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Submission success',
+          text: `${data.message}`,
+        });
+      },
+      (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${err.error.message}`,
+        });
+      }
+    );
+  }
+
+  finish() {
+    this.scoreForm = {
+      _id: this.id,
+    };
+    return this.tournamentService.endFFA(this.scoreForm).subscribe(
+      (data: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Submission success',
+          text: `${data.message}`,
+        });
+      },
+      (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${err.error.message}`,
+        });
+      }
+    );
+  }
+
   FFA() {
     return this.tournamentService.getFFA(this.id).subscribe((data: any) => {
       this.tournament = data.table;
 
-      if (this.Stage == 1) {
+      if (this.Stage > 0) {
         const Arr = data.reportADV.participant;
 
         for (let i = 0; i < Arr.length; i++) {
           let url: any = `${environment.urlAddress}`;
           this.Participants.push(data.reportADV.participant[i]);
-          // this.Pic.push(url + data.reportADV.participant[i].picture);
-          // this.Name.push(data.reportADV.participant[i].fullname);
-          // this.Score.push(data.reportADV.participant[i].score);
-          // this.Numbers = this.Name.length;
+          this.Stage = data.reportADV.stageName;
         }
       } else {
         const Arr = data.report.participant;
 
         for (let i = 0; i < Arr.length; i++) {
           let url: any = `${environment.urlAddress}`;
-          this.Participants.push(data.reportADV.participant[i]);
-          // this.Pic.push(url + data.report.participant[i].picture);
-          // this.Name.push(data.report.participant[i].fullname);
-          // this.Score.push(data.report.participant[i].score);
-          // this.Numbers = this.Name.length;
+          this.Participants.push(data.report.participant[i]);
+          this.Stage = data.report.stageName;
         }
       }
-      // this.Pic = `${environment.urlAddress}+data.`
     });
   }
 }
