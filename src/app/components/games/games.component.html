@@ -22,12 +22,16 @@
                 totalItems: count
               };">
 
-                          <div class="card">
+                          <div class="card" >
                               <div class="card-label">{{game.tournamentType}}</div>
-                              <div class="card-photo" style="background-image: url(https://itagroup.hs.llnwd.net/o40/csg/btr2018/news-banner-vto.jpg);"></div>
+                              
+                              <div class="card-photo">
+                                <img src="http://localhost:5000/{{game.tournamentPict|lowercase}}" alt="" style="width: 18em; height: 8em; object-fit: cover;">
+                                <!-- <img src="https://radiant-reef-49263.herokuapp.com/{{game.tournamentPict|lowercase}}" alt=""> -->
+                              </div>
                               <div class="card-body">
-                                  <h4>{{game.tournamentName}}</h4>
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                  <h4> <b>{{game.tournamentName}}</b></h4>
+                                  <p style="max-height: 5em; overflow: hidden;">{{game.tournamentDescription}}</p>
                                   <a class="btn btn-primary" routerLink="detailgames/{{game._id}}">View</a>
                               </div>
                           </div>
