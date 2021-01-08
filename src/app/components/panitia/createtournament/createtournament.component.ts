@@ -41,13 +41,6 @@ export class CreatetournamentComponent implements OnInit {
 
     this.getTournament()
 
-    $(document).ready(function() {
-    $('#example').DataTable( {
-        "order": [[ 3, "desc" ]]
-    } );
-} );
-
-
     $(document).ready(function(){
 $("#menu-toggle").click(function(e) {
 e.preventDefault();

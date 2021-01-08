@@ -22,12 +22,6 @@ export class ParticipantComponent implements OnInit {
   dataParticipant:any;
 
   ngOnInit(){
-    $(function() {
-      $(document).ready(function() {
-        $('#example').DataTable();
-      });
-    });
-
     this.getParticipant()
   }
 
