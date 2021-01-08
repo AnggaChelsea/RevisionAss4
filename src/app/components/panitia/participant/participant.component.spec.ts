@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { DataTablesModule } from 'angular-datatables'
 import { ParticipantComponent } from './participant.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {RouterTestingModule}from '@angular/router/testing';
 
 describe('ParticipantComponent', () => {
   let component: ParticipantComponent;
@@ -8,7 +10,7 @@ describe('ParticipantComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ParticipantComponent ]
+      declarations: [ ParticipantComponent ],imports: [HttpClientTestingModule,RouterTestingModule]
     })
     .compileComponents();
   });

@@ -30,9 +30,9 @@ export class AllbracketComponent implements OnInit {
   constructor() { }
 
   public ngOnInit(){
-    $('#minimal').bracket({
-      init: this.minimalData /* data to initialize the bracket with */
-    })
+    // $('#minimal').bracket({
+    //   init: this.minimalData /* data to initialize the bracket with */
+    // })
   }
 
   

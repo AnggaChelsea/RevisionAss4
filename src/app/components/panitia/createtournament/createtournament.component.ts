@@ -28,7 +28,7 @@ export class CreatetournamentComponent implements OnInit {
   getData:any;
   images = []
   dataPage:any;
-  
+  selectedFile:any;
   
 
   tournament = {
@@ -58,9 +58,12 @@ export class CreatetournamentComponent implements OnInit {
 
    
 this.dataPage = this.router.snapshot.params['page']
-
-
   }
+
+  onFileChanged(event: { target: { files: any[]; }; }) {
+    this.selectedFile = event.target.files[0]
+  }
+
 
   onUploadFinished(file: FileHolder) {
     console.log(file);
@@ -80,7 +83,7 @@ this.dataPage = this.router.snapshot.params['page']
       tournamentType:this.tournament.tournamentType,
       tjbournamentPict:this.tournament.tournamentPict,
     }
-    this.tournamentService.create(data)
+    this.tournamentService.create(data, this.selectedFile)
     .subscribe(
       (response: any)=>{
         console.log(response);
