@@ -1,7 +1,7 @@
 {
   "name": "revisiass4",
   "short_name": "revisiass4",
-  "theme_color": "#1976d2",
+  "theme_color": "#ec1000",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
