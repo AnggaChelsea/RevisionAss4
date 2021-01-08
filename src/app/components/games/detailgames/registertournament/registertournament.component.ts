@@ -114,13 +114,8 @@ export class RegistertournamentComponent implements OnInit {
         const groupImage: any = success.group.groupPict;
         this.groupPic = `${environment.urlAddress}` + groupImage;
         this.groupInfo = success.group;
-        // for (let i = 0; i < success.members.length; i++) {
-        // console.log(success.members[i]);
-        //   Groups.push(success.members[i]);
-        // }
-        // this.groups.push()
+        
         this.groups = success.members;
-        // console.log(this.groups);
       },
       (err) => {
         console.log(err);

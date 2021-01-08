@@ -37,7 +37,8 @@ import { GroupComponent } from './components/group/group.component';
 import { ProfileModule } from './shared/routes/profile/profile.module';
 
 import { AllbracketComponent } from './components/games/allbracket/allbracket.component';
-import { FreeforallComponent } from './components/games/detailgames/freeforall/freeforall.component';
+import { LandingpageComponent } from './components/landingpage/landingpage.component';
+
 
 @Injectable({
   providedIn: 'root',
@@ -58,7 +59,7 @@ import { FreeforallComponent } from './components/games/detailgames/freeforall/f
     ListtournamentComponent,
     GroupComponent,
     AllbracketComponent,
-    FreeforallComponent,
+    LandingpageComponent,
   ],
 
   imports: [
@@ -80,6 +81,7 @@ import { FreeforallComponent } from './components/games/detailgames/freeforall/f
     NgxPaginationModule,
     MaterialModule,
     ProfileModule,
+    
   ],
   providers: [
     {

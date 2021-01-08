@@ -23,12 +23,12 @@ declare global {
 })
 export class GamesComponent implements OnInit {
   tournaments: any;
-  page = 1;
+  page = 0;
   count:any;
   tableSize = 8;
   tableSizes = [3, 6, 9, 12];
 
-  filter!: string;
+  filter!: string ;
 
   constructor(
     private tournamentService: TournamentService,
@@ -41,8 +41,8 @@ export class GamesComponent implements OnInit {
 
   readTournament(): void {
     this.tournamentService.readAll().subscribe((data) => {
-      this.tournaments = data;
-
+      this.tournaments = data.list
+      
       console.log(this.tournaments);
     });
   }

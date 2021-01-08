@@ -77,3 +77,6 @@
 }
 
 /* search game */
+.container{
+    position:relative;
+}

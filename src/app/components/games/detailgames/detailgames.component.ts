@@ -33,7 +33,7 @@ export class DetailgamesComponent implements OnInit {
 
   getTournament(): void {
     this.tournamentService.read(this.dataId).subscribe((data) => {
-      this.dataId = data
+      this.dataId = data.tournament
       console.log(this.dataId);
     });
   }

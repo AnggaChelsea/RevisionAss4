@@ -1,8 +1,14 @@
-
-
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 header
 {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -39,7 +45,7 @@ header .logo
 }
 .showcase
 {
-  position: relative;
+  position: absolute;
   right: 0;
   width: 100%;
   min-height: 100vh;
@@ -142,10 +148,7 @@ header .logo
   margin-right: 20px;
   filter: invert(1);
   transform: scale(0.5);
-  color:red;
   transition: 0.5s;
-  animation: bounce 1s infinite alternate;
-  -webkit-animation: bounce 1s infinite alternate;
 }
 .social li a:hover
 {
@@ -195,27 +198,5 @@ header .logo
   .text h3
   {
     font-size: 2em;
-  }
-}
-
-section{
-  position: relative;
-}
-
-
-@keyframes bounce {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(-15px);
-  }
-}
-@-webkit-keyframes bounce {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(-15px);
   }
 }

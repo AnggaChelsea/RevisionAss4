@@ -1,6 +1,7 @@
 import { TournamentService } from './../../../../shared/services/tournament/tournament.service';
 import { Component, OnInit } from '@angular/core';
 import { BracketService } from 'src/app/shared/services/tournament/bracket.service';
+import { ActivatedRoute, Router } from '@angular/router'
 
 import 'jquery';
 // declare var $: JQuery;
@@ -20,10 +21,13 @@ declare global {
 })
 export class BracketComponent implements OnInit {
   title = 'bracket';
+  dataBracket:any;
+  idName:any;
 
   constructor(
     private bracketService: BracketService,
-    private tournamentService: TournamentService
+    private tournamentService: TournamentService,
+    private route: ActivatedRoute
   ) {}
 
   public ngOnInit() {
@@ -42,26 +46,37 @@ export class BracketComponent implements OnInit {
         init: minimalData /* data to initialize the bracket with */,
       });
     });
-    // {
-    //   $('div#autoComplete .demo').bracket({
-    //     init: autoCompleteData,
-    //     save: function () {} /* without save() labels are disabled */,
-    //     decorator: { edit: this.acEditFn, render: this.acRenderFn },
-    //   });
-    // });
     this.branches();
+    this.dataBracket = this.route.snapshot.params['_id'];
+    this.dataBracket = this.route.snapshot.paramMap.get('_id')
+    this.route.queryParams.subscribe(params=>{
+      this.tournamentService.read(this.dataBracket)
+      .subscribe(data=>{
+        console.log(data)
+      })
+    })
+
+
   }
 
-  branches() {
-    this.tournamentService.getBranches().subscribe(
+
+  branches(): void {
+    this.tournamentService.read(this.dataBracket).subscribe(
       (res) => {
-        console.log(res);
+        this.dataBracket = res.tournament.participant
+        console.log(this.dataBracket);
       },
       (err) => {
         console.log(err);
       }
     );
   }
+
+  getName(){
+
+  }
+
+
 
   // var acData:any[] = ["kr:MC", "ca:HuK", "se:Naniwa", "pe:Fenix",
   //             "us:IdrA", "tw:Sen", "fi:Naama"]
