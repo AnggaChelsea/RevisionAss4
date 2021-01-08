@@ -37,7 +37,8 @@ export class ConfirmComponent implements OnInit {
           title: 'Verification code accepted',
           text: `Please re login`,
         });
-        return this.router.navigate(['sign/signin']);
+        // return this.router.navigate(['sign/signin']);
+        return this.router.navigate(['sign']);
       },
       (error) => {
         Swal.fire({

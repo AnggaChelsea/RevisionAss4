@@ -44,7 +44,8 @@ export class SignupComponent implements OnInit {
           html: `an email has been sent to <a href="https://mail.google.com/" target="_blank">${success.data.email}</a>`,
           // text: `${success.message}`,
         });
-        this.router.navigate(['sign/signin']);
+        // this.router.navigate(['sign/signin']);
+        this.router.navigate(['sign']);
       },
       (err) => {
         Swal.fire({

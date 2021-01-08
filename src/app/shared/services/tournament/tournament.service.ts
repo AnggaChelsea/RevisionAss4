@@ -24,8 +24,6 @@ export class TournamentService {
   private getDataTournamentId(response: any) {
     return response.data;
   }
-
-
   readAll(): Observable<any> {
     return this.httpClient.get<any>(
       `${environment.urlAddress}user/tournaments`
@@ -40,10 +38,8 @@ export class TournamentService {
 
   create(data: any): Observable<any> {
     return this.httpClient.post(
-      `${environment.urlAddress}comittee/createGame`,
-      data, {
-        headers: new HttpHeaders().set(this.ACCESS_TOKEN, data),
-      }
+      `${environment.urlAddress}product/create`,
+      data
     );
   }
 
@@ -169,6 +165,11 @@ export class TournamentService {
       }
     );
   }
+
+  hallOfFame() {
+    return this.httpClient.get(`${environment.urlAddress}halloffame`);
+  }
+
   //  getPage(page:any, title:any): Observable<any> {
   //   return this.httpClient.get(`${environment.urlAddress}user/tournaments?page=${page}&i=${title}`);
   // }

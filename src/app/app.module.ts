@@ -1,3 +1,4 @@
+import { HallOfFameComponent } from './components/hall-of-fame/hall-of-fame.component';
 import { AuthModule } from './shared/routes/auth/auth.module';
 import { SignComponent } from './components/auth/sign/sign.component';
 import { AuthInterceptorInterceptor } from './shared/services/auth/auth.interceptor';
@@ -33,12 +34,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { CdkTableExporterModule } from 'cdk-table-exporter';
 import { ListtournamentComponent } from './components/panitia/listtournament/listtournament.component';
 import { GroupComponent } from './components/group/group.component';
-
 import { ProfileModule } from './shared/routes/profile/profile.module';
 
 import { AllbracketComponent } from './components/games/allbracket/allbracket.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
-
 
 @Injectable({
   providedIn: 'root',
@@ -60,6 +59,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
     GroupComponent,
     AllbracketComponent,
     LandingpageComponent,
+    HallOfFameComponent,
   ],
 
   imports: [
@@ -81,7 +81,6 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
     NgxPaginationModule,
     MaterialModule,
     ProfileModule,
-   
   ],
   providers: [
     {

@@ -3,7 +3,7 @@ import { User } from './../../../shared/services/auth/user';
 import { Router } from '@angular/router';
 import { AuthService } from './../../../shared/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { error } from 'protractor';
 
 @Component({

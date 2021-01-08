@@ -1,3 +1,4 @@
+import { HallOfFameComponent } from './components/hall-of-fame/hall-of-fame.component';
 import { GroupComponent } from './components/group/group.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProfileComponent } from './components/user-profile/profile/profile.component';
@@ -11,14 +12,14 @@ import { Role } from '../app/shared/models/role';
 import { AllbracketComponent } from './components/games/allbracket/allbracket.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 
-
 const routes: Routes = [
   {
     path: 'sign',
     loadChildren: () =>
       import('./shared/routes/auth/auth.module').then((m) => m.AuthModule),
   },
-  { path:'allbracket', component:AllbracketComponent },
+  // { path: 'allbracket', component: AllbracketComponent },
+  { path: 'hallOfFame', component: HallOfFameComponent },
   {
     path: 'inbox',
     component: InboxComponent,
@@ -32,10 +33,11 @@ const routes: Routes = [
   {
     path: 'profiles',
     loadChildren: () =>
-    import('./shared/routes/profile/profile.module').then(
-      (m) => m.ProfileModule
-    ),
-    canActivate: [AuthGuard], data:{role:[Role.comittee]}
+      import('./shared/routes/profile/profile.module').then(
+        (m) => m.ProfileModule
+      ),
+    canActivate: [AuthGuard],
+    data: { role: [Role.comittee] },
   },
   { path: 'search/:i', component: GamesComponent },
   // {path:'sign', loadChildren: () => import('./shared/routes/auth/auth.module').then(m => m.AuthModule)},
@@ -44,7 +46,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./shared/routes/panitia/panitia.module').then(
         (m) => m.PanitiaModule
-      ), canActivate:[AuthGuard], 
+      ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'detailgames/:_id',
@@ -55,9 +58,9 @@ const routes: Routes = [
   },
   { path: 'home', redirectTo: 'home', pathMatch: 'full' },
   // { path: '', component: LandingpageComponent, pathMatch: 'full' },
-  {path:'', component:HomeComponent },
+  { path: '', component: HomeComponent },
 
-  // { path: '**', component: PageNotFoundComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

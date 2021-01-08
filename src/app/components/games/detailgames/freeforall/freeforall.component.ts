@@ -79,7 +79,7 @@ export class FreeforallComponent implements OnInit {
   auth() {
     return this.authService.getUser().subscribe((data) => {
       this.Role = data.role;
-      console.log(this.Role)
+      console.log(this.Role);
     });
   }
 

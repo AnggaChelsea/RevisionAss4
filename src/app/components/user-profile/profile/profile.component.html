@@ -17,7 +17,7 @@
               </div>
               <ul class="nav">
                   <li class="active col-md-12 p-3 "><i class="fa fa-user"></i> Profile</li>
-                  <li class="col-md-12 p-3 "><a routerLink="/profile-detail"> <i class="fa fa-edit"></i> Edit profile</a></li>
+                  <li class="col-md-12 p-3 "><a href="profiles/profile-detail"> <i class="fa fa-edit"></i> Edit profile</a></li>
               </ul>
           </div>
       </div>
@@ -25,7 +25,7 @@
               <div class="dataProfile bg-white p-5 mb-3">
                   <h1>Profile</h1><span>
                   <div class="avatar" style="position: relative; top:-45px;margin-bottom:-50px;margin-top:50px">
-                    <img src="{{path+this.picture}}" style="width:100px; height: 100px; max-width: 100px; max-height: 100px; border-radius: 50%; border: 5px solid rgba(240, 178,122,0.5)">
+                    <img src="{{path+this.picture}}" style="width:100px; height: 100px; max-width: 100px; max-height: 100px; object-fit: cover; border-radius: 50%; border: 5px solid rgba(240, 178,122,0.5)">
                   </div></span>
                   <div class="row mt-6" style="margin-top:25px">
                       <div class="dataList">
