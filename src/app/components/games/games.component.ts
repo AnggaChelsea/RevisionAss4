@@ -23,27 +23,46 @@ declare global {
 })
 export class GamesComponent implements OnInit {
   tournaments: any;
-  page = 1;
-  count!: number;
+  participants:any;
+  page = 0;
+  count:any;
   tableSize = 8;
   tableSizes = [3, 6, 9, 12];
 
-  filter!: string;
+  filter!: string ;
+  dataId: any;
 
   constructor(
     private tournamentService: TournamentService,
+    private route: ActivatedRoute,
     private router: Router
   ) {}
 
   ngOnInit() {
     this.readTournament();
+    this.getDataId()
+    this.dataId = this.route.snapshot.params['_id'];
+    this.dataId = this.route.snapshot.paramMap.get('_id');
+    this.route.queryParams.subscribe(params=>{
+      this.tournamentService.read(this.dataId)
+      .subscribe(data=>{
+        console.log(data)
+      })
+    })
+
+
+  }
+  getDataId():void{
+    this.tournamentService.read(this.dataId).subscribe((data:any)=>{
+      this.dataId = data.tournament.participant.length
+      console.log(this.dataId)
+    })
   }
 
   readTournament(): void {
     this.tournamentService.readAll().subscribe((data) => {
-      this.tournaments = data;
-
-      console.log(this.tournaments);
+      this.tournaments = data.list
+      console.log(this.participants)
     });
   }
 

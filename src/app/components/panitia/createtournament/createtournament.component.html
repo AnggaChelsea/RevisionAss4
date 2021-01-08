@@ -1,183 +1,78 @@
-<div class="container-fluid px-0" id="bg-div">
-    <div class="row justify-content-center">
-        <div class="col-lg-9 col-12">
-            <div class="card card0">
-                <div class="d-flex" id="wrapper">
-                    <!-- Sidebar -->
-                    <div class="bg-light border-right" id="sidebar-wrapper">
-                        <div class="sidebar-heading pt-5 pb-4"><strong>ANN</strong></div>
-                        <div class="list-group list-group-flush"> <a data-toggle="tab" href="#menu1" id="tab1" class="tabs list-group-item bg-light">
-                                <div class="list-div my-2">
-                                    <div class="fa fa-home"></div> &nbsp;&nbsp; Add Role
-                                </div>
-                            </a> <a data-toggle="tab" href="#menu2" id="tab2" class="tabs list-group-item active1">
-                                <div class="list-div my-2">
-                                    <div class="fa fa-credit-card"></div> &nbsp;&nbsp; Create Tournament
-                                </div>
-                            </a> <a data-toggle="tab" href="#menu3" id="tab3" class="tabs list-group-item bg-light">
-                                <div class="list-div my-2">
-                                    <div class="fa fa-qrcode"></div> &nbsp;&nbsp;&nbsp; List Tournament <span id="new-label" *ngIf="alert">NEW</span>
-                                </div>
-                            </a> </div>
-                    </div> <!-- Page Content -->
-                    <div id="page-content-wrapper">
-                        <div class="row pt-3" id="border-btm">
-                            <div class="col-4"> <button class="btn btn-success mt-4 ml-3 mb-3" id="menu-toggle">
-                                    <div class="bar4"></div>
-                                    <div class="bar4"></div>
-                                    <div class="bar4"></div>
-                                </button> </div>
-                            <div class="col-8">
-                                <div class="row justify-content-right">
-                                    <div class="col-12">
-                                        <p class="mb-0 mr-4 mt-4 text-right">Role</p>
-                                    </div>
-                                </div>
-                                <div class="row justify-content-right">
-                                    <div class="col-12">
-                                        <p class="mb-0 mr-4 text-right"><span class="top-highlight">Tournament</span> </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="text-center text-danger" id="test"><b>ANN</b></div>
-                        </div>
-                        <div class="tab-content">
-                            <div id="menu1" class="tab-pane">
-                                <div class="row justify-content-center">
-                                    <div class="col-11">
-                                        <div class="form-card">
-                                            <h3 class="mt-0 mb-4 text-center">Add Role Of Game</h3>
-                                            <form>
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="input-group"> <input type="text" id="bk_nm" required placeholder="Team A .."> <label>Group Member</label> </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="input-group"> <input type="text" name="ben_nm" id="ben-nm" required placeholder="20"> <label>Age</label> </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="input-group"> <input type="text" name="scode" required placeholder="Jakarta Pusat" class="placeicon"> <label>Subdistric</label></div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="input-group"> <input type="text" name="scode" required placeholder="12"  minlength="2" maxlength="100" class="placeicon"> <label>Participant Min</label></div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="input-group"> <input type="text" name="scode" required placeholder="100"  minlength="2" maxlength="100" class="placeicon"> <label>Participant Max</label></div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12"> <input type="submit" value="Save" class="btn btn-success placeicon"> </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <p class="text-center mb-5" id="below-btn"><a href="#">ANN ARENA</a></p>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="menu2" class="tab-pane in active">
-                                <div class="row justify-content-center">
-                                    <div class="col-11">
-                                        <div class="form-card">
 
-                                            <h3 class="mt-0 mb-4 text-center">Create Tournament</h3>
-                                            <div *ngIf="alert" class="alert alert-success alert-dismissible fade show mt-0 mb-4 text-center" role="alert">
-                                              <strong>Success!</strong> You can check in List Tournament.
-                                              <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                              </button>
-                                            </div>
-                                            <form *ngIf="!submmited">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="input-group">
-                                                          <input type="text" name="tournamentName" [(ngModel)]="tournament.name" name="name"
-                                                          id="exp" placeholder="Balap Karrung.." required> <label>Tournament Name</label> </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <div class="input-group"> <input type="text" [(ngModel)]="tournament.gambar" name="gambar" id="exp"  required> <label>Tournament Open</label> </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="input-group"> <input type="text" [(ngModel)]="tournament.deskripsi" name="deskripsi" class="placeicon" required> <label>Tournament Start</label> </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="input-group"> <input type="number" [(ngModel)]="tournament.price" name="price" placeholder="no" class="placeicon" required> <label>Tournament Close</label> </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="input-group"> <input type="number" [(ngModel)]="tournament.jumlah"  name="jumlah" placeholder="No" class="placeicon" required> <label>Tournament Type</label> </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="input-group"> <input type="text" [(ngModel)]="tournament.deskripsisingkat" name="deskripsisingkat" class="placeicon" required> <label>Rule Name</label> </div>
-                                                    </div>
-                                                    <!-- <div class="col-6">
-                                                        <div class="input-group"> <input type="text" name="groupEntry" class="placeicon" required> <label>Group Entry</label> </div>
-                                                    </div> -->
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12"> <input type="submit" value="Save" (click)="createtournament()" class="btn btn-success placeicon"></div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <p class="text-center mb-5" id="below-btn"><a href="#">HomePage</a></p>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="menu3" class="tab-pane">
-                                <div class="row justify-content-center">
-                                    <div class="col-11">
-                                        <h3 class="mt-0 mb-4 text-center btn btn-success" type="button" (click)="downloadCsv()">Convert to Csv</h3>
-                                        <table id="example" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let data of getData">
-                <td>{{data.name}}</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
-    </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<form>
+    <div class="container">
+        <h1>create tournament</h1>
+       
+        <section *ngIf="alert">
+          <div class="square_box box_three"></div>
+          <div class="square_box box_four"></div>
+          <div class="container mt-5">
+            <div class="row">
+        
+              <div class="col-sm-12">
+                <div class="alert fade alert-simple alert-success alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show">
+                  <button type="button" class="close font__size-18" data-dismiss="alert">
+                          <span aria-hidden="true"><a>
+                            <i class="fa fa-times greencross"></i>
+                            </a></span>
+                          <span class="sr-only" (click)="closeAlert()">Close</span> 
+                        </button>
+                  <i class="start-icon far fa-check-circle faa-tada animated"></i>
+                  <strong class="font__weight-semibold">Well done!</strong> You successfullyread this important.
                 </div>
+              </div>
+        
             </div>
-        </div>
+          </div>
+        </section>
+
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name Of Tournament</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Basket" [(ngModel)]="tournament.tournamentName" name="tournamentName">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Tournament Open</label>
+            <input type="date" class="form-control" id="exampleFormControlInput1" [(ngModel)]="tournament.tournamentOpen" name="tournamentOpen">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Tournament Start</label>
+            <input type="date" class="form-control" id="exampleFormControlInput1" [(ngModel)]="tournament.tournamentStart" name="tournamentStart">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Tournament Close </label>
+            <input type="date" class="form-control" id="exampleFormControlInput1" [(ngModel)]="tournament.tournamentClose" name="tournamentClose">
+          </div>
+          <div class="mb-3">
+            <input class="form-control" type="text" placeholder="0 of stage name" aria-label="readonly input example" readonly>
+          
+          </div>
+          <div class="mb-3">
+              <select class="form-select" aria-label="Default select example" [(ngModel)]="tournament.tournamentType" name="tournamentType" >
+                <option selected>Tournament Type</option>
+                <option value="freeforall">Free For All</option>
+                <option value="branches">Branches</option>
+              </select>
+          </div>
+          
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Image Of Tournament</label>
+            <input class="form-control" type="file" [(ngModel)]="tournament.tournamentPict" name="tournamentPict" id="formFile">
+          </div>
+    
+          <div class="mb-3">
+              <b>Finish</b>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2" aria-checked="true">
+                      No
+                    </label>
+                  </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Tournament Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="tournament.tournamentDescription" name="tournamentDescription" rows="3"></textarea>
+          </div>
+          <button type="button" class="btn btn-dark" (click)="createtournamentData()">Saves</button>
     </div>
-</div>
+</form>

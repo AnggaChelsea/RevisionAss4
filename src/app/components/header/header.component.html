@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-danger fixed-top">
  
-  <div class="container">
+  <div class="container" >
     <a class="navbar-brand text-light" routerLink="">ANN GAME ARENA</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -15,19 +15,26 @@
               </a>
         </li>
 
+        <li>
+          <a class="nav-link" routerLink="panitia" *ngIf="this.isPanitia===true && authService.loggedIn()">Panita Page</a>
+        </li>
+
         <li class="nav-item" *ngIf="authService.loggedIn()">
           <a class="nav-link" routerLink="profile">Profile</a>
         </li>
-        <div>
+
+        <div style="position: relative;">
           <li class="nav-item" *ngIf="authService.loggedIn()" >
             <a class="nav-link" href="inbox" style="color: rgb(255, 255, 255);">Inbox</a>
           </li>
 
-          <h4 *ngIf="newMessage>0" style="position: absolute; top: 1.9em; right: 27.5em; color: rgb(130, 197, 255);"> <b> {{newMessage}} </b> </h4>
+          <h4 *ngIf="newMessage>0" style="position: absolute; top: 1.2em; right: 1em; color: rgb(192, 224, 252); text-shadow: 2px 2px 5px rgb(43, 248, 255)"> <b> {{newMessage}} </b> </h4>
+          <!-- <h4 *ngIf="newMessage>0" style=" color: rgb(130, 197, 255); font-size: 1em; position: fixed; top: 2em; "> <b> {{newMessage}} </b> </h4> -->
         </div>
+        
         <li class="nav-item" *ngIf="!authService.loggedIn()">
           <!-- <a class="nav-link" routerLink="signin">Login</a> -->
-          <a class="nav-link" routerLink="sign/signin">Login</a>
+          <a class="nav-link" routerLink="sign">Login</a>
         </li>
 
         <li class="nav-item" *ngIf="authService.loggedIn()" (click)="authService.logout()">
@@ -35,7 +42,7 @@
         </li>
         
         <li class="nav-item" >
-          <a class="nav-link" routerLink="detailgames/5fd3abe80db961494422a610/register" >submit</a>
+          <a class="nav-link" ></a>
         </li>
         
       </ul>

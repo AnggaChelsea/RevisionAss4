@@ -7,7 +7,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './shared/services/auth/auth.guard';
 import { GamesComponent } from './components/games/games.component';
+import { Role } from '../app/shared/models/role';
 import { AllbracketComponent } from './components/games/allbracket/allbracket.component';
+import { LandingpageComponent } from './components/landingpage/landingpage.component';
 
 
 const routes: Routes = [
@@ -33,7 +35,7 @@ const routes: Routes = [
     import('./shared/routes/profile/profile.module').then(
       (m) => m.ProfileModule
     ),
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard], data:{role:[Role.comittee]}
   },
   { path: 'search/:i', component: GamesComponent },
   // {path:'sign', loadChildren: () => import('./shared/routes/auth/auth.module').then(m => m.AuthModule)},
@@ -42,7 +44,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./shared/routes/panitia/panitia.module').then(
         (m) => m.PanitiaModule
-      ),
+      ), canActivate:[AuthGuard], 
   },
   {
     path: 'detailgames/:_id',
@@ -51,7 +53,9 @@ const routes: Routes = [
         (m) => m.GamesModule
       ),
   },
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'home', redirectTo: 'home', pathMatch: 'full' },
+  // { path: '', component: LandingpageComponent, pathMatch: 'full' },
+  {path:'', component:HomeComponent },
 
   // { path: '**', component: PageNotFoundComponent },
 ];

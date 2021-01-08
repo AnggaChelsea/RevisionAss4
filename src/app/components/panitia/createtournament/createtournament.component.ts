@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CdkTableExporterModule } from 'cdk-table-exporter';
-import { TournamentService } from '../../../shared/services/tournament/tournament.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PanitiaService } from '../../../shared/services/panitia/panitia.service'
 import { CsvService } from '../../../shared/services/csv.service';
+import { FileHolder } from 'angular2-image-upload';
+import { TournamentService } from '../../../shared/services/tournament/tournament.service';
+
 
 import 'jquery';
 declare var $: JQuery;
@@ -23,62 +26,63 @@ export class CreatetournamentComponent implements OnInit {
 
   alert:boolean = false
   getData:any;
+  images = []
+  dataPage:any;
+  
+  
 
   tournament = {
-    name:'',
-    gambar:'',
-    deskripsi:'',
-    price:null,
-    jumlah:null,
-    deskripsisingkat:'',
+    tournamentName:'',
+    tournamentPict:'',
+    groupEntry:'',
+    tournamentDescription:'',
+    tournamentOpen:Date,
+    tournamentStart:Date,
+    stageName:0,
+    tournamentClose:Date,
+    tournamentType:'',
+    tournamentRulesId:'',
+    tournamentReportId:'',
   }
 
   submmited = false;
+  tournamentService: any;
 
-  constructor(private tournamentService:TournamentService, private csvService:CsvService) { }
+  constructor(private panitiaService:PanitiaService, 
+    private router:ActivatedRoute,
+    private route:Router,
+    tournamentService:TournamentService,
+    private csvService:CsvService) { }
 
-  ngOnInit(){
+  public ngOnInit(){
 
-    this.getTournament()
+   
+this.dataPage = this.router.snapshot.params['page']
 
-    $(document).ready(function(){
-$("#menu-toggle").click(function(e) {
-e.preventDefault();
-$("#wrapper").toggleClass("toggled");
-});
-$("#tab1").click(function () {
-$(".tabs").removeClass("active1");
-$(".tabs").addClass("bg-light");
-$("#tab1").addClass("active1");
-$("#tab1").removeClass("bg-light");
-});
-$("#tab2").click(function () {
-$(".tabs").removeClass("active1");
-$(".tabs").addClass("bg-light");
-$("#tab2").addClass("active1");
-$("#tab2").removeClass("bg-light");
-});
-$("#tab3").click(function () {
-$(".tabs").removeClass("active1");
-$(".tabs").addClass("bg-light");
-$("#tab3").addClass("active1");
-$("#tab3").removeClass("bg-light");
-});
-})
+
   }
 
-  createtournament():void {
+  onUploadFinished(file: FileHolder) {
+    console.log(file);
+  }
+
+  onUploadStateChanged(state: boolean) {
+    console.log(state);
+  }
+
+  createtournamentData():void {
     const data = {
-      name:this.tournament.name,
-      gambar:this.tournament.gambar,
-      deskripsi:this.tournament.deskripsi,
-      price:this.tournament.price,
-      jumlah:this.tournament.jumlah,
-      deskripsisingkat:this.tournament.deskripsisingkat,
+      tournamentName:this.tournament.tournamentName,
+      tournamentDescription:this.tournament.tournamentDescription,
+      tournamentOpen:this.tournament.tournamentOpen,
+      tournamentStart:this.tournament.tournamentStart,
+      tournamentClose:this.tournament.tournamentClose,
+      tournamentType:this.tournament.tournamentType,
+      tjbournamentPict:this.tournament.tournamentPict,
     }
     this.tournamentService.create(data)
     .subscribe(
-      response=>{
+      (response: any)=>{
         console.log(response);
         this.submmited = true;
       })
@@ -88,16 +92,6 @@ $("#tab3").removeClass("bg-light");
     this.alert = false
   }
 
-  getTournament(){
-    this.tournamentService.readAll()
-    .subscribe(
-      data=>{
-      this.getData = data;
-      console.log(this.getData);
-
-      }
-    )
-  }
 
   downloadCsv(){
     this.csvService.downloadFile(this.getData, 'jsontocsv');

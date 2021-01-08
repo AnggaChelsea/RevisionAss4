@@ -4,6 +4,7 @@ import { AuthInterceptorInterceptor } from './shared/services/auth/auth.intercep
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injectable } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ImageUploadModule } from 'angular2-image-upload';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -32,8 +33,11 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { CdkTableExporterModule } from 'cdk-table-exporter';
 import { ListtournamentComponent } from './components/panitia/listtournament/listtournament.component';
 import { GroupComponent } from './components/group/group.component';
+
 import { ProfileModule } from './shared/routes/profile/profile.module';
+
 import { AllbracketComponent } from './components/games/allbracket/allbracket.component';
+import { LandingpageComponent } from './components/landingpage/landingpage.component';
 
 
 @Injectable({
@@ -55,10 +59,12 @@ import { AllbracketComponent } from './components/games/allbracket/allbracket.co
     ListtournamentComponent,
     GroupComponent,
     AllbracketComponent,
+    LandingpageComponent,
   ],
 
   imports: [
     BrowserModule,
+    ImageUploadModule.forRoot(),
     NgbModule,
     Ng2SearchPipeModule,
     DataTablesModule,
@@ -74,7 +80,8 @@ import { AllbracketComponent } from './components/games/allbracket/allbracket.co
     HttpClientModule,
     NgxPaginationModule,
     MaterialModule,
-    ProfileModule
+    ProfileModule,
+   
   ],
   providers: [
     {

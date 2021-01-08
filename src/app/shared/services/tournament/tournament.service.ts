@@ -25,13 +25,11 @@ export class TournamentService {
     return response.data;
   }
 
-  //4b795c000aa4ef0d9a0d5cf8998da1d7153fa538
-  //22 october video Expected 2 arguments, but got 0.
 
   readAll(): Observable<any> {
-    return this.httpClient
-      .get<any>(`${environment.urlAddress}product`)
-      .pipe(map(this.getDataTournament));
+    return this.httpClient.get<any>(
+      `${environment.urlAddress}user/tournaments`
+    );
   }
 
   read(_id: any): Observable<any> {
@@ -42,8 +40,10 @@ export class TournamentService {
 
   create(data: any): Observable<any> {
     return this.httpClient.post(
-      `${environment.urlAddress}product/create`,
-      data
+      `${environment.urlAddress}comittee/createGame`,
+      data, {
+        headers: new HttpHeaders().set(this.ACCESS_TOKEN, data),
+      }
     );
   }
 
@@ -115,6 +115,60 @@ export class TournamentService {
     );
   }
 
+  getBranches() {
+    return this.httpClient.get(
+      `${environment.urlAddress}comittee/startBranches`,
+      {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      }
+    );
+  }
+
+  startFFA(datas: any) {
+    return this.httpClient.put(
+      `${environment.urlAddress}comittee/startFreeForAll`,
+      datas,
+      {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      }
+    );
+  }
+
+  endFFA(_id: any) {
+    return this.httpClient.put(
+      `${environment.urlAddress}comittee/endFreeForAll`,
+      _id,
+      {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      }
+    );
+  }
+
+  getFFA(id: any): Observable<any> {
+    return this.httpClient.get(`${environment.urlAddress}user/FFA/${id}`);
+  }
+
+  putScore(datas: any) {
+    return this.httpClient.put(
+      `${environment.urlAddress}comittee/putScore`,
+      datas,
+      {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      }
+    );
+  }
   //  getPage(page:any, title:any): Observable<any> {
   //   return this.httpClient.get(`${environment.urlAddress}user/tournaments?page=${page}&i=${title}`);
   // }

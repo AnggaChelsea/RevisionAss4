@@ -37,4 +37,8 @@ export class InboxService {
       ),
     });
   }
+
+  uploadTest(file: FormData): Observable<any> {
+    return this.http.post<any>(`${environment.urlAddress}/tester`, file);
+  }
 }

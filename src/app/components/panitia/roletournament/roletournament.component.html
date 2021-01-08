@@ -1,1 +1,18 @@
-<p>roletournament works!</p>
+<form>
+    <div class="container">
+        <h1>create tournament</h1>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Min Participant</label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="0000" [(ngModel)]="rule.minParticipant" name="minParticipant" minlength="6">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Max Participant</label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" [(ngModel)]="rule.maxParticipant" name="maxParticipant" maxlength="100">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">age</label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" [(ngModel)]="rule.age" name="age" >
+          </div>  
+          <button type="button" class="btn btn-dark" (click)="cretaeRule()">Saves</button>
+        </div>
+        </form>
