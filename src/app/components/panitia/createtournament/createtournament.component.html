@@ -57,7 +57,7 @@
           
           <div class="mb-3">
             <label for="formFile" class="form-label">Image Of Tournament</label>
-            <input class="form-control" type="file" [(ngModel)]="tournament.tournamentPict" name="tournamentPict" id="formFile">
+            <input class="form-control" type="file" (change)="onFileChanged($event)" [(ngModel)]="tournament.tournamentPict" name="tournamentPict" id="formFile">
           </div>
     
           <div class="mb-3">
