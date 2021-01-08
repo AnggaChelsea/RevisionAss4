@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PanitiaService } from '../../../shared/services/panitia/panitia.service'
 import { CsvService } from '../../../shared/services/csv.service';
 import { FileHolder } from 'angular2-image-upload';
+import { TournamentService } from '../../../shared/services/tournament/tournament.service';
 
 
 import 'jquery';
@@ -45,10 +46,12 @@ export class CreatetournamentComponent implements OnInit {
   }
 
   submmited = false;
+  tournamentService: any;
 
   constructor(private panitiaService:PanitiaService, 
     private router:ActivatedRoute,
     private route:Router,
+    tournamentService:TournamentService,
     private csvService:CsvService) { }
 
   public ngOnInit(){
@@ -77,7 +80,7 @@ this.dataPage = this.router.snapshot.params['page']
       tournamentType:this.tournament.tournamentType,
       tjbournamentPict:this.tournament.tournamentPict,
     }
-    this.panitiaService.createTournament(data)
+    this.tournamentService.create(data)
     .subscribe(
       (response: any)=>{
         console.log(response);

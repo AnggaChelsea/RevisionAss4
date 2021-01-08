@@ -5,6 +5,7 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
+  HttpHeaders,
 } from '@angular/common/http';
 import { AuthService } from './auth.service';
 
@@ -23,9 +24,8 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
     // const id:any=this.signComponent.
 
     if (access_token != null) {
-      const authReq = request.clone({
-        setHeaders: { access_token },
-      });
+      const headerss = new HttpHeaders().set('Authorization', `Bearer${access_token}`)
+      const authReq = request.clone({headers})
     } else {
       console.log('no access');
     }

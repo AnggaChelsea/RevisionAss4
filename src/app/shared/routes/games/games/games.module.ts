@@ -11,6 +11,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FreeforallComponent } from '../../../../components/games/detailgames/freeforall/freeforall.component';
 import { BracketComponent } from '../../../../components/games/detailgames/bracket/bracket.component';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorInterceptor } from 'src/app/shared/services/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,12 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
     FormsModule,
     NgxPaginationModule,
   ],
-  providers: [ParticipantService, TournamentService, AuthService,],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorInterceptor,
+      multi: true,
+    },
+    ParticipantService, TournamentService, AuthService,],
 })
 export class GamesModule {}

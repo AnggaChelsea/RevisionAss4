@@ -19,6 +19,15 @@
 }
 }
 
+li a img {
+    font-size:25px;
+    width: 25px;
+    margin-left: -10px;
+}
+li{
+    list-style: none;
+}
+
 
 /* ======Cards======= */
 
