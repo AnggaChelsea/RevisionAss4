@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
       .getUser()
       .toPromise()
       .then((data) => {
-        console.log(data.role);
+        // console.log(data.role);
         if (data.role === 'admin') {
           this.isAdmin = true;
         } else if (data.role === 'headchief') {
