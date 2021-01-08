@@ -13,6 +13,8 @@ import { MaterialModule } from '../../../material/material.module';
 import { ImageUploadModule } from "angular2-image-upload";
 import { PanitiaRoutingModule } from './panitia-routing.module';
 import { RoletournamentComponent } from '../../../components/panitia/roletournament/roletournament.component'
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorInterceptor } from '../../services/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,13 @@ import { RoletournamentComponent } from '../../../components/panitia/roletournam
     PanitiaComponent,
     RoletournamentComponent
   ],
-  providers: [PanitiaService, CsvService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorInterceptor,
+      multi: true,
+    },
+    PanitiaService, CsvService],
   imports: [
     CommonModule,
     ImageUploadModule.forRoot(),

@@ -5,12 +5,12 @@ import { DetailgamesComponent } from '../../../../components/games/detailgames/d
 import { ParticipantComponent } from '../../../../components/games/detailgames/participant/participant.component';
 import { RegistertournamentComponent } from '../../../../components/games/detailgames/registertournament/registertournament.component';
 import { BracketComponent } from '../../../../components/games/detailgames/bracket/bracket.component';
-
+import { AuthGuard } from '../../../services/auth/auth.guard'
 
 const routes: Routes = [
   { path: '', component: DetailgamesComponent },
   { path: 'participant', component: ParticipantComponent },
-  { path: 'register', component: RegistertournamentComponent },
+  { path: 'register', component: RegistertournamentComponent, canActivate:[AuthGuard], },
   { path: 'branches', component: BracketComponent },
   { path: 'freeforall', component: FreeforallComponent },
 ];

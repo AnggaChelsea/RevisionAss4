@@ -81,7 +81,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
     NgxPaginationModule,
     MaterialModule,
     ProfileModule,
-    
+   
   ],
   providers: [
     {

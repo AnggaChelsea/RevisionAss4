@@ -7,7 +7,7 @@ import { SignComponent } from '../../../components/auth/sign/sign.component';
 import { SignupComponent } from '../../../components/auth/signup/signup.component';
 
 const routes: Routes = [
-  { path: 'signin', component: SignComponent },
+  { path: '', component: SignComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'forgot', component: ForgotComponent },
   { path: 'reset', component: ResetComponent },

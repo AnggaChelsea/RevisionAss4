@@ -11,7 +11,7 @@
 <div class="mb-3 ml-10 container">
   <label for="exampleFormControlInput1" class="form-label">Search Tournament</label>
   <input  type="text" class="form-control" id="exampleFormControlInput1 browser"
-        placeholder="Search by name" [(ngModel)]="filter">
+        placeholder="Search Type or Name Tournament" [(ngModel)]="filter">
   <button  class="btn btn-outline-secondary">Search</button>
 
           <div class="section">
@@ -21,6 +21,7 @@
                 currentPage: page,
                 totalItems: count
               };">
+<<<<<<< HEAD
 
                           <div class="card" >
                               <div class="card-label">{{game.tournamentType}}</div>
@@ -33,6 +34,20 @@
                                   <h4> <b>{{game.tournamentName}}</b></h4>
                                   <p style="max-height: 5em; overflow: hidden;">{{game.tournamentDescription}}</p>
                                   <a class="btn btn-primary" routerLink="detailgames/{{game._id}}">View</a>
+=======
+                          <div class="card">
+                              <div class="card-label"><img src="https://asset.kompas.com/crops/bKM6tSBuyMdd2uYxhquUno40yv8=/96x0:681x390/780x390/data/photo/2014/07/02/0823344bendera-merah-putih780x390.jpg" style="width: 20px;">{{game.tournamentType}}</div>
+                              <div class="card-photo" style="background-image: url(https://png.pngtree.com/png-vector/20200810/ourlarge/pngtree-indonesia-panjat-pinang-silhouette-17-agustus-independence-day-png-image_2323693.jpg);"></div>
+                              <div class="card-body">
+                                  <h2 class="text-success">{{game.tournamentName}}</h2>
+                                  
+                                    <ul>
+                                      <li><a><img src="https://img.icons8.com/bubbles/50/000000/trophy.png"/>{{game.stageName}}</a></li>
+                                      <li><a><img src="https://img.icons8.com/color/48/000000/calendar--v2.png"/>{{game.tournamentOpen | slice:0:10 }}</a></li>
+                                    </ul>
+                                
+                                  <a class="btn btn-success" routerLink="detailgames/{{game._id}}">View</a>
+>>>>>>> acd7a87489c5f10fec73557fefb9f93f2fdb26b1
                               </div>
                           </div>
                       </div>

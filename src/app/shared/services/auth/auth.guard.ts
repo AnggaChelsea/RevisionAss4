@@ -15,20 +15,14 @@ export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const user:any = this.authService.getUser()
-    if (user) {
-      if(route.data.role && route.data.role.indexOf(user.role) === -1 ){
-        this.router.navigate(['']);
-        return false;
-      }
-      
-      return true;
-
-    } 
-    else {
-      this.router.navigate(['/signin']);
-      return false;
+    if(this.authService.loggedIn() !== true){
+      window.alert("Login terlebih dahulu")
+        this.router.navigate(['sign'])
     }
-  }
+    return true
+    }
+
+    }
 
   // RoleActive(): void {
   //   this.authService.getUser().subscribe((data)=>{
@@ -46,4 +40,4 @@ export class AuthGuard implements CanActivate {
   //   })
   // }
 
-}
+

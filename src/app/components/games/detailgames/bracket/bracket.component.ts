@@ -23,6 +23,8 @@ export class BracketComponent implements OnInit {
   title = 'bracket';
   dataBracket:any;
   idName:any;
+  dataId:null;
+  dataDate:any;
 
   constructor(
     private bracketService: BracketService,
@@ -33,10 +35,10 @@ export class BracketComponent implements OnInit {
   public ngOnInit() {
     var minimalData = {
       teams: [
-        ['grave robber', 'Puti'],
-        ['kasep abis', 'Eja purnama'],
-        ['mariana', 'Peroket'],
-        ['juliana', 'Radja N'],
+        // ['grave robber', 'Puti'],
+        // ['kasep abis', 'Eja purnama'],
+        // ['mariana', 'Peroket'],
+        // ['juliana', 'Radja N'],
       ],
       result: [],
     };
@@ -56,24 +58,33 @@ export class BracketComponent implements OnInit {
       })
     })
 
+    this.getDataId()
+    this.dateTournament()
+  }
 
+  getDataId(): void{
+    this.tournamentService.read(this.dataBracket).subscribe((data:any)=>{
+      this.dataId = data.participant.length
+    })
+  }
+
+  dateTournament(): void{
+    this.tournamentService.read(this.dataBracket).subscribe((data:any)=>{
+      this.dataDate = data.tournament
+    })
   }
 
 
   branches(): void {
-    this.tournamentService.read(this.dataBracket).subscribe(
+    this.tournamentService.getBranches().subscribe(
       (res) => {
-        this.dataBracket = res.tournament.participant
+        this.dataBracket = res
         console.log(this.dataBracket);
       },
       (err) => {
         console.log(err);
       }
     );
-  }
-
-  getName(){
-
   }
 
 

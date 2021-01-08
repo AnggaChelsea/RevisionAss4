@@ -24,6 +24,8 @@ export class TournamentService {
   private getDataTournamentId(response: any) {
     return response.data;
   }
+
+
   readAll(): Observable<any> {
     return this.httpClient.get<any>(
       `${environment.urlAddress}user/tournaments`
@@ -38,8 +40,10 @@ export class TournamentService {
 
   create(data: any): Observable<any> {
     return this.httpClient.post(
-      `${environment.urlAddress}product/create`,
-      data
+      `${environment.urlAddress}comittee/createGame`,
+      data, {
+        headers: new HttpHeaders().set(this.ACCESS_TOKEN, data),
+      }
     );
   }
 
