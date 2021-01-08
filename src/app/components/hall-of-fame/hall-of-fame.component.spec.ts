@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {RouterTestingModule}from '@angular/router/testing';
 import { HallOfFameComponent } from './hall-of-fame.component';
 
 describe('HallOfFameComponent', () => {
@@ -8,7 +9,7 @@ describe('HallOfFameComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HallOfFameComponent ]
+      declarations: [ HallOfFameComponent ],imports: [HttpClientTestingModule,RouterTestingModule]
     })
     .compileComponents();
   });

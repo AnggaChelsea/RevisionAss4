@@ -3,6 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import {NgxPaginationModule} from 'ngx-pagination';
 import {RouterTestingModule} from '@angular/router/testing';
 import { GamesComponent } from './games.component';
+import {FormBuilder}from '@angular/forms';
 import { Pipe, PipeTransform, } from '@angular/core';
 
 describe('GamesComponent', () => {
@@ -11,7 +12,7 @@ describe('GamesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GamesComponent, ], imports:[HttpClientTestingModule,RouterTestingModule,NgxPaginationModule,]
+      declarations: [ GamesComponent ],providers: [FormBuilder],imports: [HttpClientTestingModule,RouterTestingModule]
     })
     .compileComponents();
   });

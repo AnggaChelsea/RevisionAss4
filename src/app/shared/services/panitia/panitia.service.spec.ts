@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {RouterTestingModule}from '@angular/router/testing';
 import {HttpClientModule} from '@angular/common/http';
 import { PanitiaService } from './panitia.service';
 
@@ -8,7 +9,7 @@ describe('PanitiaService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule,RouterTestingModule],
       providers: [PanitiaService]
     });
     // service = TestBed.inject(BracketService);
