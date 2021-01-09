@@ -24,7 +24,11 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.getRole().subscribe((data:any)=>{
+      
+    })
+  }
 
   register() {
     var value = this.signUpForm.value;

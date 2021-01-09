@@ -51,6 +51,11 @@ export class AuthService {
     });
   }
 
+  getRole(){
+    let reqheaders = new HttpHeaders({'No-Auth': 'True'});
+    return this.http.get(environment.urlAddress + 'user/profile', {headers:reqheaders})
+  }
+
   forgotPass(email: any) {
     return this.http.post<any>(`${environment.urlAddress}user/forget`, email);
   }
@@ -58,6 +63,7 @@ export class AuthService {
   resetPass(data: any) {
     return this.http.post<any>(`${environment.urlAddress}user/reset`, data);
   }
+
 
   logout() {
     localStorage.removeItem(this.ACCESS_TOKEN);

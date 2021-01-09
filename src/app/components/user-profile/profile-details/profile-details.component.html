@@ -1,4 +1,4 @@
-<body data-aos="fade-up" data-aos-duration="1500" >
+<!-- <body data-aos="fade-up" data-aos-duration="1500" >
     <section class="container">
       <div class="row">
         <div class=" col-md-10 mx-auto">
@@ -81,4 +81,77 @@
       </div>
     </section>
   </body>
-  
+   -->
+
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form" >
+            <div class="row mt-3 form-group">
+              <div class="col-md-6 mb-2">
+                  Full Name
+                <input
+                  type="text"
+                  class="form-control"
+                  
+                  placeholder="{{this.fullname | uppercase}}"
+                  formControlName="fullname"
+                />
+              </div>
+              <div class="col-md-6">
+                  Birth Date
+                <input
+                  type="date"
+                  class="form-control"
+                  placeholder="Birthdate"
+                  formControlName="birthDate"
+                />
+              </div>
+            </div>
+            <div class="row mt-2 form-group">
+              <div class="col-md-6 mb-2">
+                  Phone Number
+                <input
+                  type="text"
+                  class="form-control"
+                  
+                  minlength="11"
+                  maxlength="13"
+                  placeholder="{{this.phoneNumber}}"
+                  formControlName="phoneNumber"
+                />
+              </div>
+              <div class="col-md-4">
+                  <label for="subDistrict">Sub District</label>
+                  <div>
+                  <select id="subDistrict" name="subDistrict" formControlName="subDistrict" >
+                    <option value="kelapa gading">Kelapa Gading</option>
+                    <option value="jelambar">Jelambar</option>
+                    <option value="klender">Klender</option>
+                    <option value="Kemang">Kemang</option>
+                  </select>
+                  </div>
+                  <div class="row mt-4  form-group">
+                  <div class="col-auto ">
+                    Picture
+                    <input type="file" class="form-control" (change)="uploadFile($event)">
+                </div>
+              </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="updateProfile()"  >Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
