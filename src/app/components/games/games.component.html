@@ -21,20 +21,7 @@
                 currentPage: page,
                 totalItems: count
               };">
-
-                          <div class="card" >
-                              <div class="card-label">{{game.tournamentType}}</div>
-                              
-                              <div class="card-photo">
-                                <img src="http://localhost:5000/{{game.tournamentPict|lowercase}}" alt="" style="width: 18em; height: 8em; object-fit: cover;">
-                                <!-- <img src="https://radiant-reef-49263.herokuapp.com/{{game.tournamentPict|lowercase}}" alt=""> -->
-                              </div>
-                              <div class="card-body">
-                                  <h4> <b>{{game.tournamentName}}</b></h4>
-                                  <p style="max-height: 5em; overflow: hidden;">{{game.tournamentDescription}}</p>
-                                  <a class="btn btn-primary" routerLink="detailgames/{{game._id}}">View</a>
-                         
-                                  <!-- <div class="card">
+                          <div class="card">
                               <div class="card-label"><img src="https://asset.kompas.com/crops/bKM6tSBuyMdd2uYxhquUno40yv8=/96x0:681x390/780x390/data/photo/2014/07/02/0823344bendera-merah-putih780x390.jpg" style="width: 20px;">{{game.tournamentType}}</div>
                               <div class="card-photo" style="background-image: url(https://png.pngtree.com/png-vector/20200810/ourlarge/pngtree-indonesia-panjat-pinang-silhouette-17-agustus-independence-day-png-image_2323693.jpg);"></div>
                               <div class="card-body">
@@ -45,8 +32,13 @@
                                       <li><a><img src="https://img.icons8.com/color/48/000000/calendar--v2.png"/>{{game.tournamentOpen | slice:0:10 }}</a></li>
                                     </ul>
                                 
-                                  <a class="btn btn-success" routerLink="detailgames/{{game._id}}">View</a> -->
-
+                                  <a class="btn btn-success" routerLink="detailgames/{{game._id}}">View</a>
+                                  <span>
+                                    <ul class="comment">
+                                      <li><a><img src="https://img.icons8.com/nolan/64/topic.png" style="width: 20px;"></a></li>
+                                      <li><a href=""><img src="https://img.icons8.com/dusk/50/fa314a/facebook-like.png" style="width:20px"></a></li>
+                                    </ul>
+                                  </span>
                               </div>
                           </div>
                       </div>

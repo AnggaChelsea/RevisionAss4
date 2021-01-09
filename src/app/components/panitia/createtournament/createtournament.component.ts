@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild  } from '@angular/core';
+import { FormBuilder, FormArray, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from '@angular/router';
 import { PanitiaService } from '../../../shared/services/panitia/panitia.service'
 import { CsvService } from '../../../shared/services/csv.service';
@@ -52,12 +52,13 @@ export class CreatetournamentComponent implements OnInit {
     private router:ActivatedRoute,
     private route:Router,
     tournamentService:TournamentService,
-    private csvService:CsvService) { }
+    private csvService:CsvService,
+    public fb: FormBuilder,
+    private cd: ChangeDetectorRef) { }
 
   public ngOnInit(){
 
-   
-this.dataPage = this.router.snapshot.params['page']
+    this.createtournamentData()
   }
 
   onFileChanged(event: { target: { files: any[]; }; }) {

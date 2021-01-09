@@ -27,7 +27,11 @@ li a img {
 li{
     list-style: none;
 }
+span .comment{
 
+    display: flex;
+    flex-direction: row ;
+}
 
 /* ======Cards======= */
 

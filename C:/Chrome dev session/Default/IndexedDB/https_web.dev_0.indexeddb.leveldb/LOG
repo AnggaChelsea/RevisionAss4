@@ -1,0 +1,5 @@
+2021/01/09-10:32:59.652 f453 Reusing MANIFEST /home/anggalesmana/Documents/Coding/RevisionAss4/C:/Chrome dev session/Default/IndexedDB/https_web.dev_0.indexeddb.leveldb/MANIFEST-000001
+2021/01/09-10:33:55.883 f453 Level-0 table #5: started
+2021/01/09-10:33:56.000 f453 Level-0 table #5: 5010 bytes OK
+2021/01/09-10:33:56.086 f453 Delete type=0 #3
+2021/01/09-10:33:56.087 f743 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
