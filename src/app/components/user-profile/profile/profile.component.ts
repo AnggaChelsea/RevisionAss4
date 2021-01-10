@@ -20,7 +20,8 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.profileService.getProfile().subscribe((res) => {
       // this.path = "http://localhost:5000/"
-      this.path = 'https://git.heroku.com/radiant-reef-49263.git/';
+      // this.path = 'https://git.heroku.com/radiant-reef-49263.git/';
+      this.path = 'https://radiant-reef-49263.herokuapp.com/';
       this.picture = res.picture;
       this.subDistrict = res.subDistrict;
       this.birthDate = res.birthDate;

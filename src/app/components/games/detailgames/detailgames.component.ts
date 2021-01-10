@@ -8,9 +8,10 @@ import { TournamentService } from '../../../shared/services/tournament/tournamen
   styleUrls: ['./detailgames.component.css'],
 })
 export class DetailgamesComponent implements OnInit {
-  dataId: any = {}
+  dataId: any = {};
   currentTournament = null;
   message = '';
+  type: any;
 
   constructor(
     private tournamentService: TournamentService,
@@ -23,18 +24,16 @@ export class DetailgamesComponent implements OnInit {
     this.getTournament();
     this.message = '';
     this.dataId = this.route.snapshot.paramMap.get('_id');
-    this.route.queryParams.subscribe(params=>{
-      this.tournamentService.read(this.dataId)
-      .subscribe(data=>{
-        console.log(data)
-      })
-    })
+    this.route.queryParams.subscribe((params) => {
+      this.tournamentService.read(this.dataId).subscribe((data) => {
+        // console.log(data)
+      });
+    });
   }
 
   getTournament(): void {
     this.tournamentService.read(this.dataId).subscribe((data) => {
-      this.dataId = data.tournament
-      console.log(this.dataId);
+      this.dataId = data.tournament;
     });
   }
 }

@@ -17,27 +17,26 @@ export class HallOfFameComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log('hof nyala');
-    // this.showHoF();
-
+    this.showHoF();
     // console.log(this.Winner);
   }
 
-  // showHoF() {
-  //   return this.tournamentService.hallOfFame().subscribe(
-  //     (data:any) => {
-  //       this.TournamentName = data.FFA[0].tournamentName;
-  //       this.TournamentType = data.FFA[0].tournamentType;
-  //       this.TournamentFinished = data.FFA[0].tournamentClose;
+  showHoF() {
+    return this.tournamentService.hallOfFame().subscribe(
+      (data: any) => {
+        this.TournamentName = data.FFA[0].tournamentName;
+        this.TournamentType = data.FFA[0].tournamentType;
+        this.TournamentFinished = data.FFA[0].tournamentClose;
 
-  //       for (let i in data.sliced) {
-  //         this.Winner.push(data.sliced[i]);
-  //       }
-  //     },
-  //     (err:any) => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }
+        for (let i in data.sliced) {
+          this.Winner.push(data.sliced[i]);
+        }
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
+  }
 
-  showGame() {}
+  // showGame() {}
 }
