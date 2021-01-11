@@ -41,11 +41,6 @@ export class FreeforallComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('_id');
 
-    // this.route.queryParams.subscribe((params) => {
-    //   this.tournamentService.getFFA(this.id).subscribe((data) => {
-    //     console.log(data);
-    //   });
-    // });
     this.auth();
     this.readTournament();
     this.FFA();
