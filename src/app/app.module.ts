@@ -42,6 +42,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
+import { LurahModule } from './shared/routes/lurahmodule/lurahmodule.module';
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -63,6 +66,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     AllbracketComponent,
     LandingpageComponent,
     HallOfFameComponent,
+    AdminComponent,
   ],
 
   imports: [
@@ -85,7 +89,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     NgxPaginationModule,
     MaterialModule,
     ProfileModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    LurahModule,
   ],
   providers: [
     {
@@ -97,7 +102,10 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     PanitiaService,
     TournamentService,
     AuthGuard,
-    JwtHelperService 
+    JwtHelperService, 
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   bootstrap: [AppComponent],
 })

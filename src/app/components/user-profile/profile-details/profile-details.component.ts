@@ -48,15 +48,6 @@ export class ProfileDetailsComponent implements OnInit {
       this._tournamentId = res._tournamentId;
     });
   }
-  // profileForm:any = new FormGroup({
-  //   fullname: new FormControl(''),
-  //   subDistrict: new FormControl(''),
-  //   phoneNumber: new FormControl(''),
-  //   birthDate : new FormControl(''),
-  // })
-  // updateForm:any = new FormGroup({
-  //   fullname: new FormControl('')
-  // })
   uploadFile(event:any) {
     const file = <File>event.target.files[0]
     this.form.patchValue({

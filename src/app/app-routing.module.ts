@@ -5,6 +5,7 @@ import { ProfileComponent } from './components/user-profile/profile/profile.comp
 import { InboxComponent } from './components/auth/inbox/inbox.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './shared/services/auth/auth.guard';
 import { GamesComponent } from './components/games/games.component';
@@ -38,6 +39,9 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { role: [Role.comittee] },
   },
+  {path:'lurahs', loadChildren:()=>import('./shared/routes/lurahmodule/lurahmodule.module')
+  .then(m => m.LurahModule)},
+  {path:'admin',component:AdminComponent},
   { path: 'search/:i', component: GamesComponent },
   {
     path: 'panitia',
@@ -58,8 +62,9 @@ const routes: Routes = [
   // { path: '', component: LandingpageComponent, pathMatch: 'full' },
   { path: '', component: HomeComponent },
 
-  { path: '**', component: PageNotFoundComponent },
-];
+  // { path: '**', component: PageNotFoundComponent },
+
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

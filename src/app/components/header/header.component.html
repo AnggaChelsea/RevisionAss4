@@ -25,6 +25,15 @@
           <a class="nav-link" routerLink="profiles/profile">Profile</a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" routerLink="lurah" *ngIf="this.isHeadChief===true && authService.loggedIn()">Lurah</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="admin"*ngIf="this.isAdmin===true && authService.loggedIn()">Admin</a>
+        </li>
+        
+
         <div style="position: relative;">
           <li class="nav-item" *ngIf="authService.loggedIn()">
             <a class="nav-link" href="inbox" style="color: rgb(255, 255, 255);">Inbox</a>
@@ -43,10 +52,6 @@
 
         <li class="nav-item" *ngIf="authService.loggedIn()" (click)="authService.logout()">
           <a class="nav-link" routerLink="">Logout</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link"></a>
         </li>
 
       </ul>
