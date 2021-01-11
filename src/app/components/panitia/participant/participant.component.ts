@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PanitiaService } from '../../../shared/services/panitia/panitia.service';
 
 @Component({
   selector: 'app-participant',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParticipantComponent implements OnInit {
 
-  constructor() { }
+  constructor(private panitiaService:PanitiaService) { }
+  dataParticipant:any;
 
-  ngOnInit(): void {
+  ngOnInit(){
+   
+
+    // this.getParticipant()
   }
+
+  // getParticipant(){
+  //   this.panitiaService.getData()
+  //   .subscribe(data=>{
+  //     this.dataParticipant = data;
+  //     console.log(this.dataParticipant);
+  //   },error => {
+  //     console.log(error)
+  // //   })
+
+  // }
 
 }

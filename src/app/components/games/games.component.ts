@@ -1,67 +1,90 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { TournamentService } from '../../shared/services/tournament/tournament.service';
-import { Tournament } from '../../shared/models/tournament';
 
+import 'jquery';
+declare var $: JQuery;
+
+declare global {
+  interface JQuery {
+    (Jquery: any): JQuery;
+    bracket(options: any): JQuery;
+  }
+}
 
 @Component({
   selector: 'app-games',
   templateUrl: './games.component.html',
-  styleUrls: ['./games.component.css']
+  styleUrls: ['./games.component.css'],
 })
 export class GamesComponent implements OnInit {
+  tournaments: any;
+  participants: any;
+  page = 0;
+  count: any;
+  tableSize = 8;
+  tableSizes = [3, 6, 9, 12];
 
- tournaments: any;
- currentTournament = null;
- currentIndex = -1;
- name = '';
+  filter!: string;
+  dataId: any;
 
-  constructor(private tournamentService:TournamentService) {
-  }
+  constructor(
+    private tournamentService: TournamentService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-     this.readTournament();
-  }
-  readTournament(): void {
-    this.tournamentService.readAll()
-      .subscribe(
-        data => {
-          this.tournaments = data;
-          console.log(this.tournaments);
-        },
-        error => {
-          console.log(error);
-        });
-  }
-
-  refresh(): void {
+  ngOnInit() {
     this.readTournament();
-    this.currentTournament = null;
-    this.currentIndex = -1;
+    this.getDataId();
+    this.dataId = this.route.snapshot.params['_id'];
+    this.dataId = this.route.snapshot.paramMap.get('_id');
+    this.route.queryParams.subscribe((params) => {
+      this.tournamentService.read(this.dataId).subscribe((data) => {});
+    });
   }
 
-  setCurrentProduct(tournament:any, index:any): void {
-   this.currentTournament = tournament;
-   this.currentIndex = index;
- }
-
- searchByName(): void {
-    this.tournamentService.searchByName(this.name)
-      .subscribe(
-        data => {
-          this.tournaments = data;
-          console.log(this.tournaments);
-        },
-        error => {
-          console.log(error);
-        });
+  getDataId(): void {
+    this.tournamentService.read(this.dataId).subscribe((data: any) => {
+      this.dataId = data.tournament.participant.length;
+    });
   }
 
+  readTournament(): void {
+    this.tournamentService.readAll().subscribe((data) => {
+      this.tournaments = data.list;
+    });
+  }
 
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.readTournament();
+  }
 
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.readTournament();
+  }
 
+  // doSearch(value:string){
+  //   console.log(`value=${value}`);
+  //   this.router.navigateByUrl(`/search/${value}`);
+  // }
+
+  // searchByName(): void {
+  //    this.tournamentService.searchByName(this.i)
+  //      .subscribe(
+  //        data => {
+  //          this.tournaments = data;
+  //          console.log(this.tournaments);
+  //        },
+  //        error => {
+  //          console.log(error);
+  //        });
+  //  }
 }

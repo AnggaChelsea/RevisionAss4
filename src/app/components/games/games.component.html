@@ -1,43 +1,159 @@
-<div class="mb-3 container">
-  <label for="exampleFormControlInput1" class="form-label">Search Tournament</label>
-  <input type="text" class="form-control" id="exampleFormControlInput1"
-        placeholder="Search by name"
-        [(ngModel)]="name">
-  <button type="button" class="btn btn-outline-secondary"
-          type="button"
-          (click)="searchByName()">Search</button>
+<div class="container" style="margin-bottom: 2em; margin-top: 2em">
+  <a routerLink="hallOfFame">
+    <img
+      src="https://assets.newatlas.com/dims4/default/13bc0be/2147483647/strip/true/crop/720x480+600+0/resize/1200x800!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2Farchive%2Fgold-melt-2.jpg"
+      style="width: 100%; height: 5em; object-fit: cover; border-radius: 1em"
+      alt=""
+    />
+    <h1 style="position: relative; top: -1.2em; right: -1em; font-size: 3em">
+      <b style="color: rgb(255, 255, 255)">Hall of Fame</b>
+    </h1>
+  </a>
 </div>
-<div class="section">
-    <div class="container">
-        <div class="row flex-row-stretch">
 
-            <div class="col-sm-6 col-md-4 col-lg-3 flex-col" *ngFor="let game of tournaments">
-                <div class="card">
-                    <div class="card-label">{{game.name}}</div>
-                    <div class="card-photo" style="background-image: url(https://itagroup.hs.llnwd.net/o40/csg/btr2018/news-banner-vto.jpg);"></div>
-                    <div class="card-body">
-                        <h4>This is one flexy little card ready for action</h4>
+<div class="mb-3 ml-10 container">
+<<<<<<< HEAD
+  <label for="exampleFormControlInput1" class="form-label">Search Tournament</label>
+  <input  type="text" class="form-control" id="exampleFormControlInput1 browser"
+        placeholder="Search Type or Tournament Name" [(ngModel)]="filter">
+  
+  <!-- <button  class="btn btn-outline-secondary">Search</button> -->
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <a class="btn btn-primary" routerLink="detailgames">View</a>
-                    </div>
-                </div>
-            </div>
+          <div class="section">
+                  <div class="row flex-row-stretch">
+                      <div class="col-sm-6 col-md-4 col-lg-3 flex-col" *ngFor="let game of tournaments | filter:filter | paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };">
 
+                          <div class="card" >
+                              <div class="card-label">{{game.tournamentType}}</div>
+                              
+                              <div class="card-photo">
+                                <img src="http://localhost:5000/{{game.tournamentPict|lowercase}}" alt="" style="width: 18em; height: 8em; object-fit: cover;">
+                                <!-- <img src="https://radiant-reef-49263.herokuapp.com/{{game.tournamentPict|lowercase}}" alt=""> -->
+                              </div>
+                              <div class="card-body">
+                                  <h4> <b>{{game.tournamentName}}</b></h4>
+                                  <p style="max-height: 5em; overflow: hidden;">{{game.tournamentDescription}}</p>
+                                  <a class="btn btn-primary" routerLink="detailgames/{{game._id}}">View</a>
+                         
+                                  <!-- <div class="card">
+                              <div class="card-label"><img src="https://asset.kompas.com/crops/bKM6tSBuyMdd2uYxhquUno40yv8=/96x0:681x390/780x390/data/photo/2014/07/02/0823344bendera-merah-putih780x390.jpg" style="width: 20px;">{{game.tournamentType}}</div>
+                              <div class="card-photo" style="background-image: url(https://png.pngtree.com/png-vector/20200810/ourlarge/pngtree-indonesia-panjat-pinang-silhouette-17-agustus-independence-day-png-image_2323693.jpg);"></div>
+                              <div class="card-body">
+                                  <h2 class="text-success">{{game.tournamentName}}</h2>
+                                  
+                                    <ul>
+                                      <li><a><img src="https://img.icons8.com/bubbles/50/000000/trophy.png"/>{{game.stageName}}</a></li>
+                                      <li><a><img src="https://img.icons8.com/color/48/000000/calendar--v2.png"/>{{game.tournamentOpen | slice:0:10 }}</a></li>
+                                    </ul>
+                                
+                                  <a class="btn btn-success" routerLink="detailgames/{{game._id}}">View</a> -->
+=======
+  <label for="exampleFormControlInput1" class="form-label"
+    >Search By Name or Type Tournament</label
+  >
+  <input
+    type="text"
+    class="form-control"
+    id="exampleFormControlInput1 browser"
+    placeholder="Search Type or Name Tournament"
+    [(ngModel)]="filter"
+  />
+ 
+>>>>>>> 55b44b9b258471a6ed4856cbf48bfefa02945550
 
+  <div class="section">
+    <div class="row flex-row-stretch">
+      <div
+        class="col-sm-6 col-md-4 col-lg-3 flex-col"
+        *ngFor="
+          let game of tournaments
+            | filter: filter
+            | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                }
+        "
+      >
+        <div class="card">
+          <div class="card-label">
+            <img
+              src="https://asset.kompas.com/crops/bKM6tSBuyMdd2uYxhquUno40yv8=/96x0:681x390/780x390/data/photo/2014/07/02/0823344bendera-merah-putih780x390.jpg"
+              style="width: 20px"
+            />{{ game.tournamentType }}
+          </div>
+          <div
+            class="card-photo"
+            style="
+              background-image: url(https://png.pngtree.com/png-vector/20200810/ourlarge/pngtree-indonesia-panjat-pinang-silhouette-17-agustus-independence-day-png-image_2323693.jpg);
+            "
+          ></div>
+          <div class="card-body">
+            <h2 class="text-success">{{ game.tournamentName }}</h2>
+
+            <ul>
+              <li>
+                <a
+                  ><img
+                    src="https://img.icons8.com/bubbles/50/000000/trophy.png"
+                  />{{ game.stageName }}</a
+                >
+              </li>
+              <li>
+                <a
+                  ><img
+                    src="https://img.icons8.com/color/48/000000/calendar--v2.png"
+                  />{{ game.tournamentOpen | slice: 0:10 }}</a
+                >
+              </li>
+            </ul>
+
+            <a class="btn btn-success" routerLink="detailgames/{{ game._id }}"
+              >View</a
+            >
+            <span>
+              <ul class="comment">
+                <li>
+                  <a
+                    ><img
+                      src="https://img.icons8.com/nolan/64/topic.png"
+                      style="width: 20px"
+                  /></a><small>100</small>
+                </li>
+                <li>
+                  <a href=""
+                    ><img
+                      src="https://img.icons8.com/dusk/50/fa314a/facebook-like.png"
+                      style="width: 20px"
+                  /></a><small>10k</small>
+                </li>
+              </ul>
+              <p *ngIf="comment">
+                <textarea name="comment" id="" cols="20" rows="2"></textarea>
+                <button class="btn btn-outline-primary">send</button>
+              </p>
+            </span>
+          </div>
         </div>
+      </div>
     </div>
-  <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <div class="d-flex justify-content-center">
+          <pagination-controls
+            previousLabel="Prev"
+            nextLabel="Next"
+            (pageChange)="onTableDataChange($event)"
+          >
+          </pagination-controls>
+        </div>
+      </ul>
+    </nav>
+  </div>
 </div>

@@ -1,29 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { Profile } from 'src/app/shared/model/Profile';
-import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { Profile } from 'src/app/shared/models/Profile';
+import { ProfileService } from 'src/app/shared/services/profile/profile.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  subDistrict:string | undefined
-  birthDate:Date | undefined
-  phoneNumber:number | undefined;
-  fullname:string | undefined
-  _groupId:string | undefined
-  _tournamentId:string | undefined
-  constructor(private authService: AuthService) { }
+  subDistrict: any | string;
+  birthDate: Date | undefined;
+  phoneNumber: number | undefined;
+  fullname: string | undefined;
+  _groupId: string | undefined;
+  _tournamentId: string | undefined;
+  picture: string | undefined;
+  path: any;
+  constructor(private profileService: ProfileService) {}
 
   ngOnInit(): void {
-    this.authService.getProfile().subscribe((res) => {
-      this.subDistrict = res.data.subDistrict
-      this.birthDate = res.data.birthDate
-      this.phoneNumber = res.data.phoneNumber
-      this.fullname = res.data.fullname
-      this._groupId = res.data._groupId
-      this._tournamentId = res.data._tournamentId
-    })
+    this.profileService.getProfile().subscribe((res) => {
+      // this.path = "http://localhost:5000/"
+      // this.path = 'https://git.heroku.com/radiant-reef-49263.git/';
+      this.path = 'https://radiant-reef-49263.herokuapp.com/';
+      this.picture = res.picture;
+      this.subDistrict = res.subDistrict;
+      this.birthDate = res.birthDate;
+      this.phoneNumber = res.phoneNumber;
+      this.fullname = res.fullname;
+      this._groupId = res._groupId;
+      this._tournamentId = res._tournamentId;
+    });
   }
-  
 }

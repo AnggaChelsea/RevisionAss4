@@ -5,9 +5,12 @@
       <h1>NNA Sport</h1>
     </div>
 
-    <form>
-      <input type="email" placeholder="email@example.com" name="email"><br>
-      <input type="submit" class="fadeIn fourth bg-dark" value="Forgot">
+    <form [formGroup]="emailForm" (ngSubmit)="sendForgot()">
+      <input type="text" name="email" formControlName="email" placeholder="email@example.com" name="email"><br>
+      <!-- <input type="submit" class="fadeIn fourth bg-danger" value="Forgot"> -->
+      <div class="d-flex justify-content-center mt-3 login_container">
+        <button type="submit" value="Submit" name="button" class="btn login_btn" style="background-color: rgb(241, 41, 41); color: wheat;">Send Email</button>
+      </div>
     </form>
 
   </div>

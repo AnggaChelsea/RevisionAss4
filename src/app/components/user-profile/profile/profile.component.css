@@ -7,6 +7,8 @@ body {
     margin-top:15px
 }
 
+/*
+
 .profileSideBar, .profile{
     margin-top:50px;   
 }
@@ -74,4 +76,59 @@ body {
 }
 .text-capitalize{
     letter-spacing: 1px;
+}
+#profile-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+} */
+
+.container{
+    position: relative;
+}
+
+.card {
+    width: 400px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(red,white);
+    top:120px;
+    position: relative;
+}
+
+.stats {
+    background: #f2f5f8 !important;
+    color: #000 !important
+}
+
+.articles {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number1 {
+    font-weight: 500
+}
+
+.followers {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number2 {
+    font-weight: 500
+}
+
+.rating {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number3 {
+    font-weight: 500
 }

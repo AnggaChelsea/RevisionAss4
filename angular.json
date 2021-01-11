@@ -17,6 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "jquery"
+            ],
             "outputPath": "dist/revisiass4",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -25,13 +29,24 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
+              "node_modules/jquery-bracket/dist/jquery.bracket.min.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css",
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/sweetalert2/dist/sweetalert2.all.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/jquery-bracket/dist/jquery.bracket.min.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -51,22 +66,25 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "revisiass4:build"
+            "browserTarget": "revisiass4:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -89,17 +107,18 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/datatables.net-fixedcolumns-dt/css/fixedColumns.dataTables.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css",
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.slim.min.js",
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/jquery-bracket/dist/jquery.bracket.min.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           }
