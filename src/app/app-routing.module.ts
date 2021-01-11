@@ -5,7 +5,19 @@ import { ProfileComponent } from './components/user-profile/profile/profile.comp
 import { InboxComponent } from './components/auth/inbox/inbox.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
 import { HomeComponent } from './components/home/home.component';
+
+
+
+
+const routes: Routes = [
+  {path:'', component:HomeComponent},
+  {path:'sign', loadChildren: () => import('./shared/routes/auth/auth.module').then(m => m.AuthModule)},
+  {path:'profiles',loadChildren: () => import('../app/components/user-profile/profile.module').then(m => m.ProfileModule)},
+  {path:'lurahs', loadChildren:()=>import('../app/components/lurah/lurahmodule/lurahmodule.module').then(m => m.LurahModule)},
+  {path:'admin',component:AdminComponent}
+
 import { AuthGuard } from './shared/services/auth/auth.guard';
 import { GamesComponent } from './components/games/games.component';
 import { Role } from '../app/shared/models/role';
@@ -59,6 +71,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
 
   { path: '**', component: PageNotFoundComponent },
+
 ];
 
 @NgModule({

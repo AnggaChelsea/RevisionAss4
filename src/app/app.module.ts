@@ -25,6 +25,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BannerComponent } from './components/banner/banner.component';
 import { GamesComponent } from './components/games/games.component';
 import { AdminComponent } from './components/admin/admin.component';
+
+import { ProfileModule } from './components/user-profile/profile.module';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { LurahModule } from './components/lurah/lurahmodule/lurahmodule.module';
+
+
 import { InboxComponent } from './components/auth/inbox/inbox.component';
 import { ProfileComponent } from './components/user-profile/profile/profile.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -42,6 +48,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -54,6 +61,11 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     ConfirmComponent,
     BannerComponent,
     GamesComponent,
+
+    DetailgamesComponent,
+    SearchgameComponent,
+    AdminComponent,
+
     AdminComponent,
     InboxComponent,
     SignComponent,
@@ -63,6 +75,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     AllbracketComponent,
     LandingpageComponent,
     HallOfFameComponent,
+
   ],
 
   imports: [
@@ -85,6 +98,12 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     NgxPaginationModule,
     MaterialModule,
     ProfileModule,
+
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    LurahModule,
+
     BrowserAnimationsModule
   ],
   providers: [
@@ -98,6 +117,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     TournamentService,
     AuthGuard,
     JwtHelperService 
+
   ],
   bootstrap: [AppComponent],
 })
