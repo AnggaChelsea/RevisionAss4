@@ -39,6 +39,7 @@ import { AllbracketComponent } from './components/games/allbracket/allbracket.co
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from 'src/environments/environment';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root',
@@ -95,6 +96,7 @@ import { environment } from 'src/environments/environment';
     PanitiaService,
     TournamentService,
     AuthGuard,
+    JwtHelperService 
   ],
   bootstrap: [AppComponent],
 })

@@ -35,10 +35,10 @@ export class BracketComponent implements OnInit {
   public ngOnInit() {
     var minimalData = {
       teams: [
-        // ['grave robber', 'Puti'],
-        // ['kasep abis', 'Eja purnama'],
-        // ['mariana', 'Peroket'],
-        // ['juliana', 'Radja N'],
+        ['grave robber', 'Puti'],
+        ['kasep abis', 'Eja purnama'],
+        ['mariana', 'Peroket'],
+        ['juliana', 'Radja N'],
       ],
       result: [],
     };

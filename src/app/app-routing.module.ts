@@ -18,8 +18,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./shared/routes/auth/auth.module').then((m) => m.AuthModule),
   },
-  // { path: 'allbracket', component: AllbracketComponent },
-  { path: 'hallOfFame', component: HallOfFameComponent },
+   { path: 'hallOfFame', component: HallOfFameComponent },
   {
     path: 'inbox',
     component: InboxComponent,
@@ -40,14 +39,13 @@ const routes: Routes = [
     data: { role: [Role.comittee] },
   },
   { path: 'search/:i', component: GamesComponent },
-  // {path:'sign', loadChildren: () => import('./shared/routes/auth/auth.module').then(m => m.AuthModule)},
   {
     path: 'panitia',
     loadChildren: () =>
       import('./shared/routes/panitia/panitia.module').then(
         (m) => m.PanitiaModule
       ),
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard], data: { roles: [Role.comittee] }
   },
   {
     path: 'detailgames/:_id',
