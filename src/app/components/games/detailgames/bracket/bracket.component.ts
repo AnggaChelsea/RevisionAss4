@@ -20,11 +20,14 @@ declare global {
   styleUrls: ['./bracket.component.css'],
 })
 export class BracketComponent implements OnInit {
+  id: any;
   title = 'bracket';
   dataBracket: any;
+  minimalData: any = {};
   idName: any;
   dataId: null;
   dataDate: any;
+  // public minimalData: any[] = [];
 
   constructor(
     private bracketService: BracketService,
@@ -32,60 +35,28 @@ export class BracketComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  public ngOnInit() {
-    var minimalData = {
-      teams: [
-        ['beben', 'edo'],
-        ['venny', 'tati'],
-        ['rhajeng', 'stella'],
-        ['agil', 'ratna'],
-        ['rudi', 'empoi'],
-        [null, null],
-        [null, null],
-        [null, null],
-      ],
-      results: [
-        [
-          [1, 2],
-          [3, 5],
-          [6, 2],
-          [7, 4],
-          [7, 4],
-          [7, 4],
-          [null, 5],
-        ],
-        [
-          [4, 6],
-          [2, 1],
-          [2, 1],
-        ],
-        [
-          [4, 6],
-          [2, 1],
-        ],
-        [
-          [4, 6],
-          [2, 1],
-        ],
-      ],
-    };
+  ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('_id');
+    this.branches();
+    this.getDataId();
+    this.dateTournament();
+
+    console.log(this.minimalData);
+    // console.log(this.minimalData.teams[0]);
+    // console.log(this.minimalData.length);
+    // console.log(typeof this.minimalData);
+    // console.log(minimalData);
+    // console.log(this.id);
+    // console.log(this.minimalData);
+
+    var minimalData = this.minimalData;
 
     $(() => {
       $('#minimal .demo').bracket({
         init: minimalData /* data to initialize the bracket with */,
+        // init: this.minimalData /* data to initialize the bracket with */,
       });
     });
-    this.branches();
-    this.dataBracket = this.route.snapshot.params['_id'];
-    this.dataBracket = this.route.snapshot.paramMap.get('_id');
-    this.route.queryParams.subscribe((params) => {
-      this.tournamentService.read(this.dataBracket).subscribe((data) => {
-        console.log(data);
-      });
-    });
-
-    this.getDataId();
-    this.dateTournament();
   }
 
   getDataId(): void {
@@ -101,10 +72,12 @@ export class BracketComponent implements OnInit {
   }
 
   branches(): void {
-    this.tournamentService.getBranches().subscribe(
+    console.log('masuk branches');
+
+    this.tournamentService.getBranches(this.id).subscribe(
       (res) => {
-        this.dataBracket = res;
-        console.log(this.dataBracket);
+        this.minimalData.teams = res.teams;
+        // console.log(this.minimalData.teams);
       },
       (err) => {
         console.log(err);

@@ -111,17 +111,17 @@ export class TournamentService {
     );
   }
 
-  getBranches() {
-    return this.httpClient.get(
-      `${environment.urlAddress}comittee/startBranches`,
-      {
-        headers: new HttpHeaders().set(
-          this.ACCESS_TOKEN,
-          this.authService.getToken()
-        ),
-      }
-    );
-  }
+  // getBranches() {
+  //   return this.httpClient.get(
+  //     `${environment.urlAddress}comittee/startBranches`,
+  //     {
+  //       headers: new HttpHeaders().set(
+  //         this.ACCESS_TOKEN,
+  //         this.authService.getToken()
+  //       ),
+  //     }
+  //   );
+  // }
 
   startFFA(datas: any) {
     return this.httpClient.put(
@@ -151,6 +151,10 @@ export class TournamentService {
 
   getFFA(id: any): Observable<any> {
     return this.httpClient.get(`${environment.urlAddress}user/FFA/${id}`);
+  }
+
+  getBranches(id: any): Observable<any> {
+    return this.httpClient.get(`${environment.urlAddress}user/Branches/${id}`);
   }
 
   putScore(datas: any) {
