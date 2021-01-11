@@ -5,4 +5,5 @@ export enum Role {
   comittee = 'comittee',
   headchief = 'headchief',
   admin = 'admin',
+  commite = "commite"
 }

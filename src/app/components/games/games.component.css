@@ -26,8 +26,22 @@ li a img {
 }
 li{
     list-style: none;
+    margin:10px;
+    left:-10px;
+
+}
+span .comment{
+    margin-bottom: auto;
+    bottom: 12px;
+    margin-left: -22;
+    display: flex;
+    flex-direction: row ;
 }
 
+.comment{
+    display: flex;
+    flex-direction: row;
+}
 
 /* ======Cards======= */
 
@@ -38,7 +52,7 @@ li{
     overflow: hidden;
     text-align: left;
     border-radius: 6px;
-    box-shadow: 0 4px 15px -2px rgba(0, 0, 0, .2);
+    box-shadow: 0 7px 15px -2px rgba(0, 0, 0, .2);
     -webkit-box-shadow: 0 4px 15px -2px rgba(0, 0, 0, .2);
     background-color: #fff;
     display: flex;
@@ -85,7 +99,3 @@ li{
     margin-top: auto;
 }
 
-/* search game */
-.container{
-    position:relative;
-}

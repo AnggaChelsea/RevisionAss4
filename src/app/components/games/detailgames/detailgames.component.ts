@@ -5,6 +5,7 @@ import { TournamentService } from '../../../shared/services/tournament/tournamen
 @Component({
   selector: 'app-detailgames',
   templateUrl: './detailgames.component.html',
+  animations:[],
   styleUrls: ['./detailgames.component.css'],
 })
 export class DetailgamesComponent implements OnInit {

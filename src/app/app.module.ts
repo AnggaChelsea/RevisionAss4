@@ -36,9 +36,11 @@ import { CdkTableExporterModule } from 'cdk-table-exporter';
 import { ListtournamentComponent } from './components/panitia/listtournament/listtournament.component';
 import { GroupComponent } from './components/group/group.component';
 import { ProfileModule } from './shared/routes/profile/profile.module';
-
 import { AllbracketComponent } from './components/games/allbracket/allbracket.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from 'src/environments/environment';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root',
@@ -69,6 +71,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
     NgbModule,
     Ng2SearchPipeModule,
     DataTablesModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled:environment.production}),
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
@@ -82,6 +85,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
     NgxPaginationModule,
     MaterialModule,
     ProfileModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
@@ -93,6 +97,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
     PanitiaService,
     TournamentService,
     AuthGuard,
+    JwtHelperService 
   ],
   bootstrap: [AppComponent],
 })

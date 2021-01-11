@@ -47,7 +47,7 @@ export class BracketComponent implements OnInit {
     // console.log(typeof this.minimalData);
     // console.log(minimalData);
     // console.log(this.id);
-    // console.log(this.minimalData);
+    // console.log(this.minimalData);g
 
     var minimalData = this.minimalData;
 
