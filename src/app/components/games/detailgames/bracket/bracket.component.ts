@@ -24,7 +24,8 @@ export class BracketComponent implements OnInit {
   title = 'bracket';
   dataBracket: any;
   list: any[] = [];
-  teams: any[] = [];
+  teams: any = {ab:[]};
+  cibai:any =[]
   // teams: any;
   idName: any;
   dataId: null;
@@ -42,10 +43,10 @@ export class BracketComponent implements OnInit {
   ngOnInit() {
     // console.log(this.minimal);
     this.id = this.route.snapshot.paramMap.get('_id');
-    this.branches();
+    this.branches()
+    console.log(this.branches)
     this.getDataId();
     this.dateTournament();
-
     // this.minimalData.teams = this.teams;
     // console.log(this.minimalData.teams[0].length);
     // console.log(this.minimalData.teams[0]);
@@ -53,14 +54,23 @@ export class BracketComponent implements OnInit {
     // console.log(this.minimalData.teams);
     // console.log(this.minimalData.teams[0]);
     // var minimal = this.minimalData;
-
-    console.log(this.teams);
-    console.log(this.teams.length);
-    for (let i = 0; i < this.teams.length; i++) {
-      console.log(this.teams[i]);
-    }
-
-    // console.log(this.teams[0]);
+    // console.log(this.teams.length);
+    // for (let i = 0; i < this.teams.length; i++) {
+    //   console.log(this.teams[i]);
+    // }
+    
+    
+    console.log(this.teams)
+    var a=this.teams
+    console.log(a)
+    
+    var obj:any = {}
+    $.each(a, function (value:any) {
+      obj.minimalData = a["ab"]
+  });
+  console.log(obj)
+  var b = $.merge( $.merge( [], obj ))
+  console.log(b)
     // console.log(this.teams.length);
     // console.log(this.teams.length != 0);
     // console.log(this.teams == null);
@@ -72,8 +82,10 @@ export class BracketComponent implements OnInit {
     // console.log(this.minimal);
     // console.log(this.minimal.teams);
 
+
     // var minimalData = {
     // teams: [
+    //   this.teams
     //   ['Bang jegot', 'indira'],
     //   ['kelantanman', null],
     //   ['notorious UK', null],
@@ -88,7 +100,7 @@ export class BracketComponent implements OnInit {
 
     $(() => {
       $('#minimal .demo').bracket({
-        init: this.minimalData.teams /* data to initialize the bracket with */,
+        init: obj /* data to initialize the bracket with */,
         // init: this.minimalData /* data to initialize the bracket with */,
       });
     });
@@ -108,29 +120,31 @@ export class BracketComponent implements OnInit {
 
   branches(): void {
     this.tournamentService.getBranches(this.id).subscribe(
-      (res) => {
-        // this.teams = res;
-        // var minimalData = res;
-        // var minimalData = res.teams;
+    (res) => {
+      // this.teams = res;
+      // var minimalData = res;
+      // var minimalData = res.teams;
 
-        for (let i = 0; i < res.teams.length; i++) {
-          this.teams.push(res.teams[i]);
-        }
-        console.log(this.teams);
-        console.log(this.teams.length);
-        for (let i = 0; i < this.teams.length; i++) {
-          console.log(this.teams[i]);
-        }
-
-        // this.minimal.teams = this.teams;
-        // console.log(this.minimal);
-        // console.log(this.minimal.teams.length);
-
-        // console.log(this.minimalData);
-      },
-      (err) => {
-        console.log(err);
+      for (let i = 0; i < res.teams.length; i++) {
+        this.teams.ab.push(res.teams[i]);
       }
-    );
+      
+      console.log(this.teams);
+      console.log(this.teams.ab.length);
+
+      // for (let i = 0; i < this.teams.length; i++) {
+      //   console.log(this.teams[i]);
+      // }
+      // this.minimal.teams = this.teams;
+      // console.log(this.minimal);
+      // console.log(this.minimal.teams.length);
+
+      // console.log(this.minimalData);
+    },
+    (err) => {
+      console.log(err);
+    }
+  );
+    
   }
 }

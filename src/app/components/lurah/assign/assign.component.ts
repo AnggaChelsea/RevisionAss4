@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Assign } from 'src/app/shared/models/Lurah';
 import { LurahService } from 'src/app/shared/services/lurah/lurah.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-assign',
