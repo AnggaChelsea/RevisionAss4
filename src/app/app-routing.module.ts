@@ -14,12 +14,16 @@ import { AllbracketComponent } from './components/games/allbracket/allbracket.co
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 
 const routes: Routes = [
+  
   {
     path: 'sign',
     loadChildren: () =>
       import('./shared/routes/auth/auth.module').then((m) => m.AuthModule),
   },
-  { path: 'hallOfFame', component: HallOfFameComponent },
+
+  
+
+   { path: 'hallOfFame', component: HallOfFameComponent },
   {
     path: 'inbox',
     component: InboxComponent,
@@ -39,14 +43,16 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { role: [Role.comittee] },
   },
+
   {
-    path: 'lurahs',
+    path: 'admin',
     loadChildren: () =>
-      import('./shared/routes/lurahmodule/lurahmodule.module').then(
-        (m) => m.LurahModule
+      import('./shared/routes/admin/admin.module').then(
+        (m) => m.AdminModule
       ),
   },
-  { path: 'admin', component: AdminComponent },
+
+
   { path: 'search/:i', component: GamesComponent },
   {
     path: 'panitia',
