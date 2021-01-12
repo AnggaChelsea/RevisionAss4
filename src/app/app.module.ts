@@ -43,6 +43,7 @@ import { environment } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { LurahModule } from './shared/routes/lurahmodule/lurahmodule.module';
+import { CsvComponent } from './components/lurah/csv/csv.component';
 
 
 @Injectable({
@@ -67,6 +68,7 @@ import { LurahModule } from './shared/routes/lurahmodule/lurahmodule.module';
     LandingpageComponent,
     HallOfFameComponent,
     AdminComponent,
+    CsvComponent,
   ],
 
   imports: [

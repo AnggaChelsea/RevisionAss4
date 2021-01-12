@@ -26,7 +26,11 @@ export class AssignComponent implements OnInit {
       subDistrict: this.assignForm.get('subDistrict').value
     }
     this.lurahService.assign(assign).subscribe(response => {
-      console.log(response)
+      Swal.fire({
+        icon: 'success',
+        title: 'Assign Success',
+        text: `Assign to Comittee`,
+      })
     })
   }
 
