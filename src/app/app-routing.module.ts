@@ -19,7 +19,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./shared/routes/auth/auth.module').then((m) => m.AuthModule),
   },
-   { path: 'hallOfFame', component: HallOfFameComponent },
+  { path: 'hallOfFame', component: HallOfFameComponent },
   {
     path: 'inbox',
     component: InboxComponent,
@@ -39,9 +39,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { role: [Role.comittee] },
   },
-  {path:'lurahs', loadChildren:()=>import('./shared/routes/lurahmodule/lurahmodule.module')
-  .then(m => m.LurahModule)},
-  {path:'admin',component:AdminComponent},
+  {
+    path: 'lurahs',
+    loadChildren: () =>
+      import('./shared/routes/lurahmodule/lurahmodule.module').then(
+        (m) => m.LurahModule
+      ),
+  },
+  { path: 'admin', component: AdminComponent },
   { path: 'search/:i', component: GamesComponent },
   {
     path: 'panitia',
@@ -49,7 +54,8 @@ const routes: Routes = [
       import('./shared/routes/panitia/panitia.module').then(
         (m) => m.PanitiaModule
       ),
-    canActivate: [AuthGuard], data: { roles: [Role.comittee] }
+    canActivate: [AuthGuard],
+    data: { roles: [Role.comittee] },
   },
   {
     path: 'detailgames/:_id',
@@ -63,8 +69,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
 
   // { path: '**', component: PageNotFoundComponent },
-
-]
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

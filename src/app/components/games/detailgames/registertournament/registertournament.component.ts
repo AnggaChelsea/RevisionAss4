@@ -79,7 +79,7 @@ export class RegistertournamentComponent implements OnInit {
       deskripsisingkat: this.tournament.deskripsisingkat,
     };
     this.tournamentService.create(data).subscribe((response) => {
-      console.log(response);
+      // console.log(response);
       this.submmited = true;
     });
     this.alert = true;
@@ -114,7 +114,7 @@ export class RegistertournamentComponent implements OnInit {
         const groupImage: any = success.group.groupPict;
         this.groupPic = `${environment.urlAddress}` + groupImage;
         this.groupInfo = success.group;
-        
+
         this.groups = success.members;
       },
       (err) => {
