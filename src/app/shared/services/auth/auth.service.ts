@@ -14,6 +14,9 @@ import { environment } from '../../../../environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
+  static getToken() {
+    throw new Error('Method not implemented.');
+  }
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   datauser = {};
   ACCESS_TOKEN = 'access_token';

@@ -4,7 +4,6 @@ import { BracketService } from 'src/app/shared/services/tournament/bracket.servi
 import { ActivatedRoute, Router } from '@angular/router';
 
 import 'jquery';
-// declare var $: JQuery;
 declare var $: any;
 
 declare global {

@@ -36,7 +36,7 @@ export class PanitiaService {
   // }
 
   createRule(data:any) :Observable<any>{
-   return this.httpClinet.post(`${environment.urlAddress}comittee/createGame`,
+   return this.httpClinet.post(`${environment.urlAddress}comittee/createRules`,
    data)
   }
 

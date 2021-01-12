@@ -35,6 +35,7 @@ export class ProfileDetailsComponent implements OnInit {
       picture:[null]
     })
    }
+   
   ngOnInit(): void {
     this.profileService.getProfile().subscribe((res) => {
       // this.path = "http://localhost:5000/"

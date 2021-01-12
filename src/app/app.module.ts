@@ -24,7 +24,6 @@ import { ConfirmComponent } from './components/auth/confirm/confirm.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BannerComponent } from './components/banner/banner.component';
 import { GamesComponent } from './components/games/games.component';
-import { AdminComponent } from './components/admin/admin.component';
 import { InboxComponent } from './components/auth/inbox/inbox.component';
 import { ProfileComponent } from './components/user-profile/profile/profile.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -44,6 +43,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { LurahModule } from './shared/routes/lurahmodule/lurahmodule.module';
 import { CsvComponent } from './components/lurah/csv/csv.component';
+import { LurahService } from '../app/shared/services/lurah/lurah.service';
 
 
 @Injectable({
@@ -58,7 +58,7 @@ import { CsvComponent } from './components/lurah/csv/csv.component';
     ConfirmComponent,
     BannerComponent,
     GamesComponent,
-    AdminComponent,
+    CsvComponent,
     InboxComponent,
     SignComponent,
     PageNotFoundComponent,
@@ -67,8 +67,7 @@ import { CsvComponent } from './components/lurah/csv/csv.component';
     AllbracketComponent,
     LandingpageComponent,
     HallOfFameComponent,
-    AdminComponent,
-    CsvComponent,
+    
   ],
 
   imports: [
@@ -100,6 +99,8 @@ import { CsvComponent } from './components/lurah/csv/csv.component';
       useClass: AuthInterceptorInterceptor,
       multi: true,
     },
+    
+    LurahService,
     AuthService,
     PanitiaService,
     TournamentService,

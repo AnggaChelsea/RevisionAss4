@@ -35,28 +35,25 @@ export class CreatetournamentComponent implements OnInit {
   dataPage: any;
   selectedFile: any;
 
-  //
-  createForm: FormGroup;
-  pic: any = null;
-  // upload: FormGroup;
+ 
   testUpload: any = {};
 
   tournament = {
     tournamentName: '',
-    tournamentPict: '',
-    groupEntry: '',
-    tournamentDescription: '',
-    tournamentOpen: Date,
-    tournamentStart: Date,
-    stageName: 0,
-    tournamentClose: Date,
+    groupEntry:false,
+    tournamentOpen: '',
+    tournamentStart: '',
+    tournamentClose: '',
     tournamentType: '',
-    tournamentRulesId: '',
-    tournamentReportId: '',
+    stageName: 0,
+    tournamentPict:'',
+    tournamentDescription: '',
   };
 
   submmited = false;
   tournamentService: any;
+  tournamentPict: any;
+  form: any;
 
   constructor(
     private panitiaService: PanitiaService,
@@ -68,7 +65,17 @@ export class CreatetournamentComponent implements OnInit {
     public fb: FormBuilder,
     private cd: ChangeDetectorRef
   ) {
-    this.createForm = this.fb.group({});
+    this.form = this.fb.group({
+    tournamentName:[''],
+    groupEntry:false,
+    tournamentOpen: [''],
+    tournamentStart: [''],
+    tournamentClose: [''],
+    tournamentType: [''],
+    stageName: 0,
+    tournamentPict:['abc.jpg'],
+    tournamentDescription: [''],
+    })
   }
 
   public ngOnInit() {
@@ -89,15 +96,17 @@ export class CreatetournamentComponent implements OnInit {
     console.log(state);
   }
 
-  createtournamentData(): void {
+  createtournamentData(){
     const data = {
       tournamentName: this.tournament.tournamentName,
-      tournamentDescription: this.tournament.tournamentDescription,
+      groupEntry:this.tournament.groupEntry,
       tournamentOpen: this.tournament.tournamentOpen,
       tournamentStart: this.tournament.tournamentStart,
       tournamentClose: this.tournament.tournamentClose,
       tournamentType: this.tournament.tournamentType,
-      tjbournamentPict: this.tournament.tournamentPict,
+      stageName:this.tournament.stageName,
+      tournamentPict: this.tournament.tournamentPict,
+      tournamentDescription: this.tournament.tournamentDescription,
     };
     this.tournamentService
       .create(data, this.selectedFile)
@@ -108,6 +117,17 @@ export class CreatetournamentComponent implements OnInit {
     this.alert = true;
   }
 
+
+
+  uploadFile(event:any){
+    const file = <File>event.target.files[0]
+    this.tournamentPict.patchValue({
+      tournamentPict:file
+    })
+    this.tournamentPict.get('picture').updateValueAndValidity()
+  }
+
+ 
   closeAlert() {
     this.alert = false;
   }

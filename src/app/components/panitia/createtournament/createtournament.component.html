@@ -1,83 +1,77 @@
-
-<form [formGroup]="createForm" (ngSubmit)="createTournament()">
+<div class="container">] <div class=" text-center mt-5 ">
+  <h1>Create Tournament</h1>
+</div>
+<div class="row ">
+  <div class="col-lg-7 mx-auto">
+      <div class="card mt-2 mx-auto p-4 bg-light">
+          <div class="card-body bg-light">
+              <div class="container">
+                  <form id="contact-form" role="form">
+                      <div class="controls">
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <div class="form-group"> <label for="form_name">Tournamen Name</label> 
+                                    <input id="form_name" type="text" name="tournamentName" [ngModel]="tournament.tournamentName" class="form-control" placeholder="Please enter tournamentName *" required="required" data-error="Firstname is required."> </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group"> <label for="form_lastname">
+                                  </label> <input id="form_lastname" type="date" name="tournamentOpen" [ngModel]="tournament.tournamentOpen" class="form-control" required="required" data-error="Lastname is required."> </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group"> <label for="form_name">Tournamen Start</label> 
+                                  <input id="form_name" type="date" name="tournamentStart" [ngModel]="tournament.tournamentStart" class="form-control"  required="required" data-error="Firstname is required."> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group"> <label for="form_lastname">
+                                </label> <input id="form_lastname" type="date" name="tournamentClose" [ngModel]="tournament.tournamentClose" class="form-control"  required="required" data-error="Lastname is required."> </div>
+                            </div>
+                        </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <div class="form-group"> <label for="form_email">StageName</label> 
+                                    <input id="form_email" type="text" name="stageName" [(ngModel)]="tournament.stageName" value="0" class="form-control" readonly> </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group"> <label for="form_need">Please specify your Type*</label> <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
+                                          <option value="" selected disabled>--Select Your Issue--</option>
+                                          <option value="freeforall">Free For All</option>
+                                          <option value="branches">Branches</option>
+                                      </select> </div>
+                              </div>
+                          </div>
+                          
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <div class="form-group"> <label for="form_message">Description *</label> <textarea id="form_message" [ngModel]="tournament.tournamentDescription" name="tournamentDescription" class="form-control" placeholder="Write your message here." rows="4" required="required" data-error="Please, leave us a message."></textarea> </div>
+                              </div>
+                              <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " (click)="createtournamentData()"> </div>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div> <!-- /.8 -->
+  </div> <!-- /.row-->
+</div>
+</div>
+<!-- 
+<form>
     <div class="container">
         <h1>create tournament</h1>
-       
-        <section *ngIf="alert">
-          <div class="square_box box_three"></div>
-          <div class="square_box box_four"></div>
-          <div class="container mt-5">
-            <div class="row">
-        
-              <div class="col-sm-12">
-                <div class="alert fade alert-simple alert-success alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show">
-                  <button type="button" class="close font__size-18" data-dismiss="alert">
-                          <span aria-hidden="true"><a>
-                            <i class="fa fa-times greencross"></i>
-                            </a></span>
-                          <span class="sr-only" (click)="closeAlert()">Close</span> 
-                        </button>
-                  <i class="start-icon far fa-check-circle faa-tada animated"></i>
-                  <strong class="font__weight-semibold">Well done!</strong> You successfullyread this important.
-                </div>
-              </div>
-        
-            </div>
-          </div>
-        </section>
-
-
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Name Of Tournament</label>
-            <!-- <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Basket" [(ngModel)]="tournament.tournamentName" name="tournamentName"> -->
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Basket" formControlName="tournamentName" name="tournamentName">
+            <label for="exampleFormControlInput1" class="form-label">Min Participant</label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="tournamentN" [(ngModel)]="rule.minParticipant" name="minParticipant" minlength="6">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Tournament Open</label>
-            <!-- <input type="date" class="form-control" id="exampleFormControlInput1" [(ngModel)]="tournament.tournamentOpen" name="tournamentOpen"> -->
-            <input type="date" class="form-control" id="exampleFormControlInput1" formControlName="tournamentOpen" name="tournamentOpen">
+            <label for="exampleFormControlInput1" class="form-label">Max Participant</label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" [(ngModel)]="rule.maxParticipant" name="maxParticipant" maxlength="100">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Tournament Start</label>
-            <!-- <input type="date" class="form-control" id="exampleFormControlInput1" [(ngModel)]="tournament.tournamentStart" name="tournamentStart"> -->
-            <input type="date" class="form-control" id="exampleFormControlInput1" formControlName="tournamentStart" name="tournamentStart">
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Tournament Close </label>
-            <!-- <input type="date" class="form-control" id="exampleFormControlInput1" [(ngModel)]="tournament.tournamentClose" name="tournamentClose"> -->
-            <input type="date" class="form-control" id="exampleFormControlInput1" formControlName="tournamentClose" name="tournamentClose">
-          </div>
-          <div class="mb-3">
-            <input class="form-control" type="text" placeholder="0 of stage name" aria-label="readonly input example" readonly>
-          </div>
-          
-          <div class="mb-3">
-              <select class="form-select" aria-label="Default select example" [(ngModel)]="tournament.tournamentType" name="tournamentType" >
-              <!-- <select class="form-select" aria-label="Default select example" formControlName="tournamentType" name="tournamentType" > -->
-                <option selected>Tournament Type</option>
-                <option value="freeforall">Free For All</option>
-                <option value="branches">Branches</option>
-              </select>
-          </div>
-          
-          <div class="mb-3">
-            <label for="formFile" class="form-label">Image Of Tournament</label>
-            <input class="form-control" type="file" (change)="onFileChanged($event)" [(ngModel)]="tournament.tournamentPict" name="tournamentPict" id="formFile">
-          </div>
-    
-          <div class="mb-3">
-              <b>Finish</b>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2" aria-checked="true">
-                      No
-                    </label>
-                  </div>
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Tournament Description</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="tournament.tournamentDescription" name="tournamentDescription" rows="3"></textarea>
-          </div>
-          <button type="button" class="btn btn-dark" (click)="createtournamentData()">Saves</button>
-    </div>
-</form>
+            <label for="exampleFormControlInput1" class="form-label">age</label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" [(ngModel)]="rule.age" name="age" >
+          </div>  
+          <button type="button" class="btn btn-dark" (click)="cretaeRule()">Saves</button>
+        </div>
+        </form> -->
