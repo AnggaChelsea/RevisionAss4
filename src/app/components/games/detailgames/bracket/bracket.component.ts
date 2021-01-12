@@ -68,9 +68,12 @@ export class BracketComponent implements OnInit {
     $.each(a, function (value:any) {
       obj.minimalData = a["ab"]
   });
-  console.log(obj)
-  var b = $.merge( $.merge( [], obj ))
-  console.log(b)
+
+  $(this.cibai).append(this.teams)
+  console.log(this.cibai)
+  let adminss:any
+  let admins:any = []
+
     // console.log(this.teams.length);
     // console.log(this.teams.length != 0);
     // console.log(this.teams == null);
@@ -85,7 +88,7 @@ export class BracketComponent implements OnInit {
 
     // var minimalData = {
     // teams: [
-    //   this.teams
+    //   this.teamsokeoek thanks suhuuu
     //   ['Bang jegot', 'indira'],
     //   ['kelantanman', null],
     //   ['notorious UK', null],

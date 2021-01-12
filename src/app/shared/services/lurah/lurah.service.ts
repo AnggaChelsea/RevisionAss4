@@ -14,6 +14,11 @@ export class LurahService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private httpClient:HttpClient, private authService: AuthService) {}
   assign(assign:Assign): Observable<any> {
-    return this.httpClient.put(`${environment.urlAddress}/chief/assign`,assign,{headers: new HttpHeaders().set(this.ACCESS_TOKEN,this.authService.getToken())});
+    return this.httpClient.put(`${environment.urlAddress}chief/assign`,assign,{headers: new HttpHeaders().set(this.ACCESS_TOKEN,this.authService.getToken())});
+  }
+  readAll(): Observable<any> {
+    return this.httpClient.get<any>(
+      `${environment.urlAddress}user/tournaments`
+    );
   }
 }
