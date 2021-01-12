@@ -1,0 +1,41 @@
+<body data-aos="fade-up" data-aos-duration="1500" >
+    <section class="container">
+      <div class="row">
+        <div class=" col-md-10 mx-auto">
+          <div class="card cardProfile flex-row my-5 shadow" data-aos="fade-up" data-aos-duration="1500" >
+            <div class="col-md-12">
+              <div class="p-3 py-5">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-3"
+                >
+                  <div class="d-flex flex-row align-items-center">
+                    <i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                    <a routerLink="/group" class="text-dark"><h6>Back to Group Profile</h6></a>
+                  </div>
+                </div>
+                <div class="text-center">Delete Group</div>
+                <form [formGroup]="form" >
+                  <div class="row mt-3 form-group">
+                    <div class="col-md-6 mb-2">
+                        Group Name
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Group Name"
+                        formControlName="groupName"
+                      />
+                    </div>
+                  </div>
+                </form>
+              <div class="mt-5 text-right">
+                <button class="btn btn-primary profile-button2" type="submit" (click)="delete()" >
+                  Delete Group
+                </button>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>

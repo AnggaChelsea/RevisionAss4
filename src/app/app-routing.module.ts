@@ -30,9 +30,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'group',
-    component: GroupComponent,
-    canActivate: [AuthGuard],
+    path: 'groups',
+    loadChildren: () =>import('./shared/routes/group/group.module').then((m)=>m.GroupModule)
   },
   {
     path: 'profiles',

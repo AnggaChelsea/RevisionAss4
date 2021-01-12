@@ -40,10 +40,11 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
-
 import { LurahModule } from './shared/routes/lurahmodule/lurahmodule.module';
 import { CsvComponent } from './components/lurah/csv/csv.component';
 import { LurahService } from '../app/shared/services/lurah/lurah.service';
+import { GroupModule } from './shared/routes/group/group.module';
+
 
 
 @Injectable({
@@ -63,11 +64,9 @@ import { LurahService } from '../app/shared/services/lurah/lurah.service';
     SignComponent,
     PageNotFoundComponent,
     ListtournamentComponent,
-    GroupComponent,
     AllbracketComponent,
     LandingpageComponent,
     HallOfFameComponent,
-    
   ],
 
   imports: [
@@ -92,6 +91,7 @@ import { LurahService } from '../app/shared/services/lurah/lurah.service';
     ProfileModule,
     BrowserAnimationsModule,
     LurahModule,
+    GroupModule
   ],
   providers: [
     {

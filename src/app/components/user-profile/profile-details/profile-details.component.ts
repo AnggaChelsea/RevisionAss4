@@ -14,8 +14,6 @@ import Swal from 'sweetalert2'
 export class ProfileDetailsComponent implements OnInit {
   profile:any
   form:any=FormGroup;
-  percentDone: any = 0;
-  users = [];
 
   subDistrict: any | string;
   birthDate: Date | undefined;
