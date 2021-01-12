@@ -27,8 +27,8 @@ export class AdminComponent implements OnInit {
     this.adminService.assign(assign).subscribe(response => {
         Swal.fire({
           icon: 'success',
-          title: 'Profile Created',
-          text: `you can update ur fullname and picture`,
+          title: 'Assign Headchief',
+          text: `You are Headchief`,
         })
     })
   }
