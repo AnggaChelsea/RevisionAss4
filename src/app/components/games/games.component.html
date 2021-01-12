@@ -11,7 +11,7 @@
   </a>
 </div>
 
-<div class="mb-3 ml-10 container">
+<div class="mb-3 ml-10 container" >
   <label for="exampleFormControlInput1" class="form-label">Search Tournament</label>
   <input  type="text" class="form-control" id="exampleFormControlInput1 browser"
         placeholder="Search Type or Tournament Name" [(ngModel)]="filter">
@@ -19,12 +19,12 @@
   <!-- <button  class="btn btn-outline-secondary">Search</button> -->
 
           <div class="section">
-                  <div class="row flex-row-stretch">
+                  <div class="row flex-row-stretch" style="margin-bottom: 15em;">
                       <div class="col-sm-6 col-md-4 col-lg-3 flex-col" *ngFor="let game of tournaments | filter:filter | paginate : {
                 itemsPerPage: tableSize,
                 currentPage: page,
                 totalItems: count
-              };">
+              };" >
 
                           <div class="card" >
                               <div class="card-label">{{game.tournamentType}}</div>
@@ -50,21 +50,57 @@
                                     </ul>
                                 
                                   <a class="btn btn-success" routerLink="detailgames/{{game._id}}">View</a> -->
- 
- 
-            <!-- <label for="exampleFormControlInput1" class="form-label"
-    >Search By Name or Type Tournament</label
-  >
+  
+                                    </div>
+                                    </div>
+                                    </div>
+
+                                    
+                                    </div>
+
+                                    <div class="container" style="margin-top: -12em; margin-left: -0.9em;">
+                                      <nav aria-label="Page navigation example">
+                                        <ul class="pagination justify-content-center">
+                                          <div class="d-flex justify-content-center">
+                                            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                                            </pagination-controls>
+                                          </div>
+                                        </ul>
+                                      </nav>
+                                    </div>
+
+                                    </div>
+
+                                    <!-- <div class="col-sm-6 col-md-4 col-lg-3 flex-col" *ngFor="
+                                              let game of tournaments
+                                                | filter: filter
+                                                | paginate
+                                                  : {
+                                                      itemsPerPage: tableSize,
+                                                      currentPage: page,
+                                                      totalItems: count
+                                                    }
+                                            ">
+                                          </div> -->
+
+                                        </div>
+
+
+
+
+<!-- 
+
+                                  <label for="exampleFormControlInput1" class="form-label">Search By Name or Type Tournament</label>
   <input
     type="text"
     class="form-control"
     id="exampleFormControlInput1 browser"
     placeholder="Search Type or Name Tournament"
     [(ngModel)]="filter"
-  /> -->
+  />
  
 
-  <!-- <div class="section">
+  <div class="section">
     <div class="row flex-row-stretch">
       <div
         class="col-sm-6 col-md-4 col-lg-3 flex-col"
@@ -154,5 +190,5 @@
         </div>
       </ul>
     </nav>
-  </div> -->
-</div>
+  </div>
+</div> -->

@@ -42,7 +42,8 @@ export class ResetComponent implements OnInit {
           title: 'successfully changes password',
           text: `${success.message}`,
         });
-        this.router.navigate(['sign/signin']);
+        // this.router.navigate(['sign/signin']);
+        this.router.navigate(['sign']);
       },
       (error) => {
         Swal.fire({
