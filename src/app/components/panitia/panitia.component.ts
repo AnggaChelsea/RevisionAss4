@@ -15,8 +15,6 @@ export class PanitiaComponent implements OnInit {
   form:any=FormGroup;
   panitia:any;
 
-  headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
-
   constructor(private router:Router, private authService:AuthService, public fb: FormBuilder) {
     this.router.events.subscribe((routerEvent:Event)=>{
 
@@ -31,19 +29,28 @@ export class PanitiaComponent implements OnInit {
 
     this.form = this.fb.group({
       tournamentName:[''],
+      groupEntry:false,
+      finished:false,
       tournamentOpen:[''],
       tournamentStart:[''],
       tournamentClose:[''],
       tournamentType:[''],
-      rulesName:[],
-      groupEntry:false
+      stageName:0,
+      tournamentPict:[''],
+      tournamentDescription:['']
     })
-
-
   }
 
   ngOnInit(): void {
     this.getRole()
+  }
+
+  uploadFile(event:any){
+    const file = <File>event.target.files[0]
+    this.form.patchValue({
+      picture:file
+    });
+    this.form.get('picture').updateValueAndValidity()
   }
 
   getRole(){

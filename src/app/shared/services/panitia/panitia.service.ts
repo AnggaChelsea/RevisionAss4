@@ -13,32 +13,53 @@ export class PanitiaService {
 
   header = new HttpHeaders().set('Content-Type', 'application/json');
   dataPanita = {};
-  ACCESS__TOKEN = 'access_token';
+  ACCESS_TOKEN = 'access_token';
+  constructor(private httpClinet: HttpClient, private authService: AuthService) { }
 
-  constructor(private httpClinet:HttpClient, private authService:AuthService) { }
-
-  private getDataParticipant(response:any){
+  private getDataParticipant(response: any) {
     return response.data
   }
 
-  private panitiaDataId(response:any){
+  private panitiaDataId(response: any) {
     return response.data
   }
 
-  createTournament(data:any): Observable<any>{
+  createGame(
+    tournamentName: string, groupEntry:boolean, finished: boolean, 
+    tournamentOpen: Date, tournamentStart: Date, tournamentClose: Date, 
+    tournamentType: string, stageName: number, tournamentPict:File, 
+    tournamentDescription: string
+  ): Observable<any> {
+    let formData:any = new FormData();
+    formData.append("tournamentName", tournamentName);
+    formData.append("groupEntry", groupEntry);
+    formData.append("finished", finished);
+    formData.append("tournamentOpen", tournamentOpen);
+    formData.append("tournamentStart",tournamentStart);
+    formData.append("tournamentClose", tournamentClose);
+    formData.append("tournamentType", tournamentType);
+    formData.append("stageName", stageName);
+    formData.append("tournamentPict", tournamentPict);
+    formData.append("tournamentDescription", tournamentDescription)
     return this.httpClinet.post(
       `${environment.urlAddress}comittee/createGame`,
-      data,{}
-    );
+      formData, {
+        headers: new HttpHeaders().set(this.ACCESS_TOKEN,this.authService.getToken()),
+        reportProgress: true,
+        observe: 'events',
+      });
   }
 
-  // getData():Observable<any>{
-  //   return this.httpClinet.get(environment.urlAddress + 'chief/participantlist').pipe(map(this.getDataParticipant))
-  // }
+  createRule(minParticipant: number, maxParticipant: number, age: number): Observable<any> {
+    let formData: any = new FormData();
+    formData.append("minParticipant", minParticipant);
+    formData.append("maxParticipant", maxParticipant);
+    formData.append("age", age)
+    return this.httpClinet.post(`${environment.urlAddress}comittee/createRules`, formData, {
+      headers: new HttpHeaders().set(this.ACCESS_TOKEN, this.authService.getToken()),
 
-  createRule(data:any) :Observable<any>{
-   return this.httpClinet.post(`${environment.urlAddress}comittee/createRules`,
-   data)
+    }
+    )
   }
 
 
