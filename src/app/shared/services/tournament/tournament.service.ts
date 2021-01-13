@@ -174,6 +174,45 @@ export class TournamentService {
     return this.httpClient.get(`${environment.urlAddress}halloffame`);
   }
 
+  putBranchScore(datas: any) {
+    return this.httpClient.put(
+      `${environment.urlAddress}comittee/putBranchScore`,
+      datas,
+      {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      }
+    );
+  }
+
+  startBranch(datas: any) {
+    return this.httpClient.put(
+      `${environment.urlAddress}comittee/startBranches`,
+      datas,
+      {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      }
+    );
+  }
+
+  finishBranch(datas: any) {
+    return this.httpClient.put(
+      `${environment.urlAddress}comittee/finishBranches`,
+      datas,
+      {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      }
+    );
+  }
+
   //  getPage(page:any, title:any): Observable<any> {
   //   return this.httpClient.get(`${environment.urlAddress}user/tournaments?page=${page}&i=${title}`);
   // }

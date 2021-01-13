@@ -7,13 +7,13 @@ import {
   HttpEvent,
 } from '@angular/common/http';
 import { AuthService } from './auth.service';
- 
+
 import { Observable } from 'rxjs';
- 
+
 @Injectable()
 export class AuthInterceptorInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
- 
+
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
@@ -22,10 +22,11 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
     const access_token: any = this.authService.getToken();
     if (access_token != null) {
       const authReq = request.clone({
-        setHeaders: { 
-          'Content-Type' : 'application/json; charset=utf-8',
-          'Accept'       : 'application/json',
-          'Authorization':  access_token 
+        // setHeaders: { access_token },
+        setHeaders: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Accept: 'application/json',
+          Authorization: access_token,
         },
       });
     } else {
