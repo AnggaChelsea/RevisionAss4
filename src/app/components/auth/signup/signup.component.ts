@@ -25,9 +25,7 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.getRole().subscribe((data:any)=>{
-      
-    })
+    this.authService.getRole().subscribe((data: any) => {});
   }
 
   register() {

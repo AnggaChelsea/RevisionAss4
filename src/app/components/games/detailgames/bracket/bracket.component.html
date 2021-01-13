@@ -1,10 +1,73 @@
-<h1>tes</h1>
-<div class="container" style="margin-top: 20em; padding-bottom: 50em; margin-bottom: 5em;">
-  <div id="minimal">
-    <h1>Game start at {{ dataDate | date }}</h1>
-    <h4>There a <span class="text-danger">( {{ dataId }} )</span> Participant Now </h4>
+
+<div class="container" style="margin-top: 10em; padding: 1em; margin-bottom: 52em;">
+  <!-- <div id="minimal"> -->
+  <div id="resize">
+    <h1>{{this.idName|uppercase}} will be start at {{ dataDate | date }} <br> then will be finish at {{this.dataDate2|date}}</h1>
+    <h4>There are <span class="text-danger">( {{ this.length }} )</span> Participants of this branches </h4>
     <div class="demo">
     </div>
   </div>
+  </div>
+
+  <div class="panitiaInterface container" *ngIf="isPanitia===true" style="margin-bottom: 2em;">
+  <button type="button" class="btn btn-danger  btn-lg" style="margin-top: 2em; width: 32em;"
+    *ngIf="this.stage===2" disabled>{{this.idName|uppercase}} has been finished on {{this.dataDate2|date}} </button>
+  
+  <div class="container" style=" border-radius: 2em; background-color: rgb(178, 179, 180); padding: 3em; display: flex; flex-direction: column; margin-top: 52em; width: 40em; ">
+  <form [formGroup]="submitForm" (ngSubmit)="branchSubmit()" *ngIf="this.stage===1">   
+    <div class="input-group mb-3 container" >
+      <h2>Lazy panitia mode, just put 2 scores <br> below and you've got the winner </h2>
+      <div style="display: flex; flex-direction: row; ">
+        
+        <div style="margin-top: 1em;">
+          <label for="">SCORE 1</label>
+          <input class="form-control form-control-sm" formControlName="score1" type="text" placeholder="score 1"
+            aria-label=".form-control-sm example">
+        </div>
+
+        <div style="margin-top: 1em; margin-left: 5em;">
+          <label for="">SCORE 2</label>
+          <input class="form-control form-control-sm" formControlName="score2" type="text" placeholder="score 2"
+            aria-label=".form-control-sm example">
+        </div>
+        
+      </div>
+      <button type="button" class="btn btn-primary  btn-sm" type="submit" value="Submit" style="margin-top: 2em; width: 32em;">Submit Score</button>
+    </div>
+  </form>
+
+  <button type="button" class="btn btn-primary  btn-sm" (click)="proceedBranch()"
+    style="margin-top: 2em; width: 32em;" *ngIf="this.stage===0">Start {{this.idName|uppercase}} Tournament</button>
+  
+   
+
+  <div class="container" style="margin-top: -2.2em;" *ngIf="this.stage===1">
+      
+      <form [formGroup]="winnerList" (ngSubmit)="winnerBranch()">
+        <div class="containers" style="background-color: rgb(129, 129, 129); padding: 2em ; margin: 2.5em 2em 2em 2em; border-radius: 2em;">
+          <label for="" style="margin-top: 2em; font-size: 1.3em;"> <strong>First</strong>  winner <strong>fullname</strong></label>
+          <input class="form-control form-control-sm" type="text" formControlName="first" placeholder="First winner fullname"
+            aria-label=".form-control-sm example" style="width: 23em;">
+          <label for="" style="margin-top: 2em; font-size: 1.3em;"> <strong>Second</strong> winner
+            <strong>fullname</strong></label>
+          <input class="form-control form-control-sm" type="text" formControlName="second" placeholder="Second winner fullname"
+            aria-label=".form-control-sm example" style="width: 23em;">
+          <label for="" style="margin-top: 2em; font-size: 1.3em;"> <strong>Third</strong> winner
+            <strong>fullname</strong></label>
+          <input class="form-control form-control-sm" type="text" formControlName="third" placeholder="Third winner fullname"
+            aria-label=".form-control-sm example" style="width: 23em;">
+          <label for="" style="margin-top: 2em; font-size: 1.3em;"> <strong>Fourth</strong> winner
+            <strong>fullname</strong></label>
+          <input class="form-control form-control-sm" type="text" formControlName="fourth" placeholder="Fourth winner fullname"
+            aria-label=".form-control-sm example" style="width: 23em;">
+          <button type="button" class="btn btn-primary  btn-sm" type="submit" value="Submit" style="margin-top: 2em; width: 23em;">Submit Winner and Finish Tournament</button>
+        </div>
+      </form>
+  </div>
+      
+
+
 </div>
+</div>
+
 
