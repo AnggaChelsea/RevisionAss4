@@ -1,4 +1,5 @@
 <div class="mb-3 ml-10 container" style="margin-top:50px">
+  <button (click)="downloadCsv()">test</button>
   <label for="exampleFormControlInput1" class="form-label" style="margin-top:30px">Search Tournament</label>
   <input  type="text" class="form-control" id="exampleFormControlInput1 browser"
         placeholder="Search Type or Tournament Name" [(ngModel)]="filter">
@@ -22,5 +23,7 @@
                                   <h4> <b>{{game.tournamentName}}</b></h4>
                                   <p style="max-height: 5em; overflow: hidden;">{{game.tournamentDescription}}</p>
                                   <a class="btn btn-primary" click="downloadCsv()" >Download</a>
-                    
+              
 </div>
+
+<button (click)="downloadCsv()">test</button>
