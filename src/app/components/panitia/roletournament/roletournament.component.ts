@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PanitiaService } from '../../../shared/services/panitia/panitia.service';
+import { Router } from '@angular/router'
+import { FormGroup, FormBuilder, } from '@angular/forms';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-roletournament',
@@ -8,30 +11,61 @@ import { PanitiaService } from '../../../shared/services/panitia/panitia.service
 })
 export class RoletournamentComponent implements OnInit {
 
-  constructor(private panitiaService:PanitiaService) { }
+  form:any=FormGroup;
+  constructor(private panitiaService:PanitiaService, public router:Router, public fb:FormBuilder) { 
+    this.form = this.fb.group({
+      minParticipant:[null],
+      maxParticipant:[null],
+      age:[null]
+    })
+  }
 
   load = false;
 
-  rule = {
-    minParticipant:Number,
-    maxParticipant:Number,
-    age:Number,
-  }
-
   ngOnInit(): void {
+
+  }
+ 
+  submitForm(){
+    this.panitiaService.createRule(
+      this.form.value.minParticipant,
+      this.form.value.maxParticipant,
+      this.form.value.age,
+    ).subscribe((data:any)=>{
+      Swal.fire({
+        icon:'success',
+        title:'role created',
+        text: 'Set this role as a tournament'
+      })
+    },
+    (error) => {
+      Swal.fire({
+        icon: 'error',
+        title:'check all forms anymore',
+        text: `${error.error.message}`
+      })
+    }
+    )
   }
 
-  cretaeRule(): void{
-    const dataRule = {
-      minParticipant:this.rule.minParticipant,
-      maxParticipant:this.rule.maxParticipant,
-      age:this.rule.age
-    }
-    this.panitiaService.createTournament(dataRule)
-    .subscribe((response:any)=>{
+  pushRole(){
+    this.panitiaService.createRule(this.form.value.minParticipant, this.form.value.maxParticipant, this.form.value.age)
+    .subscribe((response)=>{
       console.log(response)
-      this.load = true
-    })
+      Swal.fire({
+        icon:'success',
+        title:'role created',
+        text: 'Set this role as a tournament'
+      })
+    },
+    (error) => {
+      Swal.fire({
+        icon: 'error',
+        title:'check all forms anymore',
+        text: `${error.error.message}`
+      })
+    }
+    )
   }
 
 }

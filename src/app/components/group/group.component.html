@@ -18,8 +18,8 @@
                         </div>
                         <ul class="nav">
                             <li class="active col-md-12 p-3 "><i class="fa fa-user"></i> Group</li>
-                            <li class="col-md-12 p-3 "><a routerLink="/profile-detail"> <i class="fa fa-edit"></i> Create Group</a></li>
-                            <li class="col-md-12 p-3 "><a routerLink="/profile-detail"> <i class="fa fa-edit"></i> Delete Group</a></li>
+                            <li class="col-md-12 p-3 "><a routerLink="/create"> <i class="fa fa-edit"></i> Create Group</a></li>
+                            <li class="col-md-12 p-3 "><a routerLink="/delete"> <i class="fa fa-edit"></i> Delete Group</a></li>
                         </ul>
                     </div>
                 </div>
@@ -28,10 +28,10 @@
                     <div class="dataProfile bg-white p-5 mb-3">
                         <div style=" display: flex;  flex-direction: columns; align-items: center;">
                             <!-- <img src="https://imageshack.com/a/img922/9932/z2MQlE.jpg" alt="" style=" margin-right: 1em; margin-bottom: 2em; height: 7em; border-radius: 50%;"> -->
-                            <img src="" alt="" style="background-color: rgb(80, 80, 80); margin-right: 1em; margin-bottom: 2em; height: 7em; border-radius: 50%;">
+                            <img src="{{this.path+this.groupPict}}" alt="" style="background-color: rgb(80, 80, 80); margin-right: 1em; margin-bottom: 2em; height: 7em; border-radius: 50%;">
                             <div>
-                                <h1> <b>Group Name</b> </h1>
-                                <h1 style="margin-top: -0.4em;"> <b>Tournament Name</b> </h1>
+                                <h1> <b>Group Name : {{this.groupName}}</b> </h1>
+                                <h1 style="margin-top: -0.4em;"> <b>Sub District : {{this.subDistrict}}</b> </h1>
                             </div>
                         </div>
                         <hr style="margin-top: -1em;">
@@ -41,11 +41,11 @@
                             
 
                             <div class="dataList" style=" display: flex;  flex-direction: columns; align-items: center; margin-top: 1em; margin-bottom: 1em;">
-                                <img src="https://iso.500px.com/wp-content/uploads/2016/11/stock-photo-159533631-1500x1000.jpg" style="height: 5em; width: 5em; object-fit: cover; border-radius: 50%;" alt="">
+                                <img src="{{this.path+this.picture}}" style="height: 5em; width: 5em; object-fit: cover; border-radius: 50%;" alt="">
                                 <div style="margin-left: 2em; margin-bottom: -1em;">
-                                    <p style="margin-bottom: 0;"><span >ID </span>:</p>
-                                    <p style="margin-bottom: 0;"><span >Username </span>:</p>
-                                    <p><span>phone number </span>:</p>
+                                    <p style="margin-bottom: 0;"><span >ID</span>:  {{this.id}}</p>
+                                    <p style="margin-bottom: 0;"><span >Fullname </span>: {{this.fullname}}</p>
+                                    <p><span>Phone Number </span>: {{this.phoneNumber}}</p>
                                 </div>
                             </div>
                             
@@ -81,14 +81,14 @@
                             <hr style="margin-top:1em;">
                             <form style="margin-top: 3em;">
                                 <div class="input-group mb-3">
-                                    <button class="btn btn-outline-info " type="button" id="button-addon1">RECRUIT MEMBER</button>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+                                    <button class="btn btn-outline-info "(click)="recruit()" type="button" id="button-addon1">RECRUIT MEMBER</button>
+                                    <input type="text" class="form-control" formcontrolName="_userId" placeholder="" aria-label="Example text with button addon"
                                         aria-describedby="button-addon1">
                                 </div>
 
                                 <div class="input-group mb-3">
-                                    <button class="btn btn-outline-danger" type="button" id="button-addon1">KICK MEMBER</button>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+                                    <button class="btn btn-outline-danger" type="button" (click)="delete()" id="button-addon1">KICK MEMBER</button>
+                                    <input type="text" class="form-control" formcontrolName="_userId" placeholder="" aria-label="Example text with button addon"
                                         aria-describedby="button-addon1">
                                 </div>
                             </form>

@@ -20,11 +20,14 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const { url, method, headers, body } = request;
     const access_token: any = this.authService.getToken();
-    // const id:any=this.signComponent.
-
     if (access_token != null) {
       const authReq = request.clone({
-        setHeaders: { access_token },
+        // setHeaders: { access_token },
+        setHeaders: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Accept: 'application/json',
+          Authorization: access_token,
+        },
       });
     } else {
       console.log('no access');

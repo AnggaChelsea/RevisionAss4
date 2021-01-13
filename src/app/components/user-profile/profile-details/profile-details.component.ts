@@ -14,8 +14,6 @@ import Swal from 'sweetalert2'
 export class ProfileDetailsComponent implements OnInit {
   profile:any
   form:any=FormGroup;
-  percentDone: any = 0;
-  users = [];
 
   subDistrict: any | string;
   birthDate: Date | undefined;
@@ -35,6 +33,7 @@ export class ProfileDetailsComponent implements OnInit {
       picture:[null]
     })
    }
+   
   ngOnInit(): void {
     this.profileService.getProfile().subscribe((res) => {
       // this.path = "http://localhost:5000/"
@@ -71,7 +70,7 @@ export class ProfileDetailsComponent implements OnInit {
     })
   }
 
-  updateProfile() {
+  updteProfile() {
     this.profileService.putProfile(this.form.value.fullname,this.form.value.picture).subscribe((res) => {
       console.log(res)
       Swal.fire({

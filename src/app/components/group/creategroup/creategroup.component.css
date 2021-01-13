@@ -1,0 +1,8 @@
+body {
+    color: #797979;
+      background: scroll center url('../../../../assets/img/Indonesia_IndependenceDay_1920_800.jpg');
+      background-size: cover;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    margin-top:15px
+}
