@@ -70,7 +70,7 @@ export class ProfileDetailsComponent implements OnInit {
     })
   }
 
-  updteProfile() {
+  updateProfile() {
     this.profileService.putProfile(this.form.value.fullname,this.form.value.picture).subscribe((res) => {
       console.log(res)
       Swal.fire({

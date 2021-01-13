@@ -20,9 +20,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./shared/routes/auth/auth.module').then((m) => m.AuthModule),
   },
-
-  
-
    { path: 'hallOfFame', component: HallOfFameComponent },
   {
     path: 'inbox',
@@ -49,6 +46,12 @@ const routes: Routes = [
       import('./shared/routes/admin/admin.module').then(
         (m) => m.AdminModule
       ),
+  },
+
+  {
+    path:'lurahs', loadChildren: () =>import('src/app/shared/routes/lurahmodule/lurahmodule.module').then(
+      (m) => m.LurahModule
+    )
   },
 
 
