@@ -5,3 +5,7 @@ export interface group {
 export interface delgroup {
     groupName: string;
 }
+
+export interface recruit {
+    _userId:string;
+}

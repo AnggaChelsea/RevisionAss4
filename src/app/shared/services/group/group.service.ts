@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import { Observable,throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
-import { group,delgroup } from '../../models/group';
+import { group,delgroup, recruit } from '../../models/group';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +38,11 @@ export class GroupService {
           return res || {};
         }),
       );
+  }
+  Recruit(recruit:recruit):Observable<any> {
+    return this.http.put<any>(`${environment.urlAddress}user/groupRecruit`, {headers: new HttpHeaders().set(this.ACCESS_TOKEN,this.authService.getToken())})
+  }
+  delete(deletes:recruit):Observable<any> {
+    return this.http.put<any>(`${environment.urlAddress}user/groupKick`, {headers: new HttpHeaders().set(this.ACCESS_TOKEN,this.authService.getToken())})
   }
 }
