@@ -45,6 +45,7 @@
     "jquery-bracket": "^0.11.1",
     "jqwidgets-ng": "^11.0.1",
     "mat-table-exporter": "^1.2.5",
+    "ng-csv": "^0.3.6",
     "ng-jwt-token": "0.0.4",
     "ng2-search-filter": "^0.5.1",
     "ngx-pagination": "^5.0.0",

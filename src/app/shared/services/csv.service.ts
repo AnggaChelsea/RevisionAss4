@@ -21,6 +21,7 @@ export class CsvService {
          dwldLink.click();
          document.body.removeChild(dwldLink);
      }
+     
 
      ConvertToCSV(objArray:any, headerList:any) {
           let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
