@@ -36,15 +36,12 @@ export class CreatetournamentComponent implements OnInit {
   dataPage: any;
   selectedFile: any;
 
- 
   testUpload: any = {};
-
-  
 
   submmited = false;
   tournamentService: any;
   tournamentPict: any;
-  form: any = FormGroup;
+  createForm: any = FormGroup;
 
   constructor(
     private panitiaService: PanitiaService,
@@ -56,78 +53,92 @@ export class CreatetournamentComponent implements OnInit {
     public fb: FormBuilder,
     private cd: ChangeDetectorRef
   ) {
-    this.form = this.fb.group({
-      tournamentName:[''],
-      groupEntry:[null],
-      finished:[null],
-      tournamentOpen:[''],
-      tournamentStart:[''],
-      tournamentClose:[''],
-      tournamentType:[''],
-      stageName:0,
-      tournamentPict:[null],
-      tournamentDescription:['']
-    })
+    this.createForm = this.fb.group({
+      tournamentName: [''],
+      tournamentOpen: [''],
+      tournamentStart: [''],
+      tournamentClose: [''],
+      tournamentType: [''],
+      rulesName: [''],
+      groupEntry: [''],
+      tournamentDescription: [''],
+      tournamentPict: [''],
+    });
   }
 
   public ngOnInit() {
     // this.createtournamentData();
   }
 
-   uploadFile(event:any){
-    const file = <File>event.target.files[0]
+  upload(event: any) {
+    console.log('upload');
+    console.log(event);
+  }
+
+  uploadFile(event: any) {
+    const file = <File>event.target.files[0];
+    console.log(file);
+
     this.tournamentPict.patchValue({
-      tournamentPict:file
-    })
+      tournamentPict: file,
+    });
   }
 
-  createTournament(){
-    this.panitiaService.createGame(
-      this.form.value.tournamentName,
-      this.form.value.groupEntry,
-      this.form.value.finished,
-      this.form.this.value.tournamentOpen,
-      this.form.value.tournamentStart,
-      this.form.value.tournamentClose,
-      this.form.value.tournamentType,
-      this.form.value.stageName,
-      this.form.value.tournamentPict,
-      this.form.value.tournamentDescription,
-    ).subscribe((event:HttpEvent<any>)=>{
-      Swal.fire({
-        icon: 'success',
-        title: 'Tournament Created',
-        text: `you can update ur fullname and picture`,
-      })
-    })
-  }
+  createTournament() {}
+  // createTournament() {
+  //   this.panitiaService
+  //     .createGame(
+  //       this.form.value.tournamentName,
+  //       this.form.value.groupEntry,
+  //       this.form.value.finished,
+  //       this.form.this.value.tournamentOpen,
+  //       this.form.value.tournamentStart,
+  //       this.form.value.tournamentClose,
+  //       this.form.value.tournamentType,
+  //       this.form.value.stageName,
+  //       this.form.value.tournamentPict,
+  //       this.form.value.tournamentDescription
+  //     )
+  //     .subscribe((event: HttpEvent<any>) => {
+  //       Swal.fire({
+  //         icon: 'success',
+  //         title: 'Tournament Created',
+  //         text: `you can update ur fullname and picture`,
+  //       });
+  //     });
+  // }
 
-  pushTournament(){
-    this.panitiaService.createGame(this.form.value.tournamentName,
-      this.form.value.groupEntry,
-      this.form.value.finished,
-      this.form.this.value.tournamentOpen,
-      this.form.value.tournamentStart,
-      this.form.value.tournamentClose,
-      this.form.value.tournamentType,
-      this.form.value.stageName,
-      this.form.value.tournamentPict,
-      this.form.value.tournamentDescription
-      ).subscribe((response:any)=>{
-        Swal.fire({
-          icon:'success',
-          title:'role created',
-          text: 'Set this role as a tournament'
-        })
-      },(error) => {
-        Swal.fire({
-          icon: 'error',
-          title:'check all forms anymore',
-          text: `${error.error.message}`
-        })
-      }
-      )
-  }
+  // pushTournament() {
+  //   this.panitiaService
+  //     .createGame
+  //     this.form.value.tournamentName,
+  //     this.form.value.groupEntry,
+  //     this.form.value.finished,
+  //     this.form.this.value.tournamentOpen,
+  //     this.form.value.tournamentStart,
+  //     this.form.value.tournamentClose,
+  //     this.form.value.tournamentType,
+  //     this.form.value.stageName,
+  //     this.form.value.tournamentPict,
+  //     this.form.value.tournamentDescription
+  //     ()
+  //     .subscribe(
+  //       (response: any) => {
+  //         Swal.fire({
+  //           icon: 'success',
+  //           title: 'role created',
+  //           text: 'Set this role as a tournament',
+  //         });
+  //       },
+  //       (error) => {
+  //         Swal.fire({
+  //           icon: 'error',
+  //           title: 'check all forms anymore',
+  //           text: `${error.error.message}`,
+  //         });
+  //       }
+  //     );
+  // }
 
   // uploadFile(event:any){
   //   const file = <File>event.target.files[0]
@@ -138,8 +149,6 @@ export class CreatetournamentComponent implements OnInit {
   // }
 
   // createTournament() {}
-
-  
 
   // createtournamentData(){
   //   const data = {
@@ -162,8 +171,6 @@ export class CreatetournamentComponent implements OnInit {
   //   this.alert = true;
   // }
 
-
- 
   closeAlert() {
     this.alert = false;
   }
