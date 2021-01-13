@@ -168,7 +168,7 @@
   font-size: 1.2em;
 }
 
-/* * {
+ * { 
     margin: 0;
     padding: 0
 }
@@ -366,4 +366,4 @@ input:focus+label {
 #qr {
     margin-bottom: 150px;
     margin-top: 50px
-} */
+} 
