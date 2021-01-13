@@ -81,16 +81,14 @@ export class ProfileDetailsComponent implements OnInit {
   }
 
   updateProfile() {
-    this.profileService
-      .putProfile(this.form.value.fullname, this.form.value.picture)
-      .subscribe((res) => {
-        console.log(res);
-        Swal.fire({
-          icon: 'success',
-          title: 'Profile Updated',
-          text: `ur profile sucsessfuly updated`,
-        });
-        this.router.navigate(['profiles/profile']);
-      });
+    this.profileService.putProfile(this.form.value.fullname,this.form.value.picture).subscribe((res) => {
+      console.log(res)
+      Swal.fire({
+        icon: 'success',
+        title: 'Profile Updated',
+        text: `ur profile sucsessfuly updated`,
+      })
+      this.router.navigate(['profiles/profile']);
+  })
   }
 }

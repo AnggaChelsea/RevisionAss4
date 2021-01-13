@@ -91,23 +91,45 @@ export class PanitiaService {
   }
 
   assignPart(part: Participant): Observable<any> {
-    return this.httpClinet
-      .put<any>(`${environment.urlAddress}/comittee/approve`, part)
-      .pipe(map((result) => true));
+    return this.httpClinet.put<any>(
+      `${environment.urlAddress}/comittee/approve`,
+      part,
+      {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      }
+    );
   }
   assignGroup(group: Group): Observable<any> {
     return this.httpClinet
-      .put<any>(`${environment.urlAddress}/comittee/approveGroup`, group)
+      .put<any>(`${environment.urlAddress}/comittee/approveGroup`, group, {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      })
       .pipe(map((result) => true));
   }
   kickPart(part: Participant): Observable<any> {
     return this.httpClinet
-      .put<any>(`${environment.urlAddress}/comittee/kickParticipant`, part)
+      .put<any>(`${environment.urlAddress}/comittee/kickParticipant`, part, {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      })
       .pipe(map((result) => true));
   }
   KickGroup(group: Group): Observable<any> {
     return this.httpClinet
-      .put<any>(`${environment.urlAddress}/comittee/kickGroup`, group)
+      .put<any>(`${environment.urlAddress}/comittee/kickGroup`, group, {
+        headers: new HttpHeaders().set(
+          this.ACCESS_TOKEN,
+          this.authService.getToken()
+        ),
+      })
       .pipe(map((result) => true));
   }
 }
