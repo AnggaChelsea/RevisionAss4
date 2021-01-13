@@ -11,9 +11,10 @@ import { PanitiaService } from '../../../shared/services/panitia/panitia.service
 import { CsvService } from '../../../shared/services/csv.service';
 import { FileHolder } from 'angular2-image-upload';
 import { TournamentService } from '../../../shared/services/tournament/tournament.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 
 import 'jquery';
+import Swal from 'sweetalert2';
 declare var $: JQuery;
 
 declare global {
@@ -38,22 +39,12 @@ export class CreatetournamentComponent implements OnInit {
  
   testUpload: any = {};
 
-  tournament = {
-    tournamentName: '',
-    groupEntry:false,
-    tournamentOpen: '',
-    tournamentStart: '',
-    tournamentClose: '',
-    tournamentType: '',
-    stageName: 0,
-    tournamentPict:'',
-    tournamentDescription: '',
-  };
+  
 
   submmited = false;
   tournamentService: any;
   tournamentPict: any;
-  form: any;
+  form: any = FormGroup;
 
   constructor(
     private panitiaService: PanitiaService,
@@ -66,66 +57,111 @@ export class CreatetournamentComponent implements OnInit {
     private cd: ChangeDetectorRef
   ) {
     this.form = this.fb.group({
-    tournamentName:[''],
-    groupEntry:false,
-    tournamentOpen: [''],
-    tournamentStart: [''],
-    tournamentClose: [''],
-    tournamentType: [''],
-    stageName: 0,
-    tournamentPict:['abc.jpg'],
-    tournamentDescription: [''],
+      tournamentName:[''],
+      groupEntry:[null],
+      finished:[null],
+      tournamentOpen:[''],
+      tournamentStart:[''],
+      tournamentClose:[''],
+      tournamentType:[''],
+      stageName:0,
+      tournamentPict:[null],
+      tournamentDescription:['']
     })
   }
 
   public ngOnInit() {
-    this.createtournamentData();
+    // this.createtournamentData();
   }
 
-  createTournament() {}
-
-  onFileChanged(event: { target: { files: any[] } }) {
-    this.selectedFile = event.target.files[0];
-  }
-
-  onUploadFinished(file: FileHolder) {
-    console.log(file);
-  }
-
-  onUploadStateChanged(state: boolean) {
-    console.log(state);
-  }
-
-  createtournamentData(){
-    const data = {
-      tournamentName: this.tournament.tournamentName,
-      groupEntry:this.tournament.groupEntry,
-      tournamentOpen: this.tournament.tournamentOpen,
-      tournamentStart: this.tournament.tournamentStart,
-      tournamentClose: this.tournament.tournamentClose,
-      tournamentType: this.tournament.tournamentType,
-      stageName:this.tournament.stageName,
-      tournamentPict: this.tournament.tournamentPict,
-      tournamentDescription: this.tournament.tournamentDescription,
-    };
-    this.tournamentService
-      .create(data, this.selectedFile)
-      .subscribe((response: any) => {
-        console.log(response);
-        this.submmited = true;
-      });
-    this.alert = true;
-  }
-
-
-
-  uploadFile(event:any){
+   uploadFile(event:any){
     const file = <File>event.target.files[0]
     this.tournamentPict.patchValue({
       tournamentPict:file
     })
-    this.tournamentPict.get('picture').updateValueAndValidity()
   }
+
+  createTournament(){
+    this.panitiaService.createGame(
+      this.form.value.tournamentName,
+      this.form.value.groupEntry,
+      this.form.value.finished,
+      this.form.this.value.tournamentOpen,
+      this.form.value.tournamentStart,
+      this.form.value.tournamentClose,
+      this.form.value.tournamentType,
+      this.form.value.stageName,
+      this.form.value.tournamentPict,
+      this.form.value.tournamentDescription,
+    ).subscribe((event:HttpEvent<any>)=>{
+      Swal.fire({
+        icon: 'success',
+        title: 'Tournament Created',
+        text: `you can update ur fullname and picture`,
+      })
+    })
+  }
+
+  pushTournament(){
+    this.panitiaService.createGame(this.form.value.tournamentName,
+      this.form.value.groupEntry,
+      this.form.value.finished,
+      this.form.this.value.tournamentOpen,
+      this.form.value.tournamentStart,
+      this.form.value.tournamentClose,
+      this.form.value.tournamentType,
+      this.form.value.stageName,
+      this.form.value.tournamentPict,
+      this.form.value.tournamentDescription
+      ).subscribe((response:any)=>{
+        Swal.fire({
+          icon:'success',
+          title:'role created',
+          text: 'Set this role as a tournament'
+        })
+      },(error) => {
+        Swal.fire({
+          icon: 'error',
+          title:'check all forms anymore',
+          text: `${error.error.message}`
+        })
+      }
+      )
+  }
+
+  // uploadFile(event:any){
+  //   const file = <File>event.target.files[0]
+  //   this.form.patchValue({
+  //     picture:file
+  //   });
+  //   this.form.get('picture').updateValueAndValidity()
+  // }
+
+  // createTournament() {}
+
+  
+
+  // createtournamentData(){
+  //   const data = {
+  //     tournamentName: this.tournament.tournamentName,
+  //     groupEntry:this.tournament.groupEntry,
+  //     tournamentOpen: this.tournament.tournamentOpen,
+  //     tournamentStart: this.tournament.tournamentStart,
+  //     tournamentClose: this.tournament.tournamentClose,
+  //     tournamentType: this.tournament.tournamentType,
+  //     stageName:this.tournament.stageName,
+  //     tournamentPict: this.tournament.tournamentPict,
+  //     tournamentDescription: this.tournament.tournamentDescription,
+  //   };
+  //   this.tournamentService
+  //     .create(data, this.selectedFile)
+  //     .subscribe((response: any) => {
+  //       console.log(response);
+  //       this.submmited = true;
+  //     });
+  //   this.alert = true;
+  // }
+
 
  
   closeAlert() {

@@ -18,7 +18,8 @@ export class ProfileService {
   constructor(private http: HttpClient, private router: Router,private authService:AuthService) {}
 
 
-  Createprofile(birthDate:Date,subDistrict:string,phoneNumber:number,fullname:string,picture:File):Observable<any>{
+  Createprofile(birthDate:Date,subDistrict:string,phoneNumber:number,
+    fullname:string,picture:File):Observable<any>{
     var formData: any = new FormData();
     formData.append("birthDate",birthDate);
     formData.append("subDistrict",subDistrict)
