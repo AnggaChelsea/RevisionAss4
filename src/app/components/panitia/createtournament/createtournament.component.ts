@@ -58,13 +58,14 @@ export class CreatetournamentComponent implements OnInit {
   ) {
     this.form = this.fb.group({
       tournamentName:[''],
-      groupEntry:null,
+      groupEntry:[null],
+      finished:[null],
       tournamentOpen:[''],
       tournamentStart:[''],
       tournamentClose:[''],
       tournamentType:[''],
       stageName:0,
-      tournamentPict:[''],
+      tournamentPict:[null],
       tournamentDescription:['']
     })
   }
@@ -78,14 +79,13 @@ export class CreatetournamentComponent implements OnInit {
     this.tournamentPict.patchValue({
       tournamentPict:file
     })
-    this.tournamentPict.get('picture').updateValueAndValidity()
   }
 
   createTournament(){
     this.panitiaService.createGame(
       this.form.value.tournamentName,
       this.form.value.groupEntry,
-      this.form.vale.finished,
+      this.form.value.finished,
       this.form.this.value.tournamentOpen,
       this.form.value.tournamentStart,
       this.form.value.tournamentClose,
@@ -105,7 +105,7 @@ export class CreatetournamentComponent implements OnInit {
   pushTournament(){
     this.panitiaService.createGame(this.form.value.tournamentName,
       this.form.value.groupEntry,
-      this.form.vale.finished,
+      this.form.value.finished,
       this.form.this.value.tournamentOpen,
       this.form.value.tournamentStart,
       this.form.value.tournamentClose,
