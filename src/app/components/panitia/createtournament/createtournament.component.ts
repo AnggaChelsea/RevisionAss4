@@ -12,7 +12,7 @@ import { CsvService } from '../../../shared/services/csv.service';
 import { FileHolder } from 'angular2-image-upload';
 import { TournamentService } from '../../../shared/services/tournament/tournament.service';
 import { HttpClient, HttpEvent } from '@angular/common/http';
-
+import { environment } from '../../../../environments/environment';
 import 'jquery';
 import Swal from 'sweetalert2';
 declare var $: JQuery;
@@ -40,8 +40,9 @@ export class CreatetournamentComponent implements OnInit {
 
   submmited = false;
   tournamentService: any;
-  tournamentPict: any;
+  tournamentPict: any = null;
   createForm: any = FormGroup;
+  Form: any = {};
 
   constructor(
     private panitiaService: PanitiaService,
@@ -70,18 +71,36 @@ export class CreatetournamentComponent implements OnInit {
     // this.createtournamentData();
   }
 
-  upload(event: any) {
-    console.log('upload');
-    console.log(event);
+  uploadFile(event: any) {
+    this.tournamentPict = <File>event.target.files[0];
+
+    // this.tournamentPict.patchValue({
+    //   tournamentPict: file,
+    // });
   }
 
-  uploadFile(event: any) {
-    const file = <File>event.target.files[0];
-    console.log(file);
+  upload(event: any) {
+    console.log('rere');
+    console.log(this.createForm);
 
-    this.tournamentPict.patchValue({
-      tournamentPict: file,
-    });
+    const value: any = this.createForm.value;
+    this.Form = {
+      groupEntry: value.groupEntry,
+      rulesName: value.rulesName,
+      tournamentOpen: value.tournamentOpen,
+      tournamentStart: value.tournamentStart,
+      tournamentClose: value.tournamentClose,
+      tournamentName: value.tournamentName,
+      tournamentDescription: value.tournamentDescription,
+    };
+
+    const fd = new FormData();
+    fd.append('tournamentPict', this.tournamentPict, this.tournamentPict.name);
+    fd.append('test', this.testUpload.test);
+
+    // this.http
+    //   .post(`${environment.urlAddress}user/tester`, fd)
+    //   .subscribe((res) => console.log(res));
   }
 
   createTournament() {}
