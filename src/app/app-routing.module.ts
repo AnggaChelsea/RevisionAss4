@@ -12,6 +12,7 @@ import { GamesComponent } from './components/games/games.component';
 import { Role } from '../app/shared/models/role';
 import { AllbracketComponent } from './components/games/allbracket/allbracket.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
+import { CommentComponent } from './components/games/comment/comment.component';
 
 const routes: Routes = [
   {
@@ -41,9 +42,15 @@ const routes: Routes = [
   },
 
   {
+    path: 'comment/:_id',
+    component: CommentComponent,
+  },
+
+  {
     path: 'admin',
     loadChildren: () =>
       import('./shared/routes/admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [AuthGuard],
   },
 
   {

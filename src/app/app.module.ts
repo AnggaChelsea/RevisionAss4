@@ -44,8 +44,10 @@ import { LurahModule } from './shared/routes/lurahmodule/lurahmodule.module';
 import { CsvComponent } from './components/lurah/csv/csv.component';
 import { LurahService } from '../app/shared/services/lurah/lurah.service';
 import { GroupModule } from './shared/routes/group/group.module';
-
-
+import { CommentComponent } from './components/games/comment/comment.component';
+import { GooglesignComponent } from './components/auth/googlesign/googlesign.component';
+// MDB WYSIWYG
+import { CKEditorModule } from 'ckeditor4-angular';
 
 @Injectable({
   providedIn: 'root',
@@ -67,6 +69,8 @@ import { GroupModule } from './shared/routes/group/group.module';
     AllbracketComponent,
     LandingpageComponent,
     HallOfFameComponent,
+    CommentComponent,
+    GooglesignComponent,
   ],
 
   imports: [
@@ -75,8 +79,11 @@ import { GroupModule } from './shared/routes/group/group.module';
     NgbModule,
     Ng2SearchPipeModule,
     DataTablesModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled:environment.production}),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
     CommonModule,
+    CKEditorModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
@@ -91,7 +98,7 @@ import { GroupModule } from './shared/routes/group/group.module';
     ProfileModule,
     BrowserAnimationsModule,
     LurahModule,
-    GroupModule
+    GroupModule,
   ],
   providers: [
     {
@@ -99,13 +106,13 @@ import { GroupModule } from './shared/routes/group/group.module';
       useClass: AuthInterceptorInterceptor,
       multi: true,
     },
-    
+
     LurahService,
     AuthService,
     PanitiaService,
     TournamentService,
     AuthGuard,
-    JwtHelperService, 
+    JwtHelperService,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

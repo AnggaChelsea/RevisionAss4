@@ -11,34 +11,61 @@
   </a>
 </div>
 
-<div class="mb-3 ml-10 container" >
-  <label for="exampleFormControlInput1" class="form-label">Search Tournament</label>
-  <input  type="text" class="form-control" id="exampleFormControlInput1 browser"
-        placeholder="Search Type or Tournament Name" [(ngModel)]="filter">
-  
+<div class="mb-3 ml-10 container">
+  <label for="exampleFormControlInput1" class="form-label"
+    >Search Tournament</label
+  >
+  <input
+    type="text"
+    class="form-control"
+    id="exampleFormControlInput1 browser"
+    placeholder="Search Type or Tournament Name"
+    [(ngModel)]="filter"
+  />
+
   <!-- <button  class="btn btn-outline-secondary">Search</button> -->
 
-          <div class="section">
-                  <div class="row flex-row-stretch" style="margin-bottom: 15em;">
-                      <div class="col-sm-6 col-md-4 col-lg-3 flex-col" *ngFor="let game of tournaments | filter:filter | paginate : {
-                itemsPerPage: tableSize,
-                currentPage: page,
-                totalItems: count
-              };" >
+  <div class="section">
+    <div class="row flex-row-stretch" style="margin-bottom: 15em">
+      <div
+        class="col-sm-6 col-md-4 col-lg-3 flex-col"
+        *ngFor="
+          let game of tournaments
+            | filter: filter
+            | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                }
+        "
+      >
+        <div class="card">
+          <div class="card-label">{{ game.tournamentType }}</div>
 
-                          <div class="card" >
-                              <div class="card-label">{{game.tournamentType}}</div>
-                              
-                              <div class="card-photo">
-                                <img src="http://localhost:5000/{{game.tournamentPict|lowercase}}" alt="" style="width: 18em; height: 8em; object-fit: cover;">
-                                <!-- <img src="https://radiant-reef-49263.herokuapp.com/{{game.tournamentPict|lowercase}}" alt=""> -->
-                              </div>
-                              <div class="card-body">
-                                  <h4> <b>{{game.tournamentName}}</b></h4>
-                                  <p style="max-height: 5em; overflow: hidden;">{{game.tournamentDescription}}</p>
-                                  <a class="btn btn-primary" routerLink="detailgames/{{game._id}}">View</a>
-                         
-                                  <!-- <div class="card">
+          <div class="card-photo">
+            <img
+              src="http://localhost:5000/{{ game.tournamentPict | lowercase }}"
+              alt=""
+              style="width: 18em; height: 8em; object-fit: cover"
+            />
+            <!-- <img src="https://radiant-reef-49263.herokuapp.com/{{game.tournamentPict|lowercase}}" alt=""> -->
+          </div>
+          <div class="card-body">
+            <h4>
+              <b>{{ game.tournamentName }}</b>
+            </h4>
+            <p style="max-height: 5em; overflow: hidden">
+              {{ game.tournamentDescription }}
+            </p>
+            <a class="btn btn-primary" routerLink="detailgames/{{ game._id }}"
+              >View</a
+            >
+            <a routerLink="comment/{{ game._id }}" class="float-left"
+              >comment</a
+            >
+
+            <!-- <div class="card">
                               <div class="card-label"><img src="https://asset.kompas.com/crops/bKM6tSBuyMdd2uYxhquUno40yv8=/96x0:681x390/780x390/data/photo/2014/07/02/0823344bendera-merah-putih780x390.jpg" style="width: 20px;">{{game.tournamentType}}</div>
                               <div class="card-photo" style="background-image: url(https://png.pngtree.com/png-vector/20200810/ourlarge/pngtree-indonesia-panjat-pinang-silhouette-17-agustus-independence-day-png-image_2323693.jpg);"></div>
                               <div class="card-body">
@@ -50,28 +77,28 @@
                                     </ul>
                                 
                                   <a class="btn btn-success" routerLink="detailgames/{{game._id}}">View</a> -->
-  
-                                    </div>
-                                    </div>
-                                    </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                                    
-                                    </div>
+    <div class="container" style="margin-top: -12em; margin-left: -0.9em">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
+        </ul>
+      </nav>
+    </div>
+  </div>
 
-                                    <div class="container" style="margin-top: -12em; margin-left: -0.9em;">
-                                      <nav aria-label="Page navigation example">
-                                        <ul class="pagination justify-content-center">
-                                          <div class="d-flex justify-content-center">
-                                            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
-                                            </pagination-controls>
-                                          </div>
-                                        </ul>
-                                      </nav>
-                                    </div>
-
-                                    </div>
-
-                                    <!-- <div class="col-sm-6 col-md-4 col-lg-3 flex-col" *ngFor="
+  <!-- <div class="col-sm-6 col-md-4 col-lg-3 flex-col" *ngFor="
                                               let game of tournaments
                                                 | filter: filter
                                                 | paginate
@@ -82,11 +109,7 @@
                                                     }
                                             ">
                                           </div> -->
-
-                                        </div>
-
-
-
+</div>
 
 <!-- 
 

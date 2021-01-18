@@ -38,7 +38,7 @@ export class TournamentService {
 
   create(data: any): Observable<any> {
     return this.httpClient.post(
-      `${environment.urlAddress}product/create`,
+      `${environment.urlAddress}comittee/createGame`,
       data
     );
   }

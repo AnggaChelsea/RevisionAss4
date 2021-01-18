@@ -1,0 +1,29 @@
+<div class="container" style="margin-top: 50px">
+  <h2>This Game make ,e happy</h2>
+
+  <ckeditor
+    data="<p>Comment here ....</p>"
+    [(config)]="editorConfig"
+    (ready)="onReady()"
+    (change)="onChange()"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+  >
+  </ckeditor>
+
+  <section>
+    <h3>Events log</h3>
+    <small
+      >To check additional details about every event, consult the console in the
+      browser developer tools.</small
+    >
+    <div class="events__log">
+      <ul>
+        <li *ngFor="let event of events">
+          {{ event.timestamp }} - {{ event.name }}
+        </li>
+      </ul>
+    </div>
+    <button (click)="clearEventsLog()">Clear events log</button>
+  </section>
+</div>

@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorInterceptor } from 'src/app/shared/services/auth/auth.interceptor';
 
+
 @NgModule({
   declarations: [
     DetailgamesComponent,
