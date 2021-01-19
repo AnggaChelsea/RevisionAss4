@@ -1,29 +1,68 @@
 <div class="container" style="margin-top: 50px">
   <h2>This Game make ,e happy</h2>
-
-  <ckeditor
-    data="<p>Comment here ....</p>"
-    [(config)]="editorConfig"
-    (ready)="onReady()"
-    (change)="onChange()"
-    (focus)="onFocus()"
-    (blur)="onBlur()"
-  >
-  </ckeditor>
-
-  <section>
-    <h3>Events log</h3>
-    <small
-      >To check additional details about every event, consult the console in the
-      browser developer tools.</small
-    >
-    <div class="events__log">
-      <ul>
-        <li *ngFor="let event of events">
-          {{ event.timestamp }} - {{ event.name }}
-        </li>
-      </ul>
+  <div class="theComment" style="border: solid 2px blue; border-radius: 10px">
+    <div class="atComment">
+      <img
+        src="https://www.greenscene.co.id/wp-content/uploads/2019/12/Hulk-1.jpg"
+        width="50"
+        alt=""
+      />
+      <p>
+        <b>Angga</b><br />
+        <small
+          >Hey Disini saya main game sudah mengikuti dan juara 4 kali di tahun
+          tahun yang lalu</small
+        >
+      </p>
     </div>
-    <button (click)="clearEventsLog()">Clear events log</button>
-  </section>
+  </div>
+  <div class="theComment" style="border: solid 2px blue; border-radius: 10px">
+    <div class="atComment">
+      <img
+        src="https://www.greenscene.co.id/wp-content/uploads/2019/12/Hulk-1.jpg"
+        width="50"
+        alt=""
+      />
+      <p>
+        <b>Badru</b><br />
+        <small
+          ><i> Wow Seru game ini guys </i> saat saya dapat piala
+          <img
+            src="https://www.greenscene.co.id/wp-content/uploads/2019/12/Hulk-1.jpg"
+            width="50"
+            alt=""
+        /></small>
+      </p>
+    </div>
+  </div>
+  <div class="wyswyg">
+    <ckeditor
+      data="<p>Comment here ....</p>"
+      [(config)]="editorConfig"
+      (ready)="onReady()"
+      (change)="onChange()"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+    >
+    </ckeditor>
+
+    <button class="btn btn-outline-success">Send</button>
+    <!-- 
+    <section>
+      <h3>Events log</h3>
+      <small
+        >To check additional details about every event, consult the console in
+        the browser developer tools.</small
+      >
+      <div class="events__log">
+        <ul>
+          <li *ngFor="let event of events">
+            {{ event.timestamp }} - {{ event.name }}
+          </li>
+        </ul>
+      </div>
+      <button (click)="clearEventsLog()">Clear events log</button>
+    </section> -->
+  </div>
 </div>
+<br />

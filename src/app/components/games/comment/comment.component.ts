@@ -13,12 +13,14 @@ interface ComponentEvent {
 export class CommentComponent implements OnInit {
   public events: ComponentEvent[] = [];
   public editorConfig = {
+    
     toolbar: [
       ['Source'],
       ['Style', 'Format', 'FontSize'],
       ['bold', 'Italic'],
       ['Undo', 'Redo'],
       ['About'],
+      ['Emoji'],
     ],
   };
 
